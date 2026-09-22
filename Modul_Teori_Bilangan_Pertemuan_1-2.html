@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul Teori Bilangan — Pertemuan 1 &amp; 2</title>
+<style>
+  :root{
+    --paper:#F4F6F8;
+    --panel:#EAF0F3;
+    --ink:#16202B;
+    --ink-soft:#4A5A68;
+    --rule:#C7D2D9;
+    --gold:#8A5E17;
+    --gold-bg:#F7EFDD;
+    --teal:#2B6259;
+    --teal-bg:#E6F0EE;
+    --maroon:#7A3B33;
+    --maroon-bg:#F5E9E6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua',serif;
+    line-height:1.65;
+    font-size:17px;
+  }
+  .sans{font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
+
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    background:var(--ink);
+    color:#E8ECEF;
+    padding:28px 24px 22px;
+    text-align:center;
+  }
+  header.masthead .inst{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    letter-spacing:.08em;
+    color:#AEBAC4;
+    text-transform:uppercase;
+    margin:0 0 4px;
+  }
+  header.masthead .inst2{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    color:#8B98A3;
+    margin:0 0 18px;
+  }
+  header.masthead h1{
+    font-size:26px;
+    font-weight:400;
+    font-style:italic;
+    margin:0 0 6px;
+    color:#fff;
+  }
+  header.masthead .meta{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:13.5px;
+    color:#C7D2D9;
+  }
+  header.masthead .rule{
+    width:56px;height:2px;background:var(--gold);
+    margin:16px auto 0;
+  }
+
+  /* ---------- Tabs ---------- */
+  nav.tabs{
+    display:flex;
+    justify-content:center;
+    gap:4px;
+    background:#fff;
+    border-bottom:1px solid var(--rule);
+    position:sticky;
+    top:0;
+    z-index:10;
+  }
+  nav.tabs button{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:16px 22px 13px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    border-bottom:3px solid transparent;
+    text-align:left;
+  }
+  nav.tabs button .t-num{
+    display:block;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#9AA7B0;
+    margin-bottom:2px;
+  }
+  nav.tabs button .t-name{
+    display:block;
+    font-weight:600;
+  }
+  nav.tabs button.active{
+    color:var(--ink);
+    border-bottom-color:var(--gold);
+  }
+  nav.tabs button.active .t-num{color:var(--gold);}
+
+  /* ---------- Layout ---------- */
+  main{max-width:740px;margin:0 auto;padding:40px 24px 90px;}
+  section.pertemuan{display:none;}
+  section.pertemuan.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+
+  h2.sec-title{
+    font-size:23px;
+    font-weight:400;
+    margin:44px 0 4px;
+    color:var(--ink);
+  }
+  section.pertemuan > h2.sec-title:first-of-type{margin-top:6px;}
+  .sec-sub{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  h3.sub-title{
+    font-size:18px;
+    font-weight:600;
+    margin:30px 0 10px;
+    color:var(--ink);
+  }
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  /* ---------- Tujuan box ---------- */
+  .tujuan{
+    background:var(--panel);
+    border-left:3px solid var(--ink-soft);
+    padding:14px 18px;
+    margin:0 0 26px;
+    font-size:15.5px;
+  }
+  .tujuan .label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+
+  /* ---------- Math structure boxes ---------- */
+  .box{
+    margin:20px 0;
+    padding:16px 18px;
+    border-radius:2px;
+    border:1px solid var(--rule);
+    border-left-width:4px;
+  }
+  .box .box-label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+    margin-bottom:6px;
+    display:block;
+  }
+  .postulat{background:#fff;border-left-color:var(--ink);}
+  .postulat .box-label{color:var(--ink);}
+  .definisi{background:#fff;border-left-color:var(--teal);}
+  .definisi .box-label{color:var(--teal);}
+  .teorema{background:var(--gold-bg);border-left-color:var(--gold);border-color:#E9D9B6;}
+  .teorema .box-label{color:var(--gold);}
+  .akibat{background:#fff;border-left-color:var(--teal);}
+  .akibat .box-label{color:var(--teal);}
+  .bukti{
+    margin:8px 0 22px;
+    padding:12px 18px 12px 18px;
+    border-left:2px solid var(--maroon);
+    font-size:16px;
+  }
+  .bukti .box-label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-style:normal;
+    font-weight:700;
+    font-size:13px;
+    color:var(--maroon);
+    letter-spacing:.03em;
+    margin-bottom:4px;
+    display:block;
+  }
+  .bukti summary{
+    cursor:pointer;
+    list-style-position:inside;
+  }
+  .bukti summary::marker{color:var(--maroon);}
+  .bukti[open] summary{margin-bottom:4px;}
+  .qed{float:right;font-size:15px;}
+  .contoh{background:var(--teal-bg);border-left-color:var(--teal);}
+  .contoh .box-label{color:var(--teal);}
+  .box p:last-child{margin-bottom:0;}
+
+  /* ---------- Roadmap table ---------- */
+  table{width:100%;border-collapse:collapse;margin:0 0 26px;font-size:15px;}
+  table caption{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--ink-soft);text-align:left;margin-bottom:6px;
+  }
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);}
+  thead th{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--ink-soft);
+    border-bottom:2px solid var(--ink);
+  }
+  td.num{width:38px;color:var(--ink-soft);}
+  tr.uts td, tr.uas td{font-style:italic;color:var(--ink-soft);}
+
+  /* ---------- Latihan ---------- */
+  .latihan{
+    margin-top:38px;
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+  }
+  .latihan h3.sub-title{margin-top:0;}
+  .latihan ol{padding-left:26px;}
+  .latihan li{margin-bottom:16px;}
+
+  /* ---------- Pertanyaan pemahaman ---------- */
+  .pertanyaan ol{padding-left:26px;}
+  .pertanyaan li{margin-bottom:14px;}
+
+  footer{
+    text-align:center;
+    padding:26px 20px 40px;
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  code, .var{font-family:Georgia,serif;font-style:italic;}
+
+  @media (max-width:560px){
+    header.masthead h1{font-size:21px;}
+    main{padding:28px 16px 70px;}
+    nav.tabs button{padding:13px 14px 11px;font-size:13px;}
+  }
+
+  @media print{
+    nav.tabs{display:none;}
+    section.pertemuan{display:block !important;page-break-before:always;}
+    header.masthead{background:#fff;color:#000;}
+    header.masthead .inst,header.masthead .inst2,header.masthead .meta{color:#333;}
+    header.masthead h1{color:#000;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="inst">Universitas PGRI Ronggolawe Tuban</p>
+  <p class="inst2">Fakultas Keguruan dan Ilmu Pendidikan — Program Studi Pendidikan Matematika</p>
+  <h1>Modul Teori Bilangan</h1>
+  <p class="meta">PMA4108 &nbsp;·&nbsp; 2 SKS &nbsp;·&nbsp; Semester 3 (Ganjil) &nbsp;·&nbsp; Dosen Pengampu: Gusti Uripno, M. Pd.</p>
+  <div class="rule"></div>
+</header>
+
+<nav class="tabs">
+  <button class="active" data-target="p1" onclick="showP('p1', this)">
+    <span class="t-num">Pertemuan 1</span>
+    <span class="t-name">Kontrak Kuliah &amp; Pengantar</span>
+  </button>
+  <button data-target="p2" onclick="showP('p2', this)">
+    <span class="t-num">Pertemuan 2</span>
+    <span class="t-name">Induksi Matematika</span>
+  </button>
+</nav>
+
+<main>
+
+<!-- ======================= PERTEMUAN 1 ======================= -->
+<section id="p1" class="pertemuan active">
+
+  <h2 class="sec-title">Kontrak Kuliah &amp; Pengantar Teori Bilangan</h2>
+  <p class="sec-sub">Sub-CPMK 1.1 &nbsp;·&nbsp; Rosen (2011), Section 1.1</p>
+
+  <div class="tujuan">
+    <p class="label">Tujuan Pertemuan</p>
+    <p>Mahasiswa memahami kontrak kuliah, ruang lingkup, dan peta konsep Teori Bilangan, serta mengenali pendekatan deduktif-aksiomatik yang akan digunakan sepanjang perkuliahan — teorema disajikan secara runtut dan disertai pembuktian matematika formal.</p>
+  </div>
+
+  <h3 class="sub-title">1. Apa itu Teori Bilangan?</h3>
+  <p>Teori bilangan (<em>number theory</em>) adalah cabang matematika murni yang mempelajari sifat-sifat bilangan bulat ℤ = {…, −2, −1, 0, 1, 2, …}, khususnya bilangan bulat positif ℤ⁺ = {1, 2, 3, …}. Meski objek kajiannya sederhana — bilangan bulat yang sudah dikenal sejak sekolah dasar — teori bilangan menuntut cara berpikir deduktif yang ketat, karena hampir setiap pernyataan harus dibuktikan secara formal, bukan hanya diverifikasi lewat beberapa contoh angka.</p>
+  <p>Mata kuliah ini akan menempuh materi mulai dari fondasi pembuktian (induksi matematika, keterbagian), menuju bilangan prima dan algoritma Euclid, Teorema Fundamental Aritmetika, hingga kongruensi dan Teorema Sisa Cina (<em>Chinese Remainder Theorem</em>).</p>
+
+  <h3 class="sub-title">2. Struktur Berpikir Deduktif-Aksiomatik</h3>
+  <p>Sepanjang perkuliahan ini, setiap topik dibangun mengikuti struktur baku dalam matematika murni:</p>
+  <ul>
+    <li><strong>Definisi</strong> — kesepakatan makna suatu istilah atau objek matematika, tanpa perlu dibuktikan.</li>
+    <li><strong>Postulat / Aksioma</strong> — pernyataan yang diterima kebenarannya tanpa bukti, menjadi titik tolak seluruh penurunan (<em>derivation</em>) berikutnya.</li>
+    <li><strong>Teorema</strong> — pernyataan yang kebenarannya harus dibuktikan secara logis dari definisi, aksioma, dan teorema-teorema sebelumnya.</li>
+    <li><strong>Lema</strong> — teorema "bantu" yang disiapkan khusus untuk mendukung pembuktian teorema lain yang lebih penting.</li>
+    <li><strong>Akibat (Korolari)</strong> — pernyataan yang mengikuti secara langsung (relatif mudah) dari suatu teorema yang baru dibuktikan.</li>
+    <li><strong>Bukti</strong> — rangkaian argumen logis yang menghubungkan hipotesis suatu pernyataan dengan kesimpulannya, diakhiri simbol ∎.</li>
+  </ul>
+  <p>Struktur ini akan tampak berulang di seluruh modul: setiap kotak berwarna pada modul ini menandai jenis pernyataan tersebut.</p>
+
+  <h3 class="sub-title">3. Aksioma Dasar: Prinsip Terurut Rapi</h3>
+  <p>Salah satu aksioma paling fundamental tentang bilangan bulat positif — yang akan menjadi dasar pembuktian pada Pertemuan 2 — adalah <em>Well-Ordering Principle</em>.</p>
+
+  <div class="box postulat">
+    <span class="box-label">Postulat 1.1 (Prinsip Terurut Rapi / Well-Ordering Principle)</span>
+    <p>Setiap himpunan bagian tak kosong dari ℤ⁺ memiliki elemen terkecil.</p>
+  </div>
+
+  <p>Pernyataan ini tampak "jelas dengan sendirinya" bila dipikirkan secara intuitif, namun tetap diterima sebagai <strong>postulat</strong> (bukan dibuktikan) karena ia setara secara logis dengan aksioma-aksioma dasar tentang konstruksi bilangan bulat. Sebagai ilustrasi kekuatan postulat ini, perhatikan teorema berikut.</p>
+
+  <div class="box teorema">
+    <span class="box-label">Teorema 1.1</span>
+    <p>Tidak ada bilangan bulat <span class="var">n</span> yang memenuhi 0 &lt; <span class="var">n</span> &lt; 1.</p>
+  </div>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p>Andaikan pernyataan ini salah, yaitu himpunan
+    <span class="var">S</span> = {<span class="var">n</span> ∈ ℤ⁺ : <span class="var">n</span> &lt; 1} tidak kosong.
+    Karena <span class="var">S</span> ⊆ ℤ⁺ dan <span class="var">S</span> ≠ ∅, menurut Prinsip Terurut Rapi (Postulat 1.1), <span class="var">S</span> memiliki elemen terkecil, sebut <span class="var">m</span>, dengan 0 &lt; <span class="var">m</span> &lt; 1.</p>
+    <p>Karena 0 &lt; <span class="var">m</span> &lt; 1, kalikan kedua ruas pertidaksamaan <span class="var">m</span> &lt; 1 dengan <span class="var">m</span> &gt; 0, diperoleh <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span>. Karena <span class="var">m</span> &gt; 0, juga berlaku <span class="var">m</span><sup>2</sup> &gt; 0. Jadi 0 &lt; <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span> &lt; 1, yang berarti <span class="var">m</span><sup>2</sup> ∈ <span class="var">S</span>.</p>
+    <p>Namun <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span> bertentangan dengan fakta bahwa <span class="var">m</span> adalah elemen <em>terkecil</em> dari <span class="var">S</span>. Kontradiksi ini menunjukkan pengandaian di atas salah, sehingga <span class="var">S</span> = ∅ — artinya tidak ada bilangan bulat <span class="var">n</span> dengan 0 &lt; <span class="var">n</span> &lt; 1.<span class="qed">∎</span></p>
+  </details>
+
+  <p>Perhatikan bagaimana satu aksioma sederhana (Postulat 1.1) sudah cukup untuk membuktikan fakta yang terasa "jelas". Cara berpikir seperti inilah yang akan terus dipakai sepanjang mata kuliah — termasuk pada Pertemuan 2 untuk membuktikan Prinsip Induksi Matematika itu sendiri.</p>
+
+  <h3 class="sub-title">4. Peta Perkuliahan 16 Minggu</h3>
+  <table>
+    <caption>Rencana Pembelajaran Semester — Ringkasan</caption>
+    <thead>
+      <tr><th style="width:38px;">Mg</th><th>Topik</th><th style="width:70px;">CPMK</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Kontrak Kuliah &amp; Pengantar Teori Bilangan</td><td>1</td></tr>
+      <tr><td class="num">2</td><td>Induksi Matematika (lemah &amp; kuat)</td><td>1</td></tr>
+      <tr><td class="num">3</td><td>Keterbagian &amp; Algoritma Pembagian</td><td>1</td></tr>
+      <tr><td class="num">4</td><td>Bilangan Prima &amp; Ketakhinggaan Bilangan Prima</td><td>1</td></tr>
+      <tr><td class="num">5</td><td>Sebaran Bilangan Prima</td><td>1</td></tr>
+      <tr><td class="num">6</td><td>Pembagi Persekutuan Terbesar (FPB) &amp; Identitas Bézout</td><td>1</td></tr>
+      <tr><td class="num">7</td><td>Algoritma Euclid &amp; Algoritma Euclid Diperluas</td><td>1</td></tr>
+      <tr class="uts"><td class="num">8</td><td>UTS — materi Minggu 1–7</td><td>—</td></tr>
+      <tr><td class="num">9</td><td>Teorema Fundamental Aritmetika</td><td>2</td></tr>
+      <tr><td class="num">10</td><td>Metode Faktorisasi Bilangan Bulat</td><td>2</td></tr>
+      <tr><td class="num">11</td><td>Pengantar Kongruensi &amp; Sifat-sifatnya</td><td>2</td></tr>
+      <tr><td class="num">12</td><td>Kongruensi Linear</td><td>2</td></tr>
+      <tr><td class="num">13</td><td>Teorema Sisa Cina (Chinese Remainder Theorem)</td><td>2</td></tr>
+      <tr><td class="num">14</td><td>Uji Keterbagian (Divisibility Tests)</td><td>2</td></tr>
+      <tr><td class="num">15</td><td>Rangkuman &amp; Integrasi CPMK 2</td><td>2</td></tr>
+      <tr class="uas"><td class="num">16</td><td>UAS — materi Minggu 9–15</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-title">5. Komponen Penilaian</h3>
+  <ul>
+    <li>Tugas/kuis mingguan  — <strong>30%</strong></li>
+    <li> Partisipasi — <strong>20%</strong></li>
+    <li>Ujian Tengah Semester (UTS) — <strong>20%</strong></li>
+    <li>Ujian Akhir Semester (UAS) — <strong>30%</strong></li>
+  </ul>
+
+  <h3 class="sub-title">6. Tata Tertib &amp; Cara Belajar</h3>
+  <ul>
+    <li>Kehadiran minimal sesuai ketentuan prodi; keterlambatan lebih dari 15 menit dianggap tidak hadir tepat waktu.</li>
+    <li>Setiap jawaban tugas/kuis pembuktian wajib ditulis sebagai argumen matematis yang lengkap (bukan hanya jawaban akhir) — ikuti struktur Definisi → Hipotesis → Langkah pembuktian → Kesimpulan (∎).</li>
+    <li>Diperbolehkan berdiskusi dalam mengerjakan latihan, namun pembuktian yang dikumpulkan harus ditulis dengan pemahaman dan kalimat sendiri (integritas akademik).</li>
+    <li>Referensi utama: Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.). Boston: Pearson/Addison-Wesley.</li>
+  </ul>
+
+  <div class="pertanyaan latihan">
+    <h3 class="sub-title">Pertanyaan Pemahaman</h3>
+    <ol>
+      <li>Jelaskan perbedaan antara definisi, postulat/aksioma, teorema, lema, dan akibat (korolari) dalam struktur matematika deduktif-aksiomatik.</li>
+      <li>Mengapa Prinsip Terurut Rapi (Postulat 1.1) diterima sebagai postulat, bukan dibuktikan sebagai teorema?</li>
+      <li>Pada pembuktian Teorema 1.1, di langkah mana kontradiksi muncul, dan bagaimana kontradiksi tersebut membuktikan pernyataan awal?</li>
+      <li>Sebutkan dua topik pada peta 16 minggu yang menurut Anda saling berkaitan langsung, dan jelaskan keterkaitannya.</li>
+      <li>Carilah satu pernyataan matematika sederhana (boleh dari materi sekolah) yang menurut Anda tepat dibuktikan dengan induksi matematika, dan jelaskan alasannya — akan didiskusikan pada Pertemuan 2.</li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- ======================= PERTEMUAN 2 ======================= -->
+<section id="p2" class="pertemuan">
+
+  <h2 class="sec-title">Induksi Matematika</h2>
+  <p class="sec-sub">Sub-CPMK 1.2 &nbsp;·&nbsp; Rosen (2011), Section 1.3</p>
+
+  <div class="tujuan">
+    <p class="label">Tujuan Pertemuan</p>
+    <p>Mahasiswa mampu membuktikan pernyataan tentang bilangan bulat menggunakan Prinsip Induksi Matematika, baik bentuk pertama (induksi lemah) maupun bentuk kuat (induksi kuat/strong induction), serta menerapkannya pada berbagai konteks: penjumlahan, pertidaksamaan, keterbagian, dan eksistensi faktorisasi.</p>
+  </div>
+
+  <h3 class="sub-title">1. Prinsip Induksi Matematika (Bentuk Pertama)</h3>
+  <p>Prinsip induksi matematika diturunkan langsung dari Prinsip Terurut Rapi (Postulat 1.1) yang telah diperkenalkan pada Pertemuan 1.</p>
+
+  <div class="box teorema">
+    <span class="box-label">Teorema 2.1 (Prinsip Induksi Matematika — Bentuk Pertama)</span>
+    <p>Misalkan <span class="var">S</span> ⊆ ℤ⁺ memenuhi dua syarat berikut:</p>
+    <p>(i) 1 ∈ <span class="var">S</span> &nbsp;(<em>basis induksi</em>);</p>
+    <p>(ii) untuk setiap <span class="var">k</span> ∈ ℤ⁺, jika <span class="var">k</span> ∈ <span class="var">S</span> maka <span class="var">k</span>+1 ∈ <span class="var">S</span> &nbsp;(<em>langkah induktif</em>).</p>
+    <p>Maka <span class="var">S</span> = ℤ⁺.</p>
+  </div>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p>Andaikan <span class="var">S</span> ≠ ℤ⁺. Maka <span class="var">S′</span> = ℤ⁺ \ <span class="var">S</span> (komplemen <span class="var">S</span> terhadap ℤ⁺) tidak kosong. Menurut Prinsip Terurut Rapi, <span class="var">S′</span> memiliki elemen terkecil, sebut <span class="var">m</span>.</p>
+    <p>Karena 1 ∈ <span class="var">S</span> (syarat i), maka 1 ∉ <span class="var">S′</span>, sehingga <span class="var">m</span> ≠ 1, yaitu <span class="var">m</span> &gt; 1. Akibatnya <span class="var">m</span> − 1 juga bilangan bulat positif. Karena <span class="var">m</span> adalah elemen terkecil dari <span class="var">S′</span>, maka <span class="var">m</span> − 1 ∉ <span class="var">S′</span>, artinya <span class="var">m</span> − 1 ∈ <span class="var">S</span>.</p>
+    <p>Berdasarkan syarat (ii), karena <span class="var">m</span> − 1 ∈ <span class="var">S</span>, maka (<span class="var">m</span> − 1) + 1 = <span class="var">m</span> ∈ <span class="var">S</span>. Namun ini bertentangan dengan <span class="var">m</span> ∈ <span class="var">S′</span> (yang berarti <span class="var">m</span> ∉ <span class="var">S</span>). Kontradiksi ini menunjukkan pengandaian salah, sehingga <span class="var">S′</span> = ∅ dan <span class="var">S</span> = ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <p>Dalam praktik pembuktian, Teorema 2.1 digunakan dengan mengambil <span class="var">S</span> sebagai himpunan semua bilangan bulat positif <span class="var">n</span> yang membuat suatu pernyataan <span class="var">P</span>(<span class="var">n</span>) benar. Membuktikan (i) disebut <strong>langkah basis</strong>, dan membuktikan (ii) disebut <strong>langkah induktif</strong>, dengan asumsi <span class="var">P</span>(<span class="var">k</span>) benar (disebut <strong>hipotesis induksi</strong>).</p>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 2.1</span>
+    <p>Buktikan bahwa untuk semua <span class="var">n</span> ∈ ℤ⁺: 1 + 2 + 3 + … + <span class="var">n</span> = <span class="var">n</span>(<span class="var">n</span>+1)/2.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): ruas kiri = 1, ruas kanan = 1·2/2 = 1. Pernyataan benar untuk <span class="var">n</span> = 1.</p>
+    <p><em>Langkah induktif:</em> Misalkan pernyataan benar untuk <span class="var">n</span> = <span class="var">k</span>, yaitu 1 + 2 + … + <span class="var">k</span> = <span class="var">k</span>(<span class="var">k</span>+1)/2 (hipotesis induksi). Akan ditunjukkan pernyataan juga benar untuk <span class="var">n</span> = <span class="var">k</span>+1:</p>
+    <p>1 + 2 + … + <span class="var">k</span> + (<span class="var">k</span>+1) = <span class="var">k</span>(<span class="var">k</span>+1)/2 + (<span class="var">k</span>+1) = (<span class="var">k</span>+1)(<span class="var">k</span>/2 + 1) = (<span class="var">k</span>+1)(<span class="var">k</span>+2)/2.</p>
+    <p>Bentuk terakhir persis rumus <span class="var">n</span>(<span class="var">n</span>+1)/2 untuk <span class="var">n</span> = <span class="var">k</span>+1. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 2.2</span>
+    <p>Buktikan bahwa <span class="var">n</span> &lt; 2<sup><span class="var">n</span></sup> untuk semua <span class="var">n</span> ∈ ℤ⁺.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): 1 &lt; 2¹ = 2. Benar.</p>
+    <p><em>Langkah induktif:</em> Misalkan <span class="var">k</span> &lt; 2<sup><span class="var">k</span></sup> (hipotesis induksi), dengan <span class="var">k</span> ≥ 1. Karena <span class="var">k</span> dan 2<sup><span class="var">k</span></sup> bilangan bulat dan <span class="var">k</span> &lt; 2<sup><span class="var">k</span></sup>, berlaku <span class="var">k</span> + 1 ≤ 2<sup><span class="var">k</span></sup>. Maka:</p>
+    <p><span class="var">k</span> + 1 ≤ 2<sup><span class="var">k</span></sup> &lt; 2 · 2<sup><span class="var">k</span></sup> = 2<sup><span class="var">k</span>+1</sup>.</p>
+    <p>Jadi <span class="var">k</span> + 1 &lt; 2<sup><span class="var">k</span>+1</sup>. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 2.3</span>
+    <p>Buktikan bahwa 3 habis membagi (<span class="var">n</span><sup>3</sup> − <span class="var">n</span>) untuk semua <span class="var">n</span> ∈ ℤ⁺.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): 1³ − 1 = 0, dan 3 ∣ 0. Benar.</p>
+    <p><em>Langkah induktif:</em> Misalkan 3 ∣ (<span class="var">k</span><sup>3</sup> − <span class="var">k</span>) (hipotesis induksi). Perhatikan:</p>
+    <p>(<span class="var">k</span>+1)<sup>3</sup> − (<span class="var">k</span>+1) = <span class="var">k</span><sup>3</sup> + 3<span class="var">k</span><sup>2</sup> + 3<span class="var">k</span> + 1 − <span class="var">k</span> − 1 = (<span class="var">k</span><sup>3</sup> − <span class="var">k</span>) + 3(<span class="var">k</span><sup>2</sup> + <span class="var">k</span>).</p>
+    <p>Suku pertama habis dibagi 3 (hipotesis induksi), suku kedua habis dibagi 3 (kelipatan 3 secara eksplisit). Jumlah dua kelipatan 3 juga kelipatan 3, sehingga 3 ∣ [(<span class="var">k</span>+1)³ − (<span class="var">k</span>+1)]. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <h3 class="sub-title">2. Prinsip Induksi Matematika (Bentuk Kuat)</h3>
+  <p>Pada sejumlah pembuktian, hipotesis induksi "<span class="var">k</span> ∈ <span class="var">S</span>" saja tidak cukup — kita perlu mengasumsikan pernyataan benar untuk <em>semua</em> bilangan sebelum <span class="var">k</span>+1, bukan hanya <span class="var">k</span>. Untuk itu digunakan bentuk kuat (<em>strong/second principle of induction</em>).</p>
+
+  <div class="box teorema">
+    <span class="box-label">Teorema 2.2 (Prinsip Induksi Matematika — Bentuk Kuat)</span>
+    <p>Misalkan <span class="var">S</span> ⊆ ℤ⁺ memenuhi:</p>
+    <p>(i) 1 ∈ <span class="var">S</span>;</p>
+    <p>(ii) untuk setiap <span class="var">k</span> ∈ ℤ⁺, jika 1, 2, …, <span class="var">k</span> ∈ <span class="var">S</span>, maka <span class="var">k</span>+1 ∈ <span class="var">S</span>.</p>
+    <p>Maka <span class="var">S</span> = ℤ⁺.</p>
+  </div>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p>Definisikan <span class="var">T</span> = {<span class="var">n</span> ∈ ℤ⁺ : 1, 2, …, <span class="var">n</span> ∈ <span class="var">S</span>}. Akan ditunjukkan <span class="var">T</span> memenuhi syarat Teorema 2.1.</p>
+    <p>(a) 1 ∈ <span class="var">T</span>, karena 1 ∈ <span class="var">S</span> (syarat i).</p>
+    <p>(b) Misalkan <span class="var">k</span> ∈ <span class="var">T</span>, artinya 1, 2, …, <span class="var">k</span> ∈ <span class="var">S</span>. Berdasarkan syarat (ii), <span class="var">k</span>+1 ∈ <span class="var">S</span>. Karena 1, …, <span class="var">k</span>, <span class="var">k</span>+1 semuanya ∈ <span class="var">S</span>, maka <span class="var">k</span>+1 ∈ <span class="var">T</span>.</p>
+    <p>Berdasarkan Teorema 2.1, <span class="var">T</span> = ℤ⁺. Karena setiap <span class="var">n</span> ∈ <span class="var">T</span> mengakibatkan <span class="var">n</span> ∈ <span class="var">S</span> (dari definisi <span class="var">T</span>), maka <span class="var">T</span> ⊆ <span class="var">S</span>, sehingga <span class="var">S</span> = ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box akibat">
+    <span class="box-label">Akibat 2.1 (Titik Awal Sembarang)</span>
+    <p>Teorema 2.1 dan 2.2 tetap berlaku bila basis induksi digeser dari <span class="var">n</span> = 1 ke sembarang bilangan bulat <span class="var">n</span>₀; kesimpulannya menjadi <span class="var">S</span> ⊇ {<span class="var">n</span>₀, <span class="var">n</span>₀+1, <span class="var">n</span>₀+2, …}. Argumennya identik dengan pergeseran indeks, sehingga diterima tanpa pembuktian ulang dan langsung dipakai pada Contoh 2.5.</p>
+  </div>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 2.4 (Eksistensi Faktorisasi Prima)</span>
+    <p>Buktikan dengan induksi kuat bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 dapat dinyatakan sebagai hasil kali satu atau lebih bilangan prima.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 2): 2 adalah bilangan prima, jadi 2 sudah merupakan "hasil kali" satu bilangan prima (dirinya sendiri).</p>
+    <p><em>Langkah induktif (kuat):</em> Misalkan setiap bilangan bulat <span class="var">m</span> dengan 2 ≤ <span class="var">m</span> ≤ <span class="var">k</span> dapat dinyatakan sebagai hasil kali bilangan-bilangan prima (hipotesis induksi kuat). Tinjau <span class="var">k</span>+1:</p>
+    <ul>
+      <li>Jika <span class="var">k</span>+1 prima, maka ia sudah merupakan hasil kali satu bilangan prima (dirinya sendiri).</li>
+      <li>Jika <span class="var">k</span>+1 komposit, maka <span class="var">k</span>+1 = <span class="var">a</span>·<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> dengan 2 ≤ <span class="var">a</span>, <span class="var">b</span> ≤ <span class="var">k</span>. Berdasarkan hipotesis induksi, <span class="var">a</span> dan <span class="var">b</span> masing-masing dapat dinyatakan sebagai hasil kali bilangan prima, sehingga <span class="var">k</span>+1 = <span class="var">a</span>·<span class="var">b</span> juga hasil kali bilangan prima.</li>
+    </ul>
+    <p>Berdasarkan Teorema 2.2, pernyataan benar untuk semua <span class="var">n</span> ≥ 2. (Hasil ini akan digunakan kembali sebagai bagian eksistensi Teorema Fundamental Aritmetika pada Minggu 9.)<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 2.5 (Masalah Perangko / Frobenius)</span>
+    <p>Buktikan bahwa setiap bilangan bulat <span class="var">n</span> ≥ 12 dapat dinyatakan sebagai <span class="var">n</span> = 4<span class="var">a</span> + 5<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> ≥ 0.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Bukti</summary>
+    <p><em>Basis</em> (empat kasus awal, karena langkah induktif akan melompat 4 angka):</p>
+    <p>12 = 4·3 + 5·0 &nbsp;&nbsp; 13 = 4·2 + 5·1 &nbsp;&nbsp; 14 = 4·1 + 5·2 &nbsp;&nbsp; 15 = 4·0 + 5·3</p>
+    <p><em>Langkah induktif (kuat):</em> Misalkan pernyataan benar untuk semua bilangan bulat dari 12 sampai <span class="var">k</span>, dengan <span class="var">k</span> ≥ 15. Tinjau <span class="var">k</span>+1 (sehingga <span class="var">k</span>+1 ≥ 16). Karena (<span class="var">k</span>+1) − 4 = <span class="var">k</span> − 3 ≥ 12, dan <span class="var">k</span> − 3 ≤ <span class="var">k</span>, berdasarkan hipotesis induksi <span class="var">k</span> − 3 = 4<span class="var">a</span> + 5<span class="var">b</span> untuk suatu <span class="var">a</span>, <span class="var">b</span> ≥ 0. Maka:</p>
+    <p><span class="var">k</span>+1 = (<span class="var">k</span> − 3) + 4 = 4(<span class="var">a</span>+1) + 5<span class="var">b</span>,</p>
+    <p>dengan <span class="var">a</span>+1 ≥ 0. Berdasarkan Akibat 2.1 dan Teorema 2.2 (basis digeser mulai <span class="var">n</span>₀ = 12), pernyataan benar untuk semua <span class="var">n</span> ≥ 12.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="latihan">
+    <h3 class="sub-title">Latihan Soal</h3>
+    <ol>
+      <li>Buktikan dengan induksi matematika (bentuk pertama) bahwa untuk semua <span class="var">n</span> ∈ ℤ⁺: 1² + 2² + … + <span class="var">n</span>² = <span class="var">n</span>(<span class="var">n</span>+1)(2<span class="var">n</span>+1)/6.</li>
+      <li>Buktikan bahwa untuk semua bilangan bulat <span class="var">n</span> ≥ 4 berlaku 2<sup><span class="var">n</span></sup> ≥ <span class="var">n</span>².</li>
+      <li>Buktikan bahwa 7 habis membagi (11<sup><span class="var">n</span></sup> − 4<sup><span class="var">n</span></sup>) untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li>Buktikan bahwa jumlah <span class="var">n</span> bilangan ganjil positif pertama sama dengan <span class="var">n</span>², yaitu 1 + 3 + 5 + … + (2<span class="var">n</span>−1) = <span class="var">n</span>², untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li>Gunakan induksi kuat untuk membuktikan bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 memiliki paling sedikit satu faktor prima.</li>
+      <li>Barisan (<span class="var">a</span>ₙ) didefinisikan oleh <span class="var">a</span>₁ = 1, <span class="var">a</span>₂ = 3, dan <span class="var">a</span>ₙ = <span class="var">a</span>ₙ₋₁ + <span class="var">a</span>ₙ₋₂ untuk <span class="var">n</span> ≥ 3. Buktikan dengan induksi kuat bahwa <span class="var">a</span>ₙ &lt; 2<sup><span class="var">n</span></sup> untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li>Buktikan dengan induksi kuat bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 dapat dinyatakan sebagai <span class="var">n</span> = 2<span class="var">a</span> + 3<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> ≥ 0.</li>
+    </ol>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  Modul Teori Bilangan (PMA4108) — Program Studi Pendidikan Matematika, UNIROW Tuban.<br>
+  Disusun mengikuti RPS &amp; Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.).
+</footer>
+
+<script>
+  function showP(id, btn){
+    document.querySelectorAll('section.pertemuan').forEach(function(s){ s.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav.tabs button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+</script>
+
+</body>
+</html>
