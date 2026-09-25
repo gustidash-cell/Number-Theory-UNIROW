@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul Teori Bilangan — Pertemuan 3</title>
+<style>
+  :root{
+    --paper:#F4F6F8;
+    --panel:#EAF0F3;
+    --ink:#16202B;
+    --ink-soft:#4A5A68;
+    --rule:#C7D2D9;
+    --gold:#8A5E17;
+    --gold-bg:#F7EFDD;
+    --teal:#2B6259;
+    --teal-bg:#E6F0EE;
+    --maroon:#7A3B33;
+    --maroon-bg:#F5E9E6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Georgia,'Iowan Old Style','Palatino Linotype','Book Antiqua',serif;
+    line-height:1.65;
+    font-size:17px;
+  }
+  .sans{font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
+
+  header.masthead{
+    background:var(--ink);
+    color:#E8ECEF;
+    padding:28px 24px 22px;
+    text-align:center;
+  }
+  header.masthead .inst{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    letter-spacing:.08em;
+    color:#AEBAC4;
+    text-transform:uppercase;
+    margin:0 0 4px;
+  }
+  header.masthead .inst2{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    color:#8B98A3;
+    margin:0 0 18px;
+  }
+  header.masthead h1{
+    font-size:26px;
+    font-weight:400;
+    font-style:italic;
+    margin:0 0 6px;
+    color:#fff;
+  }
+  header.masthead .meta{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:13.5px;
+    color:#C7D2D9;
+  }
+  header.masthead .rule{
+    width:56px;height:2px;background:var(--gold);
+    margin:16px auto 0;
+  }
+
+  main{max-width:740px;margin:0 auto;padding:40px 24px 90px;}
+
+  h2.sec-title{
+    font-size:23px;
+    font-weight:400;
+    margin:6px 0 4px;
+    color:var(--ink);
+  }
+  .sec-sub{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  h3.sub-title{
+    font-size:18px;
+    font-weight:600;
+    margin:30px 0 10px;
+    color:var(--ink);
+  }
+  p{margin:0 0 14px;}
+  ul,ol{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:6px;}
+
+  .tujuan{
+    background:var(--panel);
+    border-left:3px solid var(--ink-soft);
+    padding:14px 18px;
+    margin:0 0 26px;
+    font-size:15.5px;
+  }
+  .tujuan .label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+
+  .box{
+    margin:20px 0;
+    padding:16px 18px;
+    border-radius:2px;
+    border:1px solid var(--rule);
+    border-left-width:4px;
+  }
+  .box .box-label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-weight:700;
+    font-size:13.5px;
+    margin-bottom:6px;
+    display:block;
+  }
+  .postulat{background:#fff;border-left-color:var(--ink);}
+  .postulat .box-label{color:var(--ink);}
+  .definisi{background:#fff;border-left-color:var(--teal);}
+  .definisi .box-label{color:var(--teal);}
+  .teorema{background:var(--gold-bg);border-left-color:var(--gold);border-color:#E9D9B6;}
+  .teorema .box-label{color:var(--gold);}
+  .akibat{background:#fff;border-left-color:var(--teal);}
+  .akibat .box-label{color:var(--teal);}
+  details.bukti{
+    margin:12px 0 22px;
+    padding:10px 16px;
+    border-left:3px solid var(--maroon);
+    background:var(--maroon-bg);
+    border-radius:0 4px 4px 0;
+    font-size:16px;
+    transition:background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  details.bukti[open]{
+    background:#fff;
+    padding:14px 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-top: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  details.bukti summary.box-label{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-style:normal;
+    font-weight:700;
+    font-size:13.5px;
+    color:var(--maroon);
+    letter-spacing:.03em;
+    cursor:pointer;
+    user-select:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    outline:none;
+    list-style:none;
+    margin-bottom:0;
+  }
+  details.bukti summary.box-label::-webkit-details-marker {
+    display: none;
+  }
+  details.bukti summary.box-label::after {
+    content: "▸ Tampilkan";
+    font-size: 11.5px;
+    font-weight: 600;
+    background: rgba(122,59,51,0.12);
+    color: var(--maroon);
+    padding: 3px 10px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+  details.bukti:hover summary.box-label::after {
+    background: rgba(122,59,51,0.2);
+  }
+  details.bukti[open] summary.box-label{
+    margin-bottom:12px;
+    border-bottom:1px dashed rgba(122,59,51,0.25);
+    padding-bottom:8px;
+  }
+  details.bukti[open] summary.box-label::after {
+    content: "▾ Sembunyikan";
+    background: rgba(122,59,51,0.18);
+  }
+  .qed{float:right;font-size:15px;}
+  .contoh{background:var(--teal-bg);border-left-color:var(--teal);}
+  .contoh .box-label{color:var(--teal);}
+  .box p:last-child{margin-bottom:0;}
+
+  table{width:100%;border-collapse:collapse;margin:0 0 26px;font-size:15px;}
+  table caption{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--ink-soft);text-align:left;margin-bottom:6px;
+  }
+  th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--rule);}
+  thead th{
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--ink-soft);
+    border-bottom:2px solid var(--ink);
+  }
+  td.num{width:38px;color:var(--ink-soft);}
+
+  .latihan{
+    margin-top:38px;
+    padding-top:22px;
+    border-top:1px solid var(--rule);
+  }
+  .latihan h3.sub-title{margin-top:0;}
+  .latihan ol{padding-left:26px;}
+  .latihan li{margin-bottom:16px;}
+
+  .pertanyaan ol{padding-left:26px;}
+  .pertanyaan li{margin-bottom:14px;}
+
+  footer{
+    text-align:center;
+    padding:26px 20px 40px;
+    font-family:-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  code, .var{font-family:Georgia,serif;font-style:italic;}
+
+  @media (max-width:560px){
+    header.masthead h1{font-size:21px;}
+    main{padding:28px 16px 70px;}
+  }
+
+  @media print{
+    header.masthead{background:#fff;color:#000;}
+    header.masthead .inst,header.masthead .inst2,header.masthead .meta{color:#333;}
+    header.masthead h1{color:#000;}
+    details.bukti summary.box-label::after{display:none;}
+    details.bukti{background:#fff;border-left-color:#000;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="inst">Universitas PGRI Ronggolawe Tuban</p>
+  <p class="inst2">Fakultas Keguruan dan Ilmu Pendidikan — Program Studi Pendidikan Matematika</p>
+  <h1>Modul Teori Bilangan</h1>
+  <p class="meta">PMA4108 &nbsp;·&nbsp; 2 SKS &nbsp;·&nbsp; Semester 3 (Ganjil) &nbsp;·&nbsp; Dosen Pengampu: Gusti Uripno, M. Pd.</p>
+  <div class="rule"></div>
+</header>
+
+<main>
+
+<section id="p3" class="pertemuan active">
+
+  <h2 class="sec-title">Sifat-sifat Keterbagian &amp; Algoritma Pembagian</h2>
+  <p class="sec-sub">Pertemuan 3 &nbsp;·&nbsp; Sub-CPMK 1.3 &nbsp;·&nbsp; Rosen (2011), Section 1.5</p>
+
+  <div class="tujuan">
+    <p class="label">Tujuan Pertemuan</p>
+    <p>Mahasiswa mampu mendefinisikan relasi keterbagian pada bilangan bulat, membuktikan sifat-sifat dasarnya secara deduktif, serta menyatakan dan membuktikan Algoritma Pembagian (Division Algorithm) menggunakan Prinsip Terurut Rapi yang telah diperkenalkan pada Pertemuan 1.</p>
+  </div>
+
+  <h3 class="sub-title">1. Relasi Keterbagian</h3>
+  <p>Sebelum masuk ke bilangan prima dan FPB pada pertemuan-pertemuan berikutnya, perlu dibangun terlebih dahulu bahasa dasar untuk membicarakan hubungan antar bilangan bulat, yaitu relasi <em>keterbagian</em> (<em>divisibility</em>).</p>
+
+  <div class="box definisi">
+    <span class="box-label">Definisi 3.1 (Keterbagian)</span>
+    <p>Misalkan <span class="var">a</span>, <span class="var">b</span> ∈ ℤ dengan <span class="var">a</span> ≠ 0. Dikatakan <span class="var">a</span> <strong>habis membagi</strong> <span class="var">b</span>, ditulis <span class="var">a</span> ∣ <span class="var">b</span>, jika terdapat bilangan bulat <span class="var">c</span> sedemikian sehingga <span class="var">b</span> = <span class="var">a</span><span class="var">c</span>.</p>
+    <p>Jika <span class="var">a</span> tidak habis membagi <span class="var">b</span>, ditulis <span class="var">a</span> ∤ <span class="var">b</span>. Bilangan <span class="var">a</span> disebut <strong>pembagi</strong> (<em>divisor</em>) dari <span class="var">b</span>, dan <span class="var">b</span> disebut <strong>kelipatan</strong> (<em>multiple</em>) dari <span class="var">a</span>.</p>
+  </div>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 3.1</span>
+    <p>3 ∣ 12 karena 12 = 3 · 4. Sebaliknya, 5 ∤ 12 karena tidak ada bilangan bulat <span class="var">c</span> yang memenuhi 12 = 5<span class="var">c</span>. Perhatikan pula bahwa untuk setiap <span class="var">a</span> ≠ 0, berlaku <span class="var">a</span> ∣ 0, sebab 0 = <span class="var">a</span> · 0.</p>
+  </div>
+
+  <p>Relasi ini tampak sederhana, namun sifat-sifatnya menjadi fondasi untuk hampir seluruh materi berikutnya, mulai dari bilangan prima hingga kongruensi. Empat sifat berikut adalah yang paling sering digunakan sebagai alat pembuktian.</p>
+
+  <div class="box teorema">
+    <span class="box-label">Teorema 3.1 (Sifat-sifat Dasar Keterbagian)</span>
+    <p>Untuk sembarang <span class="var">a</span>, <span class="var">b</span>, <span class="var">c</span> ∈ ℤ, berlaku:</p>
+    <p>(a) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">b</span> ∣ <span class="var">c</span>, maka <span class="var">a</span> ∣ <span class="var">c</span> &nbsp;(<em>sifat transitif</em>).</p>
+    <p>(b) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">a</span> ∣ <span class="var">c</span>, maka <span class="var">a</span> ∣ (<span class="var">bx</span> + <span class="var">cy</span>) untuk sembarang <span class="var">x</span>, <span class="var">y</span> ∈ ℤ &nbsp;(<em>sifat kombinasi linear</em>).</p>
+    <p>(c) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">b</span> ≠ 0, maka |<span class="var">a</span>| ≤ |<span class="var">b</span>|.</p>
+    <p>(d) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">b</span> ∣ <span class="var">a</span>, maka <span class="var">a</span> = ±<span class="var">b</span>.</p>
+  </div>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti (a)</summary>
+    <p>Karena <span class="var">a</span> ∣ <span class="var">b</span>, terdapat <span class="var">k</span> ∈ ℤ dengan <span class="var">b</span> = <span class="var">ak</span>. Karena <span class="var">b</span> ∣ <span class="var">c</span>, terdapat <span class="var">m</span> ∈ ℤ dengan <span class="var">c</span> = <span class="var">bm</span>. Substitusi memberi <span class="var">c</span> = (<span class="var">ak</span>)<span class="var">m</span> = <span class="var">a</span>(<span class="var">km</span>). Karena <span class="var">km</span> ∈ ℤ, maka menurut Definisi 3.1, <span class="var">a</span> ∣ <span class="var">c</span>.<span class="qed">∎</span></p>
+  </details>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti (b)</summary>
+    <p>Karena <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">a</span> ∣ <span class="var">c</span>, terdapat <span class="var">k</span>, <span class="var">m</span> ∈ ℤ dengan <span class="var">b</span> = <span class="var">ak</span> dan <span class="var">c</span> = <span class="var">am</span>. Untuk sembarang <span class="var">x</span>, <span class="var">y</span> ∈ ℤ:</p>
+    <p><span class="var">bx</span> + <span class="var">cy</span> = (<span class="var">ak</span>)<span class="var">x</span> + (<span class="var">am</span>)<span class="var">y</span> = <span class="var">a</span>(<span class="var">kx</span> + <span class="var">my</span>).</p>
+    <p>Karena <span class="var">kx</span> + <span class="var">my</span> ∈ ℤ, maka <span class="var">a</span> ∣ (<span class="var">bx</span> + <span class="var">cy</span>).<span class="qed">∎</span></p>
+  </details>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti (c)</summary>
+    <p>Karena <span class="var">a</span> ∣ <span class="var">b</span>, terdapat <span class="var">k</span> ∈ ℤ dengan <span class="var">b</span> = <span class="var">ak</span>. Karena <span class="var">b</span> ≠ 0, maka <span class="var">k</span> ≠ 0, sehingga |<span class="var">k</span>| ≥ 1. Akibatnya |<span class="var">b</span>| = |<span class="var">a</span>| · |<span class="var">k</span>| ≥ |<span class="var">a</span>| · 1 = |<span class="var">a</span>|.<span class="qed">∎</span></p>
+  </details>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti (d)</summary>
+    <p>Jika <span class="var">a</span> = 0, maka dari <span class="var">a</span> ∣ <span class="var">b</span> diperoleh <span class="var">b</span> = 0, sehingga <span class="var">a</span> = <span class="var">b</span> = 0 dan pernyataan terpenuhi. Andaikan <span class="var">a</span>, <span class="var">b</span> ≠ 0. Berdasarkan sifat (c), <span class="var">a</span> ∣ <span class="var">b</span> memberi |<span class="var">a</span>| ≤ |<span class="var">b</span>|, dan <span class="var">b</span> ∣ <span class="var">a</span> memberi |<span class="var">b</span>| ≤ |<span class="var">a</span>|. Dari kedua pertidaksamaan ini diperoleh |<span class="var">a</span>| = |<span class="var">b</span>|, yang berarti <span class="var">a</span> = <span class="var">b</span> atau <span class="var">a</span> = −<span class="var">b</span>, yaitu <span class="var">a</span> = ±<span class="var">b</span>.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 3.2 (Penerapan Sifat Kombinasi Linear)</span>
+    <p>Misalkan <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">a</span> ∣ (<span class="var">b</span> + 2). Tunjukkan bahwa <span class="var">a</span> ∣ 2.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Penyelesaian</summary>
+    <p>Berdasarkan Teorema 3.1(b), karena <span class="var">a</span> ∣ (<span class="var">b</span> + 2) dan <span class="var">a</span> ∣ <span class="var">b</span>, maka <span class="var">a</span> membagi kombinasi linear 1 · (<span class="var">b</span> + 2) + (−1) · <span class="var">b</span> = 2. Jadi <span class="var">a</span> ∣ 2.<span class="qed">∎</span></p>
+  </details>
+
+  <h3 class="sub-title">2. Algoritma Pembagian</h3>
+  <p>Tidak semua pasangan bilangan bulat memenuhi relasi keterbagian secara eksak. Jika <span class="var">b</span> tidak habis dibagi <span class="var">a</span>, tetap ada cara sistematis untuk menyatakan <span class="var">b</span> dalam bentuk kelipatan <span class="var">a</span> ditambah suatu sisa. Fakta inilah yang dijamin oleh Algoritma Pembagian, yang sesungguhnya bukan sebuah "algoritma" dalam arti prosedural, melainkan teorema eksistensi dan ketunggalan.</p>
+
+  <div class="box teorema">
+    <span class="box-label">Teorema 3.2 (Algoritma Pembagian / Division Algorithm)</span>
+    <p>Untuk sembarang <span class="var">a</span> ∈ ℤ dan <span class="var">b</span> ∈ ℤ⁺, terdapat dengan tunggal bilangan bulat <span class="var">q</span> dan <span class="var">r</span> sedemikian sehingga</p>
+    <p><span class="var">a</span> = <span class="var">bq</span> + <span class="var">r</span>, &nbsp;&nbsp; 0 ≤ <span class="var">r</span> &lt; <span class="var">b</span>.</p>
+    <p>Bilangan <span class="var">q</span> disebut <strong>hasil bagi</strong> (<em>quotient</em>) dan <span class="var">r</span> disebut <strong>sisa</strong> (<em>remainder</em>).</p>
+  </div>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti Eksistensi</summary>
+    <p>Tinjau himpunan <span class="var">S</span> = {<span class="var">a</span> − <span class="var">bk</span> : <span class="var">k</span> ∈ ℤ, <span class="var">a</span> − <span class="var">bk</span> ≥ 0}. Himpunan <span class="var">S</span> tidak kosong: dengan memilih <span class="var">k</span> yang cukup kecil (misalnya <span class="var">k</span> = −|<span class="var">a</span>|), diperoleh <span class="var">a</span> − <span class="var">bk</span> ≥ 0, sehingga elemen tersebut berada di <span class="var">S</span>.</p>
+    <p>Karena <span class="var">S</span> ⊆ ℤ⁺ ∪ {0} tidak kosong, menurut Prinsip Terurut Rapi (Postulat 1.1, diperluas mencakup 0), <span class="var">S</span> memiliki elemen terkecil. Sebut elemen ini <span class="var">r</span> = <span class="var">a</span> − <span class="var">bq</span> untuk suatu <span class="var">q</span> ∈ ℤ, sehingga <span class="var">a</span> = <span class="var">bq</span> + <span class="var">r</span> dengan <span class="var">r</span> ≥ 0.</p>
+    <p>Akan ditunjukkan <span class="var">r</span> &lt; <span class="var">b</span>. Andaikan sebaliknya, <span class="var">r</span> ≥ <span class="var">b</span>. Maka <span class="var">r</span> − <span class="var">b</span> ≥ 0, dan</p>
+    <p><span class="var">r</span> − <span class="var">b</span> = (<span class="var">a</span> − <span class="var">bq</span>) − <span class="var">b</span> = <span class="var">a</span> − <span class="var">b</span>(<span class="var">q</span>+1),</p>
+    <p>sehingga <span class="var">r</span> − <span class="var">b</span> juga berbentuk <span class="var">a</span> − <span class="var">bk</span> dengan <span class="var">k</span> = <span class="var">q</span>+1, dan <span class="var">r</span> − <span class="var">b</span> ≥ 0 berarti <span class="var">r</span> − <span class="var">b</span> ∈ <span class="var">S</span>. Namun <span class="var">r</span> − <span class="var">b</span> &lt; <span class="var">r</span> (karena <span class="var">b</span> &gt; 0), bertentangan dengan <span class="var">r</span> sebagai elemen terkecil dari <span class="var">S</span>. Jadi pengandaian salah, sehingga <span class="var">r</span> &lt; <span class="var">b</span>.<span class="qed">∎</span></p>
+  </details>
+
+  <details class="bukti">
+    <summary class="box-label">Bukti Ketunggalan</summary>
+    <p>Andaikan terdapat dua pasang <span class="var">q</span>₁, <span class="var">r</span>₁ dan <span class="var">q</span>₂, <span class="var">r</span>₂ yang sama-sama memenuhi <span class="var">a</span> = <span class="var">bq</span>₁ + <span class="var">r</span>₁ = <span class="var">bq</span>₂ + <span class="var">r</span>₂ dengan 0 ≤ <span class="var">r</span>₁, <span class="var">r</span>₂ &lt; <span class="var">b</span>.</p>
+    <p>Dari kesamaan tersebut diperoleh <span class="var">b</span>(<span class="var">q</span>₁ − <span class="var">q</span>₂) = <span class="var">r</span>₂ − <span class="var">r</span>₁, sehingga <span class="var">b</span> ∣ (<span class="var">r</span>₂ − <span class="var">r</span>₁). Karena 0 ≤ <span class="var">r</span>₁, <span class="var">r</span>₂ &lt; <span class="var">b</span>, selisih <span class="var">r</span>₂ − <span class="var">r</span>₁ memenuhi −<span class="var">b</span> &lt; <span class="var">r</span>₂ − <span class="var">r</span>₁ &lt; <span class="var">b</span>. Satu-satunya kelipatan <span class="var">b</span> pada rentang tersebut adalah 0, sehingga <span class="var">r</span>₂ − <span class="var">r</span>₁ = 0, yaitu <span class="var">r</span>₁ = <span class="var">r</span>₂.</p>
+    <p>Karena <span class="var">r</span>₁ = <span class="var">r</span>₂ dan <span class="var">b</span> &gt; 0, dari <span class="var">b</span>(<span class="var">q</span>₁ − <span class="var">q</span>₂) = 0 diperoleh <span class="var">q</span>₁ = <span class="var">q</span>₂. Jadi pasangan (<span class="var">q</span>, <span class="var">r</span>) tunggal.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box akibat">
+    <span class="box-label">Akibat 3.1</span>
+    <p>Untuk <span class="var">b</span> = 2, Algoritma Pembagian menjamin setiap bilangan bulat <span class="var">a</span> dapat ditulis sebagai <span class="var">a</span> = 2<span class="var">q</span> atau <span class="var">a</span> = 2<span class="var">q</span> + 1 — yaitu, setiap bilangan bulat pasti genap atau ganjil, tidak keduanya sekaligus. Fakta yang biasa dianggap "jelas dengan sendirinya" sejak sekolah dasar ini ternyata merupakan kasus khusus dari Teorema 3.2.</p>
+  </div>
+
+  <div class="box contoh">
+    <span class="box-label">Contoh 3.3</span>
+    <p>Tentukan hasil bagi <span class="var">q</span> dan sisa <span class="var">r</span> dari pembagian <span class="var">a</span> = −53 oleh <span class="var">b</span> = 7.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label">Penyelesaian</summary>
+    <p>Perlu dicari <span class="var">q</span> sehingga 0 ≤ −53 − 7<span class="var">q</span> &lt; 7. Karena −53/7 ≈ −7,57, kelipatan 7 yang tepat berada di bawah −53 adalah 7 · (−8) = −56. Maka <span class="var">q</span> = −8, dan <span class="var">r</span> = −53 − 7(−8) = −53 + 56 = 3.</p>
+    <p>Jadi −53 = 7 · (−8) + 3, dengan 0 ≤ 3 &lt; 7. Perhatikan bahwa <span class="var">q</span> = −7 <em>tidak</em> memenuhi, sebab akan memberi <span class="var">r</span> = −53 − 7(−7) = −4, yang negatif dan melanggar syarat 0 ≤ <span class="var">r</span> &lt; <span class="var">b</span>.<span class="qed">∎</span></p>
+  </details>
+
+  <h3 class="sub-title">3. Kaitan dengan Materi Berikutnya</h3>
+  <p>Algoritma Pembagian bukan sekadar prosedur aritmetika biasa. Ia menjadi mesin pembuktian utama pada Pertemuan 6 dan 7, ketika Algoritma Euclid — yang secara berulang menerapkan Teorema 3.2 — digunakan untuk menghitung Pembagi Persekutuan Terbesar (FPB) dan membuktikan Identitas Bézout. Sifat kombinasi linear pada Teorema 3.1(b) juga akan muncul kembali secara berulang, khususnya dalam pembuktian sifat-sifat kongruensi pada Pertemuan 11.</p>
+
+  <div class="pertanyaan latihan">
+    <h3 class="sub-title">Latihan Soal</h3>
+    <ol>
+      <li>Buktikan bahwa jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">c</span> ∣ <span class="var">d</span>, maka <span class="var">ac</span> ∣ <span class="var">bd</span>.</li>
+      <li>Misalkan <span class="var">n</span> ∈ ℤ⁺. Buktikan bahwa (<span class="var">n</span> − 1) ∣ (<span class="var">n</span>² − 1) untuk semua <span class="var">n</span> ≥ 2.</li>
+      <li>Tentukan hasil bagi dan sisa dari pembagian <span class="var">a</span> = 100 oleh <span class="var">b</span> = 13, serta dari <span class="var">a</span> = −100 oleh <span class="var">b</span> = 13. Bandingkan kedua hasil dan jelaskan mengapa sisanya sama sedangkan hasil baginya berbeda tanda.</li>
+      <li>Buktikan bahwa jika <span class="var">a</span> ∣ (<span class="var">b</span> + <span class="var">c</span>) dan <span class="var">a</span> ∣ <span class="var">b</span>, maka <span class="var">a</span> ∣ <span class="var">c</span>.</li>
+      <li>Gunakan Algoritma Pembagian dengan <span class="var">b</span> = 3 untuk menunjukkan bahwa setiap bilangan bulat <span class="var">n</span> dapat dinyatakan dalam salah satu bentuk 3<span class="var">k</span>, 3<span class="var">k</span>+1, atau 3<span class="var">k</span>+2. Gunakan hasil ini untuk membuktikan bahwa <span class="var">n</span>² selalu berbentuk 3<span class="var">m</span> atau 3<span class="var">m</span>+1, tidak pernah 3<span class="var">m</span>+2.</li>
+    </ol>
+  </div>
+
+  <div class="pertanyaan">
+    <h3 class="sub-title">Pertanyaan Pemahaman</h3>
+    <ol>
+      <li>Mengapa Definisi 3.1 mensyaratkan <span class="var">a</span> ≠ 0? Apa yang salah jika <span class="var">a</span> = 0 diperbolehkan dalam relasi <span class="var">a</span> ∣ <span class="var">b</span>?</li>
+      <li>Pada bukti eksistensi Teorema 3.2, di bagian mana Prinsip Terurut Rapi (Postulat 1.1) benar-benar digunakan, dan mengapa langkah tersebut tidak bisa digantikan hanya dengan argumen "jelas secara intuitif"?</li>
+      <li>Jelaskan mengapa syarat 0 ≤ <span class="var">r</span> &lt; <span class="var">b</span> (bukan, misalnya, −<span class="var">b</span> &lt; <span class="var">r</span> ≤ 0) penting untuk menjamin ketunggalan pasangan (<span class="var">q</span>, <span class="var">r</span>).</li>
+    </ol>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  Modul Teori Bilangan (PMA4108) — Program Studi Pendidikan Matematika, UNIROW Tuban.<br>
+  Disusun mengikuti RPS &amp; Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.).
+</footer>
+
+</body>
+</html>
