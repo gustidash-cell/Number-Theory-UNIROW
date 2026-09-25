@@ -10,8 +10,9 @@
 ---
 
 ### 🌐 Akses Langsung Modul Online (Tanpa Perlu Download):
-- 👉 **[Klik di Sini untuk Membuka Modul Teori Bilangan (GitHub Pages)](https://gustidash-cell.github.io/Number-Theory-UNIROW/)**
-- 👉 **[Alternatif Link Langsung (Pertemuan 1-3)](https://gustidash-cell.github.io/Number-Theory-UNIROW/Modul_Teori_Bilangan_Pertemuan_1-3.html)**
+- 👉 **[Modul Utama Interaktif (index.html)](https://gustidash-cell.github.io/Number-Theory-UNIROW/)**
+- 👉 **[Modul Lengkap Pertemuan 1–3 (Modul_Teori_Bilangan_Pertemuan_1-3.html)](https://gustidash-cell.github.io/Number-Theory-UNIROW/Modul_Teori_Bilangan_Pertemuan_1-3.html)**
+- 👉 **[Modul Khusus Pertemuan 3 (Modul_Teori_Bilangan_Pertemuan_3.html)](https://gustidash-cell.github.io/Number-Theory-UNIROW/Modul_Teori_Bilangan_Pertemuan_3.html)**
 
 ---
 
@@ -25,10 +26,19 @@ Media Pembelajaran Interaktif Modul Teori Bilangan (PMA4108) berbasis HTML/CSS/J
 - 📱 **Desain Responsif**: Tampilan rapi di Smartphone, Tablet, dan Komputer.
 
 ## 📁 Struktur Berkas
-- `index.html` - Modul utama interaktif
+- `index.html` - Modul utama interaktif (Pertemuan 1–3)
 - `Modul_Teori_Bilangan_Pertemuan_1-3.html` - Berkas modul lengkap Pertemuan 1–3
+- `Modul_Teori_Bilangan_Pertemuan_3.html` - Berkas modul khusus Pertemuan 3
 - `README.md` - Dokumentasi repository
 
 ## 🚀 Cara Menggunakan
-1. **Online**: Klik link **[Buka Modul Interaktif](https://gustidash-cell.github.io/Number-Theory-UNIROW/)** di atas.
-2. **Offline**: Cukup buka file `index.html` langsung di browser web Anda.
+
+### 1. 🌐 Penggunaan Online (Langsung di Browser)
+Klik salah satu tautan di bawah ini untuk langsung membuka modul interaktif tanpa mengunduh berkas:
+- 🔗 **[Buka Modul Utama Interaktif](https://gustidash-cell.github.io/Number-Theory-UNIROW/)** (`index.html`)
+- 🔗 **[Buka Modul Pertemuan 1–3](https://gustidash-cell.github.io/Number-Theory-UNIROW/Modul_Teori_Bilangan_Pertemuan_1-3.html)** (`Modul_Teori_Bilangan_Pertemuan_1-3.html`)
+- 🔗 **[Buka Modul Pertemuan 3 Mandiri](https://gustidash-cell.github.io/Number-Theory-UNIROW/Modul_Teori_Bilangan_Pertemuan_3.html)** (`Modul_Teori_Bilangan_Pertemuan_3.html`)
+
+### 2. 💻 Penggunaan Offline (Lokal)
+1. Unduh (*download*) atau *clone* repository ini.
+2. Buka berkas `index.html` atau `Modul_Teori_Bilangan_Pertemuan_1-3.html` langsung menggunakan peramban (*browser*) pilihan Anda (Chrome, Edge, Firefox, Safari, dll.).
