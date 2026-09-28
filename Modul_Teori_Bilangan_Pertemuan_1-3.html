@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id" data-theme="light">
 <head>
 <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
 <style>
-    :root {
+  :root {
     /* Color Palette Light (Restful Academic Slate & Soft Natural Pastels) */
     --bg-paper: #FAFAF9;
     --bg-surface: #FFFFFF;
@@ -89,42 +89,6 @@
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
-  }
-
-  [data-theme="dark"] {
-    /* Dark Luxury / Academic Dark Theme */
-    --bg-paper: #0B0F17;
-    --bg-surface: #151C28;
-    --bg-panel: #1E293B;
-    --border-color: #334155;
-    --border-hover: #475569;
-    
-    --text-main: #F1F5F9;
-    --text-muted: #CBD5E1;
-    --text-subtle: #94A3B8;
-    
-    --masthead-bg: #030712;
-    --masthead-text: #F9FAFB;
-    --masthead-sub: #9CA3AF;
-    
-    --accent-gold: #F59E0B;
-    --accent-gold-bg: rgba(245, 158, 11, 0.15);
-    --accent-gold-border: #B45309;
-    
-    --accent-teal: #14B8A6;
-    --accent-teal-bg: rgba(20, 184, 166, 0.15);
-    --accent-teal-border: #0F766E;
-    
-    --accent-maroon: #F87171;
-    --accent-maroon-bg: rgba(239, 68, 68, 0.15);
-    --accent-maroon-border: #991B1B;
-
-    --accent-blue: #60A5FA;
-    --accent-blue-bg: rgba(59, 130, 246, 0.15);
-    
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
   }
 
   * { box-sizing: border-box; }
@@ -375,9 +339,6 @@
     box-shadow: var(--shadow-md);
     transform: translateY(-1px);
   }
-  .box:hover {
-    box-shadow: var(--shadow-md);
-  }
   .box .box-label {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;
@@ -387,17 +348,18 @@
     align-items: center;
     gap: 8px;
   }
+  .box p:last-child { margin-bottom: 0; }
   
-  .postulat { border-left-color: var(--text-main); }
+  .postulat { border-left-color: var(--text-main); background: var(--bg-surface); }
   .postulat .box-label { color: var(--text-main); }
   
-  .definisi { border-left-color: var(--accent-teal); }
+  .definisi { border-left-color: var(--accent-teal); background: var(--bg-surface); }
   .definisi .box-label { color: var(--accent-teal); }
   
   .teorema { background: var(--accent-gold-bg); border-left-color: var(--accent-gold); border-color: var(--accent-gold-border); }
   .teorema .box-label { color: var(--accent-gold); }
   
-  .akibat { border-left-color: var(--accent-teal); }
+  .akibat { border-left-color: var(--accent-teal); background: var(--bg-surface); }
   .akibat .box-label { color: var(--accent-teal); }
 
   .contoh { background: var(--accent-teal-bg); border-left-color: var(--accent-teal); border-color: var(--accent-teal-border); }
@@ -449,7 +411,6 @@
     content: "▾ Sembunyikan";
     background: rgba(153, 27, 27, 0.15);
   }
-  .bukti[open] summary { margin-bottom: 10px; }
   .qed { float: right; font-size: 16px; font-weight: bold; color: var(--text-main); }
 
   /* ---------- Roadmap Table ---------- */
@@ -579,10 +540,10 @@
 <!-- ======================= PERTEMUAN 1 ======================= -->
 <section id="p1" class="pertemuan active">
   <h2 class="sec-title" id="p1-title">Kontrak Kuliah &amp; Pengantar Teori Bilangan</h2>
-  <p class="sec-sub">Sub-CPMK 1.1 &nbsp;·&nbsp; Rosen (2011), Section 1.1</p>
+  <p class="sec-sub" id="p1-sub">Sub-CPMK 1.1 &nbsp;·&nbsp; Rosen (2011), Section 1.1</p>
 
   <div class="tujuan">
-    <p class="label" id="p1-goal-lbl"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Tujuan Pertemuan</p>
+    <p class="label" id="p1-goal-lbl"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span id="p1-goal-lbl-txt">Tujuan Pertemuan</span></p>
     <p id="p1-goal-txt">Mahasiswa memahami kontrak kuliah, ruang lingkup, dan peta konsep Teori Bilangan, serta mengenali pendekatan deduktif-aksiomatik yang akan digunakan sepanjang perkuliahan — teorema disajikan secara runtut dan disertai pembuktian matematika formal.</p>
   </div>
 
@@ -600,26 +561,31 @@
     <li id="p1-li5"><strong>Akibat (Korolari)</strong> — pernyataan yang mengikuti secara langsung (relatif mudah) dari suatu teorema yang baru dibuktikan.</li>
     <li id="p1-li6"><strong>Bukti</strong> — rangkaian argumen logis yang menghubungkan hipotesis suatu pernyataan dengan kesimpulannya, diakhiri simbol ∎.</li>
   </ul>
+  <p id="p1-p-struct">Struktur ini akan tampak berulang di seluruh modul: setiap kotak berwarna pada modul ini menandai jenis pernyataan tersebut.</p>
 
   <h3 class="sub-title" id="p1-h3">3. Aksioma Dasar: Prinsip Terurut Rapi</h3>
   <p id="p1-p4">Salah satu aksioma paling fundamental tentang bilangan bulat positif — yang akan menjadi dasar pembuktian pada Pertemuan 2 — adalah <em>Well-Ordering Principle</em>.</p>
 
   <div class="box postulat">
-    <span class="box-label" id="box-post1"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14l-1.5-6H6.5L5 17z"/><path d="M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7"/></svg>Postulat 1.1 (Prinsip Terurut Rapi / Well-Ordering Principle)</span>
+    <span class="box-label" id="box-post1"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14l-1.5-6H6.5L5 17z"/><path d="M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7"/></svg><span id="box-post1-lbl">Postulat 1.1 (Prinsip Terurut Rapi / Well-Ordering Principle)</span></span>
     <p id="box-post1-txt">Setiap himpunan bagian tak kosong dari ℤ⁺ memiliki elemen terkecil.</p>
   </div>
 
+  <p id="p1-p-wop-note">Pernyataan ini tampak "jelas dengan sendirinya" bila dipikirkan secara intuitif, namun tetap diterima sebagai <strong>postulat</strong> (bukan dibuktikan) karena ia setara secara logis dengan aksioma-aksioma dasar tentang konstruksi bilangan bulat. Sebagai ilustrasi kekuatan postulat ini, perhatikan teorema berikut.</p>
+
   <div class="box teorema">
-    <span class="box-label" id="box-teo1"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Teorema 1.1</span>
+    <span class="box-label" id="box-teo1"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span id="box-teo1-lbl">Teorema 1.1</span></span>
     <p id="box-teo1-txt">Tidak ada bilangan bulat <span class="var">n</span> yang memenuhi 0 &lt; <span class="var">n</span> &lt; 1.</p>
   </div>
 
   <details class="bukti">
-    <summary class="box-label" id="proof-label-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Teorema 1.1</summary>
+    <summary class="box-label" id="proof-label-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span id="proof-label-1-txt">Bukti Teorema 1.1</span></summary>
     <p id="proof1-p1">Andaikan pernyataan ini salah, yaitu himpunan <span class="var">S</span> = {<span class="var">n</span> ∈ ℤ⁺ : <span class="var">n</span> &lt; 1} tidak kosong. Karena <span class="var">S</span> ⊆ ℤ⁺ dan <span class="var">S</span> ≠ ∅, menurut Prinsip Terurut Rapi (Postulat 1.1), <span class="var">S</span> memiliki elemen terkecil, sebut <span class="var">m</span>, dengan 0 &lt; <span class="var">m</span> &lt; 1.</p>
     <p id="proof1-p2">Karena 0 &lt; <span class="var">m</span> &lt; 1, kalikan kedua ruas pertidaksamaan <span class="var">m</span> &lt; 1 dengan <span class="var">m</span> &gt; 0, diperoleh <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span>. Karena <span class="var">m</span> &gt; 0, juga berlaku <span class="var">m</span><sup>2</sup> &gt; 0. Jadi 0 &lt; <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span> &lt; 1, yang berarti <span class="var">m</span><sup>2</sup> ∈ <span class="var">S</span>.</p>
     <p id="proof1-p3">Namun <span class="var">m</span><sup>2</sup> &lt; <span class="var">m</span> bertentangan dengan fakta bahwa <span class="var">m</span> adalah elemen <em>terkecil</em> dari <span class="var">S</span>. Kontradiksi ini menunjukkan pengandaian di atas salah, sehingga <span class="var">S</span> = ∅ — artinya tidak ada bilangan bulat <span class="var">n</span> dengan 0 &lt; <span class="var">n</span> &lt; 1.<span class="qed">∎</span></p>
   </details>
+
+  <p id="p1-p-concl">Perhatikan bagaimana satu aksioma sederhana (Postulat 1.1) sudah cukup untuk membuktikan fakta yang terasa "jelas". Cara berpikir seperti inilah yang akan terus dipakai sepanjang mata kuliah — termasuk pada Pertemuan 2 untuk membuktikan Prinsip Induksi Matematika itu sendiri.</p>
 
   <h3 class="sub-title" id="p1-h4">4. Peta Perkuliahan 16 Minggu</h3>
   <div class="table-responsive">
@@ -649,13 +615,30 @@
     </table>
   </div>
 
+  <h3 class="sub-title" id="p1-h5"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg><span id="p1-h5-txt">5. Komponen Penilaian</span></h3>
+  <ul>
+    <li id="p1-ev1">Tugas/kuis mingguan — <strong>30%</strong></li>
+    <li id="p1-ev2">Partisipasi — <strong>20%</strong></li>
+    <li id="p1-ev3">Ujian Tengah Semester (UTS) — <strong>20%</strong></li>
+    <li id="p1-ev4">Ujian Akhir Semester (UAS) — <strong>30%</strong></li>
+  </ul>
+
+  <h3 class="sub-title" id="p1-h6"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span id="p1-h6-txt">6. Tata Tertib &amp; Cara Belajar</span></h3>
+  <ul>
+    <li id="p1-r1">Kehadiran minimal sesuai ketentuan prodi; keterlambatan lebih dari 15 menit dianggap tidak hadir tepat waktu.</li>
+    <li id="p1-r2">Setiap jawaban tugas/kuis pembuktian wajib ditulis sebagai argumen matematis yang lengkap (bukan hanya jawaban akhir) — ikuti struktur Definisi → Hipotesis → Langkah pembuktian → Kesimpulan (∎).</li>
+    <li id="p1-r3">Diperbolehkan berdiskusi dalam mengerjakan latihan, namun pembuktian yang dikumpulkan harus ditulis dengan pemahaman dan kalimat sendiri (integritas akademik).</li>
+    <li id="p1-r4">Referensi utama: Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.). Boston: Pearson/Addison-Wesley.</li>
+  </ul>
+
   <div class="pertanyaan latihan">
-    <h3 class="sub-title" id="p1-q-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-blue);"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Pertanyaan Pemahaman</h3>
+    <h3 class="sub-title" id="p1-q-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-blue);"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span id="p1-q-h-txt">Pertanyaan Pemahaman</span></h3>
     <ol>
       <li id="p1-q1">Jelaskan perbedaan antara definisi, postulat/aksioma, teorema, lema, dan akibat (korolari) dalam struktur matematika deduktif-aksiomatik.</li>
       <li id="p1-q2">Mengapa Prinsip Terurut Rapi (Postulat 1.1) diterima sebagai postulat, bukan dibuktikan sebagai teorema?</li>
       <li id="p1-q3">Pada pembuktian Teorema 1.1, di langkah mana kontradiksi muncul, dan bagaimana kontradiksi tersebut membuktikan pernyataan awal?</li>
       <li id="p1-q4">Sebutkan dua topik pada peta 16 minggu yang menurut Anda saling berkaitan langsung, dan jelaskan keterkaitannya.</li>
+      <li id="p1-q5">Carilah satu pernyataan matematika sederhana (boleh dari materi sekolah) yang menurut Anda tepat dibuktikan dengan induksi matematika, dan jelaskan alasannya — akan didiskusikan pada Pertemuan 2.</li>
     </ol>
   </div>
 </section>
@@ -663,10 +646,10 @@
 <!-- ======================= PERTEMUAN 2 ======================= -->
 <section id="p2" class="pertemuan">
   <h2 class="sec-title" id="p2-title">Induksi Matematika</h2>
-  <p class="sec-sub">Sub-CPMK 1.2 &nbsp;·&nbsp; Rosen (2011), Section 1.3</p>
+  <p class="sec-sub" id="p2-sub">Sub-CPMK 1.2 &nbsp;·&nbsp; Rosen (2011), Section 1.3</p>
 
   <div class="tujuan">
-    <p class="label" id="p2-goal-lbl"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>Tujuan Pertemuan</p>
+    <p class="label" id="p2-goal-lbl"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span id="p2-goal-lbl-txt">Tujuan Pertemuan</span></p>
     <p id="p2-goal-txt">Mahasiswa mampu membuktikan pernyataan tentang bilangan bulat menggunakan Prinsip Induksi Matematika, baik bentuk pertama (induksi lemah) maupun bentuk kuat (induksi kuat/strong induction), serta menerapkannya pada berbagai konteks: penjumlahan, pertidaksamaan, keterbagian, dan eksistensi faktorisasi.</p>
   </div>
 
@@ -674,7 +657,7 @@
   <p id="p2-p1">Prinsip induksi matematika diturunkan langsung dari Prinsip Terurut Rapi (Postulat 1.1) yang telah diperkenalkan pada Pertemuan 1.</p>
 
   <div class="box teorema">
-    <span class="box-label" id="box-teo21"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Teorema 2.1 (Prinsip Induksi Matematika — Bentuk Pertama)</span>
+    <span class="box-label" id="box-teo21"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span id="box-teo21-lbl">Teorema 2.1 (Prinsip Induksi Matematika — Bentuk Pertama)</span></span>
     <p id="box-teo21-txt">Misalkan <span class="var">S</span> ⊆ ℤ⁺ memenuhi dua syarat berikut:<br>
     (i) 1 ∈ <span class="var">S</span> &nbsp;(<em>basis induksi</em>);<br>
     (ii) untuk setiap <span class="var">k</span> ∈ ℤ⁺, jika <span class="var">k</span> ∈ <span class="var">S</span> maka <span class="var">k</span>+1 ∈ <span class="var">S</span> &nbsp;(<em>langkah induktif</em>).<br>
@@ -682,46 +665,131 @@
   </div>
 
   <details class="bukti">
-    <summary class="box-label" id="proof-label-21"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Teorema 2.1</summary>
-    <p id="proof21-txt">Andaikan <span class="var">S</span> ≠ ℤ⁺. Maka <span class="var">S′</span> = ℤ⁺ \ <span class="var">S</span> tidak kosong. Menurut Prinsip Terurut Rapi, <span class="var">S′</span> memiliki elemen terkecil, sebut <span class="var">m</span>. Karena 1 ∈ <span class="var">S</span>, maka <span class="var">m</span> &gt; 1, sehingga <span class="var">m</span> − 1 ∈ <span class="var">S</span>. Menurut syarat (ii), (<span class="var">m</span> − 1) + 1 = <span class="var">m</span> ∈ <span class="var">S</span>, kontradiksi dengan <span class="var">m</span> ∈ <span class="var">S′</span>. Jadi <span class="var">S</span> = ℤ⁺.<span class="qed">∎</span></p>
+    <summary class="box-label" id="proof-label-21"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span id="proof-label-21-txt">Bukti Teorema 2.1</span></summary>
+    <p id="proof21-p1">Andaikan <span class="var">S</span> ≠ ℤ⁺. Maka <span class="var">S′</span> = ℤ⁺ \ <span class="var">S</span> (komplemen <span class="var">S</span> terhadap ℤ⁺) tidak kosong. Menurut Prinsip Terurut Rapi, <span class="var">S′</span> memiliki elemen terkecil, sebut <span class="var">m</span>.</p>
+    <p id="proof21-p2">Karena 1 ∈ <span class="var">S</span> (syarat i), maka 1 ∉ <span class="var">S′</span>, sehingga <span class="var">m</span> ≠ 1, yaitu <span class="var">m</span> &gt; 1. Akibatnya <span class="var">m</span> − 1 juga bilangan bulat positif. Karena <span class="var">m</span> adalah elemen terkecil dari <span class="var">S′</span>, maka <span class="var">m</span> − 1 ∉ <span class="var">S′</span>, artinya <span class="var">m</span> − 1 ∈ <span class="var">S</span>.</p>
+    <p id="proof21-p3">Berdasarkan syarat (ii), karena <span class="var">m</span> − 1 ∈ <span class="var">S</span>, maka (<span class="var">m</span> − 1) + 1 = <span class="var">m</span> ∈ <span class="var">S</span>. Namun ini bertentangan dengan <span class="var">m</span> ∈ <span class="var">S′</span> (yang berarti <span class="var">m</span> ∉ <span class="var">S</span>). Kontradiksi ini menunjukkan pengandaian salah, sehingga <span class="var">S′</span> = ∅ dan <span class="var">S</span> = ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <p id="p2-p-practice">Dalam praktik pembuktian, Teorema 2.1 digunakan dengan mengambil <span class="var">S</span> sebagai himpunan semua bilangan bulat positif <span class="var">n</span> yang membuat suatu pernyataan <span class="var">P</span>(<span class="var">n</span>) benar. Membuktikan (i) disebut <strong>langkah basis</strong>, dan membuktikan (ii) disebut <strong>langkah induktif</strong>, dengan asumsi <span class="var">P</span>(<span class="var">k</span>) benar (disebut <strong>hipotesis induksi</strong>).</p>
+
+  <div class="box contoh">
+    <span class="box-label" id="box-ex21"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg><span id="box-ex21-lbl">Contoh 2.1</span></span>
+    <p id="box-ex21-txt">Buktikan bahwa untuk semua <span class="var">n</span> ∈ ℤ⁺: 1 + 2 + 3 + … + <span class="var">n</span> = <span class="var">n</span>(<span class="var">n</span>+1)/2.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Contoh 2.1</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): ruas kiri = 1, ruas kanan = 1·2/2 = 1. Pernyataan benar untuk <span class="var">n</span> = 1.</p>
+    <p><em>Langkah induktif:</em> Misalkan pernyataan benar untuk <span class="var">n</span> = <span class="var">k</span>, yaitu 1 + 2 + … + <span class="var">k</span> = <span class="var">k</span>(<span class="var">k</span>+1)/2 (hipotesis induksi). Akan ditunjukkan pernyataan juga benar untuk <span class="var">n</span> = <span class="var">k</span>+1:</p>
+    <p>1 + 2 + … + <span class="var">k</span> + (<span class="var">k</span>+1) = <span class="var">k</span>(<span class="var">k</span>+1)/2 + (<span class="var">k</span>+1) = (<span class="var">k</span>+1)(<span class="var">k</span>/2 + 1) = (<span class="var">k</span>+1)(<span class="var">k</span>+2)/2.</p>
+    <p>Bentuk terakhir persis rumus <span class="var">n</span>(<span class="var">n</span>+1)/2 untuk <span class="var">n</span> = <span class="var">k</span>+1. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
   </details>
 
   <div class="box contoh">
-    <span class="box-label" id="box-ex21"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Contoh 2.1</span>
-    <p id="box-ex21-txt">Buktikan bahwa untuk semua <span class="var">n</span> ∈ ℤ⁺: 1 + 2 + 3 + … + <span class="var">n</span> = <span class="var">n</span>(<span class="var">n</span>+1)/2.</p>
+    <span class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Contoh 2.2</span>
+    <p>Buktikan bahwa <span class="var">n</span> &lt; 2<sup><span class="var">n</span></sup> untuk semua <span class="var">n</span> ∈ ℤ⁺.</p>
   </div>
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Contoh 2.2</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): 1 &lt; 2¹ = 2. Benar.</p>
+    <p><em>Langkah induktif:</em> Misalkan <span class="var">k</span> &lt; 2<sup><span class="var">k</span></sup> (hipotesis induksi), dengan <span class="var">k</span> ≥ 1. Karena <span class="var">k</span> dan 2<sup><span class="var">k</span></sup> bilangan bulat dan <span class="var">k</span> &lt; 2<sup><span class="var">k</span></sup>, berlaku <span class="var">k</span> + 1 ≤ 2<sup><span class="var">k</span></sup>. Maka:</p>
+    <p><span class="var">k</span> + 1 ≤ 2<sup><span class="var">k</span></sup> &lt; 2 · 2<sup><span class="var">k</span></sup> = 2<sup><span class="var">k</span>+1</sup>.</p>
+    <p>Jadi <span class="var">k</span> + 1 &lt; 2<sup><span class="var">k</span>+1</sup>. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Contoh 2.3</span>
+    <p>Buktikan bahwa 3 habis membagi (<span class="var">n</span><sup>3</sup> − <span class="var">n</span>) untuk semua <span class="var">n</span> ∈ ℤ⁺.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Contoh 2.3</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 1): 1³ − 1 = 0, dan 3 ∣ 0. Benar.</p>
+    <p><em>Langkah induktif:</em> Misalkan 3 ∣ (<span class="var">k</span><sup>3</sup> − <span class="var">k</span>) (hipotesis induksi). Perhatikan:</p>
+    <p>(<span class="var">k</span>+1)<sup>3</sup> − (<span class="var">k</span>+1) = <span class="var">k</span><sup>3</sup> + 3<span class="var">k</span><sup>2</sup> + 3<span class="var">k</span> + 1 − <span class="var">k</span> − 1 = (<span class="var">k</span><sup>3</sup> − <span class="var">k</span>) + 3(<span class="var">k</span><sup>2</sup> + <span class="var">k</span>).</p>
+    <p>Suku pertama habis dibagi 3 (hipotesis induksi), suku kedua habis dibagi 3 (kelipatan 3 secara eksplisit). Jumlah dua kelipatan 3 juga kelipatan 3, sehingga 3 ∣ [(<span class="var">k</span>+1)³ − (<span class="var">k</span>+1)]. Berdasarkan Teorema 2.1, pernyataan benar untuk semua <span class="var">n</span> ∈ ℤ⁺.<span class="qed">∎</span></p>
+  </details>
 
   <h3 class="sub-title" id="p2-h2">2. Prinsip Induksi Matematika (Bentuk Kuat)</h3>
+  <p id="p2-p-strong-intro">Pada sejumlah pembuktian, hipotesis induksi "<span class="var">k</span> ∈ <span class="var">S</span>" saja tidak cukup — kita perlu mengasumsikan pernyataan benar untuk <em>semua</em> bilangan sebelum <span class="var">k</span>+1, bukan hanya <span class="var">k</span>. Untuk itu digunakan bentuk kuat (<em>strong/second principle of induction</em>).</p>
+
   <div class="box teorema">
-    <span class="box-label" id="box-teo22"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Teorema 2.2 (Prinsip Induksi Matematika — Bentuk Kuat)</span>
-    <p id="box-teo22-txt">Misalkan <span class="var">S</span> ⊆ ℤ⁺ memenuhi (i) 1 ∈ <span class="var">S</span>, dan (ii) jika 1, 2, …, <span class="var">k</span> ∈ <span class="var">S</span>, maka <span class="var">k</span>+1 ∈ <span class="var">S</span>. Maka <span class="var">S</span> = ℤ⁺.</p>
+    <span class="box-label" id="box-teo22"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span id="box-teo22-lbl">Teorema 2.2 (Prinsip Induksi Matematika — Bentuk Kuat)</span></span>
+    <p id="box-teo22-txt">Misalkan <span class="var">S</span> ⊆ ℤ⁺ memenuhi:<br>
+    (i) 1 ∈ <span class="var">S</span>;<br>
+    (ii) untuk setiap <span class="var">k</span> ∈ ℤ⁺, jika 1, 2, …, <span class="var">k</span> ∈ <span class="var">S</span>, maka <span class="var">k</span>+1 ∈ <span class="var">S</span>.<br>
+    Maka <span class="var">S</span> = ℤ⁺.</p>
   </div>
 
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Teorema 2.2</summary>
+    <p>Definisikan <span class="var">T</span> = {<span class="var">n</span> ∈ ℤ⁺ : 1, 2, …, <span class="var">n</span> ∈ <span class="var">S</span>}. Akan ditunjukkan <span class="var">T</span> memenuhi syarat Teorema 2.1.</p>
+    <p>(a) 1 ∈ <span class="var">T</span>, karena 1 ∈ <span class="var">S</span> (syarat i).</p>
+    <p>(b) Misalkan <span class="var">k</span> ∈ <span class="var">T</span>, artinya 1, 2, …, <span class="var">k</span> ∈ <span class="var">S</span>. Berdasarkan syarat (ii), <span class="var">k</span>+1 ∈ <span class="var">S</span>. Karena 1, …, <span class="var">k</span>, <span class="var">k</span>+1 semuanya ∈ <span class="var">S</span>, maka <span class="var">k</span>+1 ∈ <span class="var">T</span>.</p>
+    <p>Berdasarkan Teorema 2.1, <span class="var">T</span> = ℤ⁺. Karena setiap <span class="var">n</span> ∈ <span class="var">T</span> mengakibatkan <span class="var">n</span> ∈ <span class="var">S</span> (dari definisi <span class="var">T</span>), maka <span class="var">T</span> ⊆ <span class="var">S</span>, sehingga <span class="var">S</span> = ℤ⁺.<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box akibat">
+    <span class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14l-1.5-6H6.5L5 17z"/><path d="M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7"/></svg>Akibat 2.1 (Titik Awal Sembarang)</span>
+    <p>Teorema 2.1 dan 2.2 tetap berlaku bila basis induksi digeser dari <span class="var">n</span> = 1 ke sembarang bilangan bulat <span class="var">n</span>₀; kesimpulannya menjadi <span class="var">S</span> ⊇ {<span class="var">n</span>₀, <span class="var">n</span>₀+1, <span class="var">n</span>₀+2, …}. Argumennya identik dengan pergeseran indeks, sehingga diterima tanpa pembuktian ulang dan langsung dipakai pada Contoh 2.5.</p>
+  </div>
+
+  <div class="box contoh">
+    <span class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Contoh 2.4 (Eksistensi Faktorisasi Prima)</span>
+    <p>Buktikan dengan induksi kuat bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 dapat dinyatakan sebagai hasil kali satu atau lebih bilangan prima.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Contoh 2.4</summary>
+    <p><em>Basis</em> (<span class="var">n</span> = 2): 2 adalah bilangan prima, jadi 2 sudah merupakan "hasil kali" satu bilangan prima (dirinya sendiri).</p>
+    <p><em>Langkah induktif (kuat):</em> Misalkan setiap bilangan bulat <span class="var">m</span> dengan 2 ≤ <span class="var">m</span> ≤ <span class="var">k</span> dapat dinyatakan sebagai hasil kali bilangan-bilangan prima (hipotesis induksi kuat). Tinjau <span class="var">k</span>+1:</p>
+    <ul>
+      <li>Jika <span class="var">k</span>+1 prima, maka ia sudah merupakan hasil kali satu bilangan prima (dirinya sendiri).</li>
+      <li>Jika <span class="var">k</span>+1 komposit, maka <span class="var">k</span>+1 = <span class="var">a</span>·<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> dengan 2 ≤ <span class="var">a</span>, <span class="var">b</span> ≤ <span class="var">k</span>. Berdasarkan hipotesis induksi, <span class="var">a</span> dan <span class="var">b</span> masing-masing dapat dinyatakan sebagai hasil kali bilangan prima, sehingga <span class="var">k</span>+1 = <span class="var">a</span>·<span class="var">b</span> juga hasil kali bilangan prima.</li>
+    </ul>
+    <p>Berdasarkan Teorema 2.2, pernyataan benar untuk semua <span class="var">n</span> ≥ 2. (Hasil ini akan digunakan kembali sebagai bagian eksistensi Teorema Fundamental Aritmetika pada Minggu 9.)<span class="qed">∎</span></p>
+  </details>
+
+  <div class="box contoh">
+    <span class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>Contoh 2.5 (Masalah Perangko / Frobenius)</span>
+    <p>Buktikan bahwa setiap bilangan bulat <span class="var">n</span> ≥ 12 dapat dinyatakan sebagai <span class="var">n</span> = 4<span class="var">a</span> + 5<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> ≥ 0.</p>
+  </div>
+  <details class="bukti">
+    <summary class="box-label"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Bukti Contoh 2.5</summary>
+    <p><em>Basis</em> (empat kasus awal, karena langkah induktif akan melompat 4 angka):</p>
+    <p>12 = 4·3 + 5·0 &nbsp;&nbsp; 13 = 4·2 + 5·1 &nbsp;&nbsp; 14 = 4·1 + 5·2 &nbsp;&nbsp; 15 = 4·0 + 5·3</p>
+    <p><em>Langkah induktif (kuat):</em> Misalkan pernyataan benar untuk semua bilangan bulat dari 12 sampai <span class="var">k</span>, dengan <span class="var">k</span> ≥ 15. Tinjau <span class="var">k</span>+1 (sehingga <span class="var">k</span>+1 ≥ 16). Karena (<span class="var">k</span>+1) − 4 = <span class="var">k</span> − 3 ≥ 12, dan <span class="var">k</span> − 3 ≤ <span class="var">k</span>, berdasarkan hipotesis induksi <span class="var">k</span> − 3 = 4<span class="var">a</span> + 5<span class="var">b</span> untuk suatu <span class="var">a</span>, <span class="var">b</span> ≥ 0. Maka:</p>
+    <p><span class="var">k</span>+1 = (<span class="var">k</span> − 3) + 4 = 4(<span class="var">a</span>+1) + 5<span class="var">b</span>,</p>
+    <p>dengan <span class="var">a</span>+1 ≥ 0. Berdasarkan Akibat 2.1 dan Teorema 2.2 (basis digeser mulai <span class="var">n</span>₀ = 12), pernyataan benar untuk semua <span class="var">n</span> ≥ 12.<span class="qed">∎</span></p>
+  </details>
+
   <div class="latihan">
-    <h3 class="sub-title" id="p2-ex-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Latihan Soal</h3>
+    <h3 class="sub-title" id="p2-ex-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span id="p2-ex-h-txt">Latihan Soal</span></h3>
     <ol>
-      <li id="p2-ex1">Buktikan dengan induksi matematika bahwa 1² + 2² + … + <span class="var">n</span>² = <span class="var">n</span>(<span class="var">n</span>+1)(2<span class="var">n</span>+1)/6.</li>
+      <li id="p2-ex1">Buktikan dengan induksi matematika (bentuk pertama) bahwa untuk semua <span class="var">n</span> ∈ ℤ⁺: 1² + 2² + … + <span class="var">n</span>² = <span class="var">n</span>(<span class="var">n</span>+1)(2<span class="var">n</span>+1)/6.</li>
       <li id="p2-ex2">Buktikan bahwa untuk semua bilangan bulat <span class="var">n</span> ≥ 4 berlaku 2<sup><span class="var">n</span></sup> ≥ <span class="var">n</span>².</li>
       <li id="p2-ex3">Buktikan bahwa 7 habis membagi (11<sup><span class="var">n</span></sup> − 4<sup><span class="var">n</span></sup>) untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li id="p2-ex4">Buktikan bahwa jumlah <span class="var">n</span> bilangan ganjil positif pertama sama dengan <span class="var">n</span>², yaitu 1 + 3 + 5 + … + (2<span class="var">n</span>−1) = <span class="var">n</span>², untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li id="p2-ex5">Gunakan induksi kuat untuk membuktikan bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 memiliki paling sedikit satu faktor prima.</li>
+      <li id="p2-ex6">Barisan (<span class="var">a</span>ₙ) didefinisikan oleh <span class="var">a</span>₁ = 1, <span class="var">a</span>₂ = 3, dan <span class="var">a</span>ₙ = <span class="var">a</span>ₙ₋₁ + <span class="var">a</span>ₙ₋₂ untuk <span class="var">n</span> ≥ 3. Buktikan dengan induksi kuat bahwa <span class="var">a</span>ₙ &lt; 2<sup><span class="var">n</span></sup> untuk semua <span class="var">n</span> ∈ ℤ⁺.</li>
+      <li id="p2-ex7">Buktikan dengan induksi kuat bahwa setiap bilangan bulat <span class="var">n</span> ≥ 2 dapat dinyatakan sebagai <span class="var">n</span> = 2<span class="var">a</span> + 3<span class="var">b</span> untuk suatu bilangan bulat <span class="var">a</span>, <span class="var">b</span> ≥ 0.</li>
     </ol>
   </div>
 </section>
 
 <!-- ======================= PERTEMUAN 3 ======================= -->
 <section id="p3" class="pertemuan">
-<h2 class="sec-title" id="p3-title">Sifat-sifat Keterbagian &amp; Algoritma Pembagian</h2>
-  <p class="sec-sub">Pertemuan 3 &nbsp;·&nbsp; Sub-CPMK 1.3 &nbsp;·&nbsp; Rosen (2011), Section 1.5</p>
+  <h2 class="sec-title" id="p3-title">Sifat-sifat Keterbagian &amp; Algoritma Pembagian</h2>
+  <p class="sec-sub" id="p3-sub">Sub-CPMK 1.3 &nbsp;·&nbsp; Rosen (2011), Section 1.5</p>
 
   <div class="tujuan">
-    <p class="label">Tujuan Pertemuan</p>
-    <p>Mahasiswa mampu mendefinisikan relasi keterbagian pada bilangan bulat, membuktikan sifat-sifat dasarnya secara deduktif, serta menyatakan dan membuktikan Algoritma Pembagian (Division Algorithm) menggunakan Prinsip Terurut Rapi yang telah diperkenalkan pada Pertemuan 1.</p>
+    <p class="label" id="p3-goal-lbl"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg><span id="p3-goal-lbl-txt">Tujuan Pertemuan</span></p>
+    <p id="p3-goal-txt">Mahasiswa mampu mendefinisikan relasi keterbagian pada bilangan bulat, membuktikan sifat-sifat dasarnya secara deduktif, serta menyatakan dan membuktikan Algoritma Pembagian (Division Algorithm) menggunakan Prinsip Terurut Rapi yang telah diperkenalkan pada Pertemuan 1.</p>
   </div>
 
   <h3 class="sub-title" id="p3-h1">1. Relasi Keterbagian</h3>
   <p>Sebelum masuk ke bilangan prima dan FPB pada pertemuan-pertemuan berikutnya, perlu dibangun terlebih dahulu bahasa dasar untuk membicarakan hubungan antar bilangan bulat, yaitu relasi <em>keterbagian</em> (<em>divisibility</em>).</p>
 
   <div class="box definisi">
-    <span class="box-label" id="box-def31"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Definisi 3.1 (Keterbagian)</span>
+    <span class="box-label" id="box-def31"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-teal);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span id="box-def31-lbl">Definisi 3.1 (Keterbagian)</span></span>
     <p>Misalkan <span class="var">a</span>, <span class="var">b</span> ∈ ℤ dengan <span class="var">a</span> ≠ 0. Dikatakan <span class="var">a</span> <strong>habis membagi</strong> <span class="var">b</span>, ditulis <span class="var">a</span> ∣ <span class="var">b</span>, jika terdapat bilangan bulat <span class="var">c</span> sedemikian sehingga <span class="var">b</span> = <span class="var">a</span><span class="var">c</span>.</p>
     <p>Jika <span class="var">a</span> tidak habis membagi <span class="var">b</span>, ditulis <span class="var">a</span> ∤ <span class="var">b</span>. Bilangan <span class="var">a</span> disebut <strong>pembagi</strong> (<em>divisor</em>) dari <span class="var">b</span>, dan <span class="var">b</span> disebut <strong>kelipatan</strong> (<em>multiple</em>) dari <span class="var">a</span>.</p>
   </div>
@@ -734,7 +802,7 @@
   <p>Relasi ini tampak sederhana, namun sifat-sifatnya menjadi fondasi untuk hampir seluruh materi berikutnya, mulai dari bilangan prima hingga kongruensi. Empat sifat berikut adalah yang paling sering digunakan sebagai alat pembuktian.</p>
 
   <div class="box teorema">
-    <span class="box-label" id="box-teo31"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Teorema 3.1 (Sifat-sifat Dasar Keterbagian)</span>
+    <span class="box-label" id="box-teo31"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span id="box-teo31-lbl">Teorema 3.1 (Sifat-sifat Dasar Keterbagian)</span></span>
     <p>Untuk sembarang <span class="var">a</span>, <span class="var">b</span>, <span class="var">c</span> ∈ ℤ, berlaku:</p>
     <p>(a) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">b</span> ∣ <span class="var">c</span>, maka <span class="var">a</span> ∣ <span class="var">c</span> &nbsp;(<em>sifat transitif</em>).</p>
     <p>(b) Jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">a</span> ∣ <span class="var">c</span>, maka <span class="var">a</span> ∣ (<span class="var">bx</span> + <span class="var">cy</span>) untuk sembarang <span class="var">x</span>, <span class="var">y</span> ∈ ℤ &nbsp;(<em>sifat kombinasi linear</em>).</p>
@@ -777,7 +845,7 @@
   <p>Tidak semua pasangan bilangan bulat memenuhi relasi keterbagian secara eksak. Jika <span class="var">b</span> tidak habis dibagi <span class="var">a</span>, tetap ada cara sistematis untuk menyatakan <span class="var">b</span> dalam bentuk kelipatan <span class="var">a</span> ditambah suatu sisa. Fakta inilah yang dijamin oleh Algoritma Pembagian, yang sesungguhnya bukan sebuah "algoritma" dalam arti prosedural, melainkan teorema eksistensi dan ketunggalan.</p>
 
   <div class="box teorema">
-    <span class="box-label" id="box-teo32"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>Teorema 3.2 (Algoritma Pembagian / Division Algorithm)</span>
+    <span class="box-label" id="box-teo32"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg><span id="box-teo32-lbl">Teorema 3.2 (Algoritma Pembagian / Division Algorithm)</span></span>
     <p>Untuk sembarang <span class="var">a</span> ∈ ℤ dan <span class="var">b</span> ∈ ℤ⁺, terdapat dengan tunggal bilangan bulat <span class="var">q</span> dan <span class="var">r</span> sedemikian sehingga</p>
     <p><span class="var">a</span> = <span class="var">bq</span> + <span class="var">r</span>, &nbsp;&nbsp; 0 ≤ <span class="var">r</span> &lt; <span class="var">b</span>.</p>
     <p>Bilangan <span class="var">q</span> disebut <strong>hasil bagi</strong> (<em>quotient</em>) dan <span class="var">r</span> disebut <strong>sisa</strong> (<em>remainder</em>).</p>
@@ -818,7 +886,7 @@
   <p>Algoritma Pembagian bukan sekadar prosedur aritmetika biasa. Ia menjadi mesin pembuktian utama pada Pertemuan 6 dan 7, ketika Algoritma Euclid — yang secara berulang menerapkan Teorema 3.2 — digunakan untuk menghitung Pembagi Persekutuan Terbesar (FPB) dan membuktikan Identitas Bézout. Sifat kombinasi linear pada Teorema 3.1(b) juga akan muncul kembali secara berulang, khususnya dalam pembuktian sifat-sifat kongruensi pada Pertemuan 11.</p>
 
   <div class="latihan">
-    <h3 class="sub-title" id="p3-ex-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Latihan Soal</h3>
+    <h3 class="sub-title" id="p3-ex-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-gold);"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span id="p3-ex-h-txt">Latihan Soal</span></h3>
     <ol>
       <li id="p3-ex1">Buktikan bahwa jika <span class="var">a</span> ∣ <span class="var">b</span> dan <span class="var">c</span> ∣ <span class="var">d</span>, maka <span class="var">ac</span> ∣ <span class="var">bd</span>.</li>
       <li id="p3-ex2">Misalkan <span class="var">n</span> ∈ ℤ⁺. Buktikan bahwa (<span class="var">n</span> − 1) ∣ (<span class="var">n</span>² − 1) untuk semua <span class="var">n</span> ≥ 2.</li>
@@ -829,7 +897,7 @@
   </div>
 
   <div class="pertanyaan">
-    <h3 class="sub-title" id="p3-q-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-blue);"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Pertanyaan Pemahaman</h3>
+    <h3 class="sub-title" id="p3-q-h"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ui-icon" style="vertical-align:-3px;margin-right:6px;color:var(--accent-blue);"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span id="p3-q-h-txt">Pertanyaan Pemahaman</span></h3>
     <ol>
       <li id="p3-q1">Mengapa Definisi 3.1 mensyaratkan <span class="var">a</span> ≠ 0? Apa yang salah jika <span class="var">a</span> = 0 diperbolehkan dalam relasi <span class="var">a</span> ∣ <span class="var">b</span>?</li>
       <li id="p3-q2">Pada bukti eksistensi Teorema 3.2, di bagian mana Prinsip Terurut Rapi (Postulat 1.1) benar-benar digunakan, dan mengapa langkah tersebut tidak bisa digantikan hanya dengan argumen "jelas secara intuitif"?</li>
@@ -857,37 +925,63 @@
       tab2Num: "Pertemuan 2", tab2Name: "Induksi Matematika",
       tab3Num: "Pertemuan 3", tab3Name: "Keterbagian & Algoritma Pembagian",
       p1Title: "Kontrak Kuliah & Pengantar Teori Bilangan",
-      p1GoalLbl: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/></svg>Tujuan Pertemuan",
+      p1Sub: "Sub-CPMK 1.1 · Rosen (2011), Section 1.1",
+      p1GoalLbl: "Tujuan Pertemuan",
       p1GoalTxt: "Mahasiswa memahami kontrak kuliah, ruang lingkup, dan peta konsep Teori Bilangan, serta mengenali pendekatan deduktif-aksiomatik yang akan digunakan sepanjang perkuliahan — teorema disajikan secara runtut dan disertai pembuktian matematika formal.",
       p1H1: "1. Apa itu Teori Bilangan?",
-      p1P1: "Teori bilangan (number theory) adalah cabang matematika murni yang mempelajari sifat-sifat bilangan bulat ℤ = {…, −2, −1, 0, 1, 2, …}, khususnya bilangan bulat positif ℤ⁺ = {1, 2, 3, …}. Meski objek kajiannya sederhana — bilangan bulat yang sudah dikenal sejak sekolah dasar — teori bilangan menuntut cara berpikir deduktif yang ketat.",
-      p1P2: "Mata kuliah ini akan menempuh materi mulai dari fondasi pembuktian (induksi matematika, keterbagian), menuju bilangan prima dan algoritma Euclid, Teorema Fundamental Aritmetika, hingga kongruensi dan Teorema Sisa Cina.",
+      p1P1: "Teori bilangan (<em>number theory</em>) adalah cabang matematika murni yang mempelajari sifat-sifat bilangan bulat ℤ = {…, −2, −1, 0, 1, 2, …}, khususnya bilangan bulat positif ℤ⁺ = {1, 2, 3, …}. Meski objek kajiannya sederhana — bilangan bulat yang sudah dikenal sejak sekolah dasar — teori bilangan menuntut cara berpikir deduktif yang ketat, karena hampir setiap pernyataan harus dibuktikan secara formal, bukan hanya diverifikasi lewat beberapa contoh angka.",
+      p1P2: "Mata kuliah ini akan menempuh materi mulai dari fondasi pembuktian (induksi matematika, keterbagian), menuju bilangan prima dan algoritma Euclid, Teorema Fundamental Aritmetika, hingga kongruensi dan Teorema Sisa Cina (<em>Chinese Remainder Theorem</em>).",
       p1H2: "2. Struktur Berpikir Deduktif-Aksiomatik",
       p1P3: "Sepanjang perkuliahan ini, setiap topik dibangun mengikuti struktur baku dalam matematika murni:",
-      p1Li1: "Definisi — kesepakatan makna suatu istilah atau objek matematika, tanpa perlu dibuktikan.",
-      p1Li2: "Postulat / Aksioma — pernyataan yang diterima kebenarannya tanpa bukti, menjadi titik tolak seluruh penurunan berikutnya.",
-      p1Li3: "Teorema — pernyataan yang kebenarannya harus dibuktikan secara logis dari definisi, aksioma, dan teorema-teorema sebelumnya.",
-      p1Li4: "Lema — teorema 'bantu' yang disiapkan khusus untuk mendukung pembuktian teorema lain yang lebih penting.",
-      p1Li5: "Akibat (Korolari) — pernyataan yang mengikuti secara langsung dari suatu teorema yang baru dibuktikan.",
-      p1Li6: "Bukti — rangkaian argumen logis yang menghubungkan hipotesis dengan kesimpulan (∎).",
+      p1Li1: "<strong>Definisi</strong> — kesepakatan makna suatu istilah atau objek matematika, tanpa perlu dibuktikan.",
+      p1Li2: "<strong>Postulat / Aksioma</strong> — pernyataan yang diterima kebenarannya tanpa bukti, menjadi titik tolak seluruh penurunan (<em>derivation</em>) berikutnya.",
+      p1Li3: "<strong>Teorema</strong> — pernyataan yang kebenarannya harus dibuktikan secara logis dari definisi, aksioma, dan teorema-teorema sebelumnya.",
+      p1Li4: "<strong>Lema</strong> — teorema \"bantu\" yang disiapkan khusus untuk mendukung pembuktian teorema lain yang lebih penting.",
+      p1Li5: "<strong>Akibat (Korolari)</strong> — pernyataan yang mengikuti secara langsung (relatif mudah) dari suatu teorema yang baru dibuktikan.",
+      p1Li6: "<strong>Bukti</strong> — rangkaian argumen logis yang menghubungkan hipotesis suatu pernyataan dengan kesimpulannya, diakhiri simbol ∎.",
+      p1PStruct: "Struktur ini akan tampak berulang di seluruh modul: setiap kotak berwarna pada modul ini menandai jenis pernyataan tersebut.",
       p1H3: "3. Aksioma Dasar: Prinsip Terurut Rapi",
-      p1P4: "Salah satu aksioma paling fundamental tentang bilangan bulat positif adalah Well-Ordering Principle.",
-      boxPost1: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><line x1='12' y1='17' x2='12' y2='22'/><path d='M5 17h14l-1.5-6H6.5L5 17z'/><path d='M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7'/></svg>Postulat 1.1 (Prinsip Terurut Rapi / Well-Ordering Principle)",
+      p1P4: "Salah satu aksioma paling fundamental tentang bilangan bulat positif — yang akan menjadi dasar pembuktian pada Pertemuan 2 — adalah <em>Well-Ordering Principle</em>.",
+      boxPost1Lbl: "Postulat 1.1 (Prinsip Terurut Rapi / Well-Ordering Principle)",
       boxPost1Txt: "Setiap himpunan bagian tak kosong dari ℤ⁺ memiliki elemen terkecil.",
-      boxTeo1: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-gold);'><path d='M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z'/><polyline points='14 2 14 8 20 8'/></svg>Teorema 1.1",
-      boxTeo1Txt: "Tidak ada bilangan bulat n yang memenuhi 0 < n < 1.",
-      proofLabel1: "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>Bukti Teorema 1.1",
+      p1PWopNote: "Pernyataan ini tampak \"jelas dengan sendirinya\" bila dipikirkan secara intuitif, namun tetap diterima sebagai <strong>postulat</strong> (bukan dibuktikan) karena ia setara secara logis dengan aksioma-aksioma dasar tentang konstruksi bilangan bulat. Sebagai ilustrasi kekuatan postulat ini, perhatikan teorema berikut.",
+      boxTeo1Lbl: "Teorema 1.1",
+      boxTeo1Txt: "Tidak ada bilangan bulat <span class=\"var\">n</span> yang memenuhi 0 < <span class=\"var\">n</span> < 1.",
+      proofLabel1Txt: "Bukti Teorema 1.1",
+      p1PConcl: "Perhatikan bagaimana satu aksioma sederhana (Postulat 1.1) sudah cukup untuk membuktikan fakta yang terasa \"jelas\". Cara berpikir seperti inilah yang akan terus dipakai sepanjang mata kuliah — termasuk pada Pertemuan 2 untuk membuktikan Prinsip Induksi Matematika itu sendiri.",
       p1H4: "4. Peta Perkuliahan 16 Minggu",
       tblCap: "Rencana Pembelajaran Semester — Ringkasan",
       thMg: "Mg", thTopik: "Topik", thCpmk: "CPMK",
-      p1QH: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-blue);'><circle cx='12' cy='12' r='10'/><path d='M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3'/><line x1='12' y1='17' x2='12.01' y2='17'/></svg>Pertanyaan Pemahaman",
+      p1H5Txt: "5. Komponen Penilaian",
+      p1H6Txt: "6. Tata Tertib & Cara Belajar",
+      p1QHTxt: "Pertanyaan Pemahaman",
+      
       p2Title: "Induksi Matematika",
-      p2GoalLbl: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/></svg>Tujuan Pertemuan",
-      p2GoalTxt: "Mahasiswa mampu membuktikan pernyataan tentang bilangan bulat menggunakan Prinsip Induksi Matematika, baik bentuk pertama (induksi lemah) maupun bentuk kuat (induksi kuat), serta menerapkannya pada berbagai konteks.",
+      p2Sub: "Sub-CPMK 1.2 · Rosen (2011), Section 1.3",
+      p2GoalLbl: "Tujuan Pertemuan",
+      p2GoalTxt: "Mahasiswa mampu membuktikan pernyataan tentang bilangan bulat menggunakan Prinsip Induksi Matematika, baik bentuk pertama (induksi lemah) maupun bentuk kuat (induksi kuat/strong induction), serta menerapkannya pada berbagai konteks: penjumlahan, pertidaksamaan, keterbagian, dan eksistensi faktorisasi.",
+      p2H1: "1. Prinsip Induksi Matematika (Bentuk Pertama)",
+      p2P1: "Prinsip induksi matematika diturunkan langsung dari Prinsip Terurut Rapi (Postulat 1.1) yang telah diperkenalkan pada Pertemuan 1.",
+      boxTeo21Lbl: "Teorema 2.1 (Prinsip Induksi Matematika — Bentuk Pertama)",
+      proofLabel21Txt: "Bukti Teorema 2.1",
+      boxEx21Lbl: "Contoh 2.1",
+      p2H2: "2. Prinsip Induksi Matematika (Bentuk Kuat)",
+      boxTeo22Lbl: "Teorema 2.2 (Prinsip Induksi Matematika — Bentuk Kuat)",
+      p2ExHTxt: "Latihan Soal",
+      
       p3Title: "Sifat-sifat Keterbagian & Algoritma Pembagian",
-      p3GoalLbl: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><circle cx='12' cy='12' r='10'/><circle cx='12' cy='12' r='6'/><circle cx='12' cy='12' r='2'/></svg>Tujuan Pertemuan",
-      p3GoalTxt: "Mahasiswa mampu mendefinisikan relasi keterbagian pada bilangan bulat, membuktikan sifat-sifat dasarnya secara deduktif, serta menyatakan dan membuktikan Algoritma Pembagian.",
-      footerTxt: "Modul Teori Bilangan (PMA4108) — Program Studi Pendidikan Matematika, UNIROW Tuban.<br>Disusun mengikuti RPS & Rosen, K. H. (2011). Elementary Number Theory (6th ed.)."
+      p3Sub: "Sub-CPMK 1.3 · Rosen (2011), Section 1.5",
+      p3GoalLbl: "Tujuan Pertemuan",
+      p3GoalTxt: "Mahasiswa mampu mendefinisikan relasi keterbagian pada bilangan bulat, membuktikan sifat-sifat dasarnya secara deduktif, serta menyatakan dan membuktikan Algoritma Pembagian (Division Algorithm) menggunakan Prinsip Terurut Rapi yang telah diperkenalkan pada Pertemuan 1.",
+      p3H1: "1. Relasi Keterbagian",
+      boxDef31Lbl: "Definisi 3.1 (Keterbagian)",
+      boxTeo31Lbl: "Teorema 3.1 (Sifat-sifat Dasar Keterbagian)",
+      p3H2: "2. Algoritma Pembagian",
+      boxTeo32Lbl: "Teorema 3.2 (Algoritma Pembagian / Division Algorithm)",
+      p3H3: "3. Kaitan dengan Materi Berikutnya",
+      p3ExHTxt: "Latihan Soal",
+      p3QHTxt: "Pertanyaan Pemahaman",
+      footerTxt: "Modul Teori Bilangan (PMA4108) — Program Studi Pendidikan Matematika, UNIROW Tuban.<br>Disusun mengikuti RPS &amp; Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.)."
     },
     en: {
       inst: "Universitas PGRI Ronggolawe Tuban",
@@ -898,37 +992,63 @@
       tab2Num: "Meeting 2", tab2Name: "Mathematical Induction",
       tab3Num: "Meeting 3", tab3Name: "Divisibility & Division Algorithm",
       p1Title: "Course Contract & Introduction to Number Theory",
+      p1Sub: "CLO 1.1 · Rosen (2011), Section 1.1",
       p1GoalLbl: "Meeting Objectives",
-      p1GoalTxt: "Students understand the course contract, scope, and concept map of Number Theory, and recognize the deductive-axiomatic approach used throughout the course.",
+      p1GoalTxt: "Students understand the course contract, scope, and concept map of Number Theory, and recognize the deductive-axiomatic approach used throughout the course — theorems are presented systematically with formal mathematical proofs.",
       p1H1: "1. What is Number Theory?",
-      p1P1: "Number theory is a branch of pure mathematics that studies the properties of integers ℤ = {…, −2, −1, 0, 1, 2, …}, especially positive integers ℤ⁺ = {1, 2, 3, …}. Even though the objects of study are simple, number theory requires rigorous deductive thinking.",
-      p1P2: "This course covers foundational proofs (induction, divisibility), prime numbers, Euclid's algorithm, the Fundamental Theorem of Arithmetic, congruences, and the Chinese Remainder Theorem.",
+      p1P1: "Number theory is a branch of pure mathematics studying properties of the integers ℤ = {…, −2, −1, 0, 1, 2, …}, especially positive integers ℤ⁺ = {1, 2, 3, …}. Despite having familiar study objects, it demands rigorous deductive reasoning with formal proofs.",
+      p1P2: "This course progresses from foundations (induction, divisibility) to prime numbers, the Euclidean algorithm, Fundamental Theorem of Arithmetic, and modular systems (Chinese Remainder Theorem).",
       p1H2: "2. Deductive-Axiomatic Thinking Structure",
-      p1P3: "Throughout this course, every topic follows the standard structure of pure mathematics:",
-      p1Li1: "Definition — agreed meaning of a mathematical term, without proof.",
-      p1Li2: "Postulate / Axiom — statement accepted as true without proof, serving as a starting point.",
-      p1Li3: "Theorem — statement whose truth must be logically proven from definitions and axioms.",
-      p1Li4: "Lemma — auxiliary theorem helping to prove a major theorem.",
-      p1Li5: "Corollary — statement that follows directly from a proven theorem.",
-      p1Li6: "Proof — logical chain connecting hypothesis to conclusion (∎).",
+      p1P3: "Throughout this course, every topic is developed according to the standard structure of pure mathematics:",
+      p1Li1: "<strong>Definition</strong> — agreed mathematical meaning of a concept, accepted without proof.",
+      p1Li2: "<strong>Postulate / Axiom</strong> — statement accepted as true without proof, serving as starting point.",
+      p1Li3: "<strong>Theorem</strong> — statement logically proven from definitions, axioms, and prior theorems.",
+      p1Li4: "<strong>Lemma</strong> — auxiliary theorem proven specifically to facilitate a major theorem.",
+      p1Li5: "<strong>Corollary</strong> — statement that follows readily from a newly proven theorem.",
+      p1Li6: "<strong>Proof</strong> — rigorous logical sequence connecting hypotheses to conclusion (∎).",
+      p1PStruct: "This structure is mirrored across all colored boxes throughout this interactive module.",
       p1H3: "3. Fundamental Axiom: Well-Ordering Principle",
-      p1P4: "One of the most fundamental axioms about positive integers is the Well-Ordering Principle.",
-      boxPost1: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><line x1='12' y1='17' x2='12' y2='22'/><path d='M5 17h14l-1.5-6H6.5L5 17z'/><path d='M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7'/></svg>Postulate 1.1 (Well-Ordering Principle)",
+      p1P4: "One of the most fundamental axioms concerning the positive integers is the <em>Well-Ordering Principle</em>.",
+      boxPost1Lbl: "Postulate 1.1 (Well-Ordering Principle)",
       boxPost1Txt: "Every non-empty subset of ℤ⁺ contains a least element.",
-      boxTeo1: "Theorem 1.1",
-      boxTeo1Txt: "There is no integer n satisfying 0 < n < 1.",
-      proofLabel1: "Proof of Theorem 1.1",
+      p1PWopNote: "This statement may seem self-evident intuitively, yet is accepted as a postulate because it is logically equivalent to the Peano axioms constructing the integers.",
+      boxTeo1Lbl: "Theorem 1.1",
+      boxTeo1Txt: "There is no integer <span class=\"var\">n</span> satisfying 0 < <span class=\"var\">n</span> < 1.",
+      proofLabel1Txt: "Proof of Theorem 1.1",
+      p1PConcl: "Notice how a single axiom (Postulate 1.1) is sufficient to establish a fact that feels obvious. This deductive rigor will be utilized repeatedly.",
       p1H4: "4. 16-Week Course Map",
-      tblCap: "Semester Learning Plan — Summary",
+      tblCap: "Semester Learning Plan — Overview",
       thMg: "Wk", thTopik: "Topic", thCpmk: "CLO",
-      p1QH: "Comprehension Questions",
+      p1H5Txt: "5. Assessment Components",
+      p1H6Txt: "6. Course Regulations & Study Guidelines",
+      p1QHTxt: "Comprehension Questions",
+      
       p2Title: "Mathematical Induction",
+      p2Sub: "CLO 1.2 · Rosen (2011), Section 1.3",
       p2GoalLbl: "Meeting Objectives",
-      p2GoalTxt: "Students are able to prove statements about integers using Mathematical Induction (weak and strong forms).",
+      p2GoalTxt: "Students are able to prove statements about integers using Mathematical Induction (weak and strong forms), applying it to summations, inequalities, divisibility, and prime factorizations.",
+      p2H1: "1. Principle of Mathematical Induction (First Form)",
+      p2P1: "The principle of mathematical induction is derived directly from the Well-Ordering Principle (Postulate 1.1).",
+      boxTeo21Lbl: "Theorem 2.1 (Mathematical Induction — First Form)",
+      proofLabel21Txt: "Proof of Theorem 2.1",
+      boxEx21Lbl: "Example 2.1",
+      p2H2: "2. Mathematical Induction (Strong Form)",
+      boxTeo22Lbl: "Theorem 2.2 (Mathematical Induction — Strong Form)",
+      p2ExHTxt: "Practice Problems",
+      
       p3Title: "Properties of Divisibility & Division Algorithm",
+      p3Sub: "CLO 1.3 · Rosen (2011), Section 1.5",
       p3GoalLbl: "Meeting Objectives",
-      p3GoalTxt: "Students are able to define divisibility, prove fundamental properties, and state/prove the Division Algorithm.",
-      footerTxt: "Number Theory Module (PMA4108) — Mathematics Education Program, UNIROW Tuban.<br>Designed according to Syllabus & Rosen, K. H. (2011). Elementary Number Theory (6th ed.)."
+      p3GoalTxt: "Students are able to define integer divisibility, prove its core properties, and state and prove the Division Algorithm using the Well-Ordering Principle.",
+      p3H1: "1. Divisibility Relation",
+      boxDef31Lbl: "Definition 3.1 (Divisibility)",
+      boxTeo31Lbl: "Theorem 3.1 (Basic Properties of Divisibility)",
+      p3H2: "2. The Division Algorithm",
+      boxTeo32Lbl: "Theorem 3.2 (Division Algorithm)",
+      p3H3: "3. Connection to Upcoming Topics",
+      p3ExHTxt: "Practice Problems",
+      p3QHTxt: "Comprehension Questions",
+      footerTxt: "Number Theory Module (PMA4108) — Mathematics Education Program, UNIROW Tuban.<br>Designed according to Syllabus &amp; Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.)."
     },
     ms: {
       inst: "Universitas PGRI Ronggolawe Tuban",
@@ -939,6 +1059,7 @@
       tab2Num: "Pertemuan 2", tab2Name: "Induksi Matematik",
       tab3Num: "Pertemuan 3", tab3Name: "Keterbahagian & Algoritma Pembahagian",
       p1Title: "Kontrak Kuliah & Pengenalan Teori Nombor",
+      p1Sub: "Sub-CPMK 1.1 · Rosen (2011), Section 1.1",
       p1GoalLbl: "Objektif Pertemuan",
       p1GoalTxt: "Pelajar memahami kontrak kuliah, skop, dan peta konsep Teori Nombor, serta mengenali pendekatan deduktif-aksiomatik sepanjang pengajian.",
       p1H1: "1. Apakah itu Teori Nombor?",
@@ -946,32 +1067,67 @@
       p1P2: "Kursus ini merangkumi asas pembuktian (induksi matematik, keterbahagian), nombor perdana, algoritma Euclid, dan Teorem Baki Cina.",
       p1H2: "2. Struktur Pemikiran Deduktif-Aksiomatik",
       p1P3: "Setiap topik dibina mengikut struktur piawai matematik tulen:",
-      p1Li1: "Takrif (Definisi) — kesepakatan makna istilah matematik tanpa memerlukan bukti.",
-      p1Li2: "Postulat / Aksiom — penyataan yang diterima benar tanpa bukti sebagai titik tolak.",
-      p1Li3: "Teorem — penyataan yang kebenarannya mesti dibuktikan secara logik.",
-      p1Li4: "Lema — teorem bantuan untuk membuktikan teorem lain yang lebih utama.",
-      p1Li5: "Akibat — penyataan yang secara langsung mengikuti teorem yang baru dibuktikan.",
-      p1Li6: "Bukti — rangkaian hujah logik yang menghubungkan hipotesis dengan kesimpulan (∎).",
+      p1Li1: "<strong>Takrif (Definisi)</strong> — kesepakatan makna istilah matematik tanpa memerlukan bukti.",
+      p1Li2: "<strong>Postulat / Aksiom</strong> — penyataan yang diterima benar tanpa bukti sebagai titik tolak.",
+      p1Li3: "<strong>Teorem</strong> — penyataan yang kebenarannya mesti dibuktikan secara logik.",
+      p1Li4: "<strong>Lema</strong> — teorem bantuan untuk membuktikan teorem lain yang lebih utama.",
+      p1Li5: "<strong>Akibat</strong> — penyataan yang secara langsung mengikuti teorem yang baru dibuktikan.",
+      p1Li6: "<strong>Bukti</strong> — rangkaian hujah logik yang menghubungkan hipotesis dengan kesimpulan (∎).",
+      p1PStruct: "Struktur ini dipaparkan melalui kotak berwarna khusus sepanjang modul ini.",
       p1H3: "3. Aksiom Asas: Prinsip Terurut Kemas",
       p1P4: "Salah satu aksiom paling asas tentang nombor bulat positif ialah Prinsip Terurut Kemas (Well-Ordering Principle).",
-      boxPost1: "<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-3px;margin-right:6px;color:var(--accent-teal);'><line x1='12' y1='17' x2='12' y2='22'/><path d='M5 17h14l-1.5-6H6.5L5 17z'/><path d='M9 11V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v7'/></svg>Postulat 1.1 (Prinsip Terurut Kemas / Well-Ordering Principle)",
+      boxPost1Lbl: "Postulat 1.1 (Prinsip Terurut Kemas / Well-Ordering Principle)",
       boxPost1Txt: "Setiap subset bukan kosong daripada ℤ⁺ mempunyai unsur terkecil.",
-      boxTeo1: "Teorem 1.1",
-      boxTeo1Txt: "Tiada nombor bulat n yang memenuhi 0 < n < 1.",
-      proofLabel1: "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='ui-icon' style='vertical-align:-2px;margin-right:6px;color:var(--accent-maroon);'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>Bukti Teorem 1.1",
+      p1PWopNote: "Penyataan ini diterima sebagai postulat kerana ia setara secara logik dengan aksioma pembinaan nombor bulat.",
+      boxTeo1Lbl: "Teorem 1.1",
+      boxTeo1Txt: "Tiada nombor bulat <span class=\"var\">n</span> yang memenuhi 0 < <span class=\"var\">n</span> < 1.",
+      proofLabel1Txt: "Bukti Teorem 1.1",
+      p1PConcl: "Perhatikan bagaimana aksiom mudah ini membuktikan fakta dengan ketat secara deduktif.",
       p1H4: "4. Peta Kuliah 16 Minggu",
       tblCap: "Rancangan Pembelajaran Semester — Ringkasan",
       thMg: "Mg", thTopik: "Topik", thCpmk: "CPMK",
-      p1QH: "Soalan Kefahaman",
+      p1H5Txt: "5. Komponen Penilaian",
+      p1H6Txt: "6. Peraturan & Kaedah Pembelajaran",
+      p1QHTxt: "Soalan Kefahaman",
+      
       p2Title: "Induksi Matematik",
+      p2Sub: "Sub-CPMK 1.2 · Rosen (2011), Section 1.3",
       p2GoalLbl: "Objektif Pertemuan",
       p2GoalTxt: "Pelajar mampu membuktikan penyataan mengenai nombor bulat menggunakan Prinsip Induksi Matematik (bentuk lemah dan kuat).",
+      p2H1: "1. Prinsip Induksi Matematik (Bentuk Pertama)",
+      p2P1: "Prinsip induksi matematik diterbitkan terus daripada Prinsip Terurut Kemas (Postulat 1.1).",
+      boxTeo21Lbl: "Teorem 2.1 (Prinsip Induksi Matematik — Bentuk Pertama)",
+      proofLabel21Txt: "Bukti Teorem 2.1",
+      boxEx21Lbl: "Contoh 2.1",
+      p2H2: "2. Prinsip Induksi Matematik (Bentuk Kuat)",
+      boxTeo22Lbl: "Teorem 2.2 (Prinsip Induksi Matematik — Bentuk Kuat)",
+      p2ExHTxt: "Latihan Soalan",
+      
       p3Title: "Sifat Keterbahagian & Algoritma Pembahagian",
+      p3Sub: "Sub-CPMK 1.3 · Rosen (2011), Section 1.5",
       p3GoalLbl: "Objektif Pertemuan",
       p3GoalTxt: "Pelajar mampu mendefinisikan hubungan keterbahagian, membuktikan sifat-sifat asas, serta membuktikan Algoritma Pembahagian.",
-      footerTxt: "Modul Teori Nombor (PMA4108) — Program Pengajian Pendidikan Matematik, UNIROW Tuban.<br>Disusun mengikut RPS & Rosen, K. H. (2011). Elementary Number Theory (6th ed.)."
+      p3H1: "1. Hubungan Keterbahagian",
+      boxDef31Lbl: "Definisi 3.1 (Keterbahagian)",
+      boxTeo31Lbl: "Teorem 3.1 (Sifat Asas Keterbahagian)",
+      p3H2: "2. Algoritma Pembahagian",
+      boxTeo32Lbl: "Teorem 3.2 (Algoritma Pembahagian / Division Algorithm)",
+      p3H3: "3. Hubungan dengan Topik Seterusnya",
+      p3ExHTxt: "Latihan Soalan",
+      p3QHTxt: "Soalan Kefahaman",
+      footerTxt: "Modul Teori Nombor (PMA4108) — Program Pengajian Pendidikan Matematik, UNIROW Tuban.<br>Disusun mengikut RPS &amp; Rosen, K. H. (2011). <em>Elementary Number Theory</em> (6th ed.)."
     }
   };
+
+  // Safe setter helper for DOM text and HTML
+  function setText(id, val) {
+    const el = document.getElementById(id);
+    if (el && val !== undefined) el.innerText = val;
+  }
+  function setHTML(id, val) {
+    const el = document.getElementById(id);
+    if (el && val !== undefined) el.innerHTML = val;
+  }
 
   // Change Language Function
   function changeLanguage(lang) {
@@ -979,60 +1135,85 @@
     const t = i18n[lang] || i18n.id;
 
     // Header & Meta
-    document.getElementById('t-inst').innerText = t.inst;
-    document.getElementById('t-inst2').innerText = t.inst2;
-    document.getElementById('t-title').innerText = t.title;
-    document.getElementById('t-meta').innerText = t.meta;
+    setText('t-inst', t.inst);
+    setText('t-inst2', t.inst2);
+    setText('t-title', t.title);
+    setHTML('t-meta', t.meta);
 
     // Tabs
-    document.getElementById('t-tab1-num').innerText = t.tab1Num;
-    document.getElementById('t-tab1-name').innerText = t.tab1Name;
-    document.getElementById('t-tab2-num').innerText = t.tab2Num;
-    document.getElementById('t-tab2-name').innerText = t.tab2Name;
-    document.getElementById('t-tab3-num').innerText = t.tab3Num;
-    document.getElementById('t-tab3-name').innerText = t.tab3Name;
+    setText('t-tab1-num', t.tab1Num);
+    setText('t-tab1-name', t.tab1Name);
+    setText('t-tab2-num', t.tab2Num);
+    setText('t-tab2-name', t.tab2Name);
+    setText('t-tab3-num', t.tab3Num);
+    setText('t-tab3-name', t.tab3Name);
 
     // Content P1
-    document.getElementById('p1-title').innerText = t.p1Title;
-    document.getElementById('p1-goal-lbl').innerText = t.p1GoalLbl;
-    document.getElementById('p1-goal-txt').innerText = t.p1GoalTxt;
-    document.getElementById('p1-h1').innerText = t.p1H1;
-    document.getElementById('p1-p1').innerHTML = t.p1P1;
-    document.getElementById('p1-p2').innerHTML = t.p1P2;
-    document.getElementById('p1-h2').innerText = t.p1H2;
-    document.getElementById('p1-p3').innerText = t.p1P3;
-    document.getElementById('p1-li1').innerHTML = t.p1Li1;
-    document.getElementById('p1-li2').innerHTML = t.p1Li2;
-    document.getElementById('p1-li3').innerHTML = t.p1Li3;
-    document.getElementById('p1-li4').innerHTML = t.p1Li4;
-    document.getElementById('p1-li5').innerHTML = t.p1Li5;
-    document.getElementById('p1-li6').innerHTML = t.p1Li6;
+    setText('p1-title', t.p1Title);
+    setHTML('p1-sub', t.p1Sub);
+    setText('p1-goal-lbl-txt', t.p1GoalLbl);
+    setText('p1-goal-txt', t.p1GoalTxt);
+    setText('p1-h1', t.p1H1);
+    setHTML('p1-p1', t.p1P1);
+    setHTML('p1-p2', t.p1P2);
+    setText('p1-h2', t.p1H2);
+    setText('p1-p3', t.p1P3);
+    setHTML('p1-li1', t.p1Li1);
+    setHTML('p1-li2', t.p1Li2);
+    setHTML('p1-li3', t.p1Li3);
+    setHTML('p1-li4', t.p1Li4);
+    setHTML('p1-li5', t.p1Li5);
+    setHTML('p1-li6', t.p1Li6);
+    setText('p1-p-struct', t.p1PStruct);
 
-    document.getElementById('p1-h3').innerText = t.p1H3;
-    document.getElementById('p1-p4').innerText = t.p1P4;
-    document.getElementById('box-post1').innerText = t.boxPost1;
-    document.getElementById('box-post1-txt').innerText = t.boxPost1Txt;
-    document.getElementById('box-teo1').innerText = t.boxTeo1;
-    document.getElementById('box-teo1-txt').innerText = t.boxTeo1Txt;
-    document.getElementById('proof-label-1').innerText = t.proofLabel1;
+    setText('p1-h3', t.p1H3);
+    setHTML('p1-p4', t.p1P4);
+    setText('box-post1-lbl', t.boxPost1Lbl);
+    setText('box-post1-txt', t.boxPost1Txt);
+    setHTML('p1-p-wop-note', t.p1PWopNote);
+    setText('box-teo1-lbl', t.boxTeo1Lbl);
+    setHTML('box-teo1-txt', t.boxTeo1Txt);
+    setText('proof-label-1-txt', t.proofLabel1Txt);
+    setText('p1-p-concl', t.p1PConcl);
 
-    document.getElementById('p1-h4').innerText = t.p1H4;
-    document.getElementById('tbl-cap').innerText = t.tblCap;
-    document.getElementById('th-mg').innerText = t.thMg;
-    document.getElementById('th-topik').innerText = t.thTopik;
-    document.getElementById('th-cpmk').innerText = t.thCpmk;
-    document.getElementById('p1-q-h').innerText = t.p1QH;
+    setText('p1-h4', t.p1H4);
+    setText('tbl-cap', t.tblCap);
+    setText('th-mg', t.thMg);
+    setText('th-topik', t.thTopik);
+    setText('th-cpmk', t.thCpmk);
+    setText('p1-h5-txt', t.p1H5Txt);
+    setText('p1-h6-txt', t.p1H6Txt);
+    setText('p1-q-h-txt', t.p1QHTxt);
 
-    // Content P2 & P3
-    document.getElementById('p2-title').innerText = t.p2Title;
-    document.getElementById('p2-goal-lbl').innerText = t.p2GoalLbl;
-    document.getElementById('p2-goal-txt').innerText = t.p2GoalTxt;
+    // Content P2
+    setText('p2-title', t.p2Title);
+    setHTML('p2-sub', t.p2Sub);
+    setText('p2-goal-lbl-txt', t.p2GoalLbl);
+    setText('p2-goal-txt', t.p2GoalTxt);
+    setText('p2-h1', t.p2H1);
+    setText('p2-p1', t.p2P1);
+    setText('box-teo21-lbl', t.boxTeo21Lbl);
+    setText('proof-label-21-txt', t.proofLabel21Txt);
+    setText('box-ex21-lbl', t.boxEx21Lbl);
+    setText('p2-h2', t.p2H2);
+    setText('box-teo22-lbl', t.boxTeo22Lbl);
+    setText('p2-ex-h-txt', t.p2ExHTxt);
 
-    document.getElementById('p3-title').innerText = t.p3Title;
-    document.getElementById('p3-goal-lbl').innerText = t.p3GoalLbl;
-    document.getElementById('p3-goal-txt').innerText = t.p3GoalTxt;
+    // Content P3
+    setText('p3-title', t.p3Title);
+    setHTML('p3-sub', t.p3Sub);
+    setText('p3-goal-lbl-txt', t.p3GoalLbl);
+    setText('p3-goal-txt', t.p3GoalTxt);
+    setText('p3-h1', t.p3H1);
+    setText('box-def31-lbl', t.boxDef31Lbl);
+    setText('box-teo31-lbl', t.boxTeo31Lbl);
+    setText('p3-h2', t.p3H2);
+    setText('box-teo32-lbl', t.boxTeo32Lbl);
+    setText('p3-h3', t.p3H3);
+    setText('p3-ex-h-txt', t.p3ExHTxt);
+    setText('p3-q-h-txt', t.p3QHTxt);
 
-    document.getElementById('footer-txt').innerHTML = t.footerTxt;
+    setHTML('footer-txt', t.footerTxt);
   }
 
   // Toggle Dark/Light Theme
@@ -1048,6 +1229,7 @@
   function updateThemeUI(theme) {
     const label = document.getElementById('themeLabel');
     const icon = document.getElementById('themeIcon');
+    if (!label || !icon) return;
     if (theme === 'dark') {
       label.innerText = 'Light Mode';
       icon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-12.37c-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.38.39-1.02 0-1.41zM7.05 18.36l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06c.39-.39.39-1.03 0-1.41s-1.02-.39-1.41 0z"/>';
@@ -1060,9 +1242,10 @@
   // Switch Tab Section
   function showP(id, btn) {
     document.querySelectorAll('section.pertemuan').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
     document.querySelectorAll('nav.tabs button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    if (btn) btn.classList.add('active');
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
@@ -1075,8 +1258,10 @@
 
     // Restore Saved Language
     const savedLang = localStorage.getItem('modul_lang') || 'id';
-    document.getElementById('langSelect').value = savedLang;
+    const langSelect = document.getElementById('langSelect');
+    if (langSelect) langSelect.value = savedLang;
     changeLanguage(savedLang);
-  });</script>
+  });
+</script>
 </body>
 </html>
