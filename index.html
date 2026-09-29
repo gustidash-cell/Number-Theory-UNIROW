@@ -3,12 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="docTitle">Modul Teori Bilangan — Pertemuan 1–15 | Elementary Number Theory Module</title>
+<title id="docTitle">Modul Teori Bilangan Elementer — Pertemuan 1–15 | Elementary Number Theory Module</title>
 
-<!-- Modern Typography: Plus Jakarta Sans & Lora -->
+<!-- Anti-FOUC Theme Initializer -->
+<script>
+  (function() {
+    try {
+      var t = localStorage.getItem('tb_theme');
+      if (!t) {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      if (t === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    } catch(e) {
+      document.documentElement.classList.remove('dark-mode');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+
+<!-- Google Fonts: Fraunces (Editorial Display), Source Serif 4 (Body), Plus Jakarta Sans (UI), JetBrains Mono (Math/Code) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <!-- KaTeX for Beautiful Mathematical Notation -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -17,94 +39,186 @@
 
 <style>
   :root {
-    /* Soft Academic Light Theme (DEFAULT) */
-    --bg-paper: #F8FAFC;
+    /* Surfaces & Paper Canvas (Warm Academic Light) */
+    --bg-canvas: #FAF8F5;
     --bg-surface: #FFFFFF;
-    --bg-panel: #F1F5F9;
-    --border-color: #E2E8F0;
-    --border-hover: #CBD5E1;
-    
-    --text-main: #1E293B;
-    --text-muted: #475569;
-    --text-subtle: #64748B;
-    
-    --rule: #E2E8F0;
-    
-    /* Soft Pastel Pedagogical Accents */
+    --bg-surface-raised: #FFFFFF;
+    --bg-panel: #F4EFE6;
+    --bg-subtle: #F9F7F2;
+    --bg-glass: rgba(250, 248, 245, 0.92);
+    --bg-glass-card: rgba(255, 255, 255, 0.9);
+
+    /* Text & Inks (WCAG AAA Compliance) */
+    --text-primary: #152232;
+    --text-secondary: #3D4F62;
+    --text-muted: #64768A;
+    --text-subtle: #8A9BAE;
+
+    /* Borders & Lines */
+    --border-subtle: #E8E1D3;
+    --border-strong: #D5CBBA;
+    --border-focus: #1E3A8A;
+    --rule: #E5DDD0;
+
+    /* Brand & Accent Color (Golden Ochre / Amber) */
     --accent-gold: #B45309;
+    --accent-gold-hover: #92400E;
     --accent-gold-bg: #FFFBEB;
     --accent-gold-border: #FDE68A;
-    
-    --accent-teal: #0F766E;
-    --accent-teal-bg: #F0FDF4;
-    --accent-teal-border: #A7F3D0;
-    
-    --accent-maroon: #991B1B;
-    --accent-maroon-bg: #FEF2F2;
-    --accent-maroon-border: #FECACA;
+    --accent-gold-subtle: rgba(180, 83, 9, 0.08);
 
-    --accent-blue: #3730A3;
-    --accent-blue-bg: #EEF2FF;
-    --accent-blue-border: #C7D2FE;
-    
-    --accent-plum: #6D28D9;
-    --accent-plum-bg: #FAF5FF;
-    --accent-plum-border: #E9D5FF;
-    
-    --accent-cyan: #0369A1;
-    --accent-cyan-bg: #F0F9FF;
-    --accent-cyan-border: #BAE6FD;
-    
-    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-    --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-    --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.09), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+    /* Pedagogical Token System */
+    /* 1. Postulat / Aksioma */
+    --box-postulat-bg: #F0F6FF;
+    --box-postulat-border: #BFDBFE;
+    --box-postulat-accent: #2563EB;
+    --box-postulat-text: #1E3A8A;
 
-    --radius-sm: 6px;
-    --radius-md: 10px;
+    /* 2. Definisi */
+    --box-definisi-bg: #F0FDF4;
+    --box-definisi-border: #BBF7D0;
+    --box-definisi-accent: #0D9488;
+    --box-definisi-text: #064E3B;
+
+    /* 3. Teorema */
+    --box-teorema-bg: #FFF1F2;
+    --box-teorema-border: #FECDD3;
+    --box-teorema-accent: #BE123C;
+    --box-teorema-text: #881337;
+
+    /* 4. Lema */
+    --box-lema-bg: #F0F9FF;
+    --box-lema-border: #BAE6FD;
+    --box-lema-accent: #0284C7;
+    --box-lema-text: #075985;
+
+    /* 5. Akibat (Korolari) */
+    --box-akibat-bg: #FAF5FF;
+    --box-akibat-border: #E9D5FF;
+    --box-akibat-accent: #7C3AED;
+    --box-akibat-text: #581C87;
+
+    /* 6. Contoh Matematis */
+    --box-contoh-bg: #FFFBEB;
+    --box-contoh-border: #FDE68A;
+    --box-contoh-accent: #D97706;
+    --box-contoh-text: #78350F;
+
+    /* 7. Contoh Kontekstual */
+    --box-kontekstual-bg: #EEF2FF;
+    --box-kontekstual-border: #C7D2FE;
+    --box-kontekstual-accent: #4F46E5;
+    --box-kontekstual-text: #312E81;
+
+    /* 8. Catatan */
+    --box-catatan-bg: #F0F9FF;
+    --box-catatan-border: #BAE6FD;
+    --box-catatan-accent: #0369A1;
+    --box-catatan-text: #0C4A6E;
+
+    /* Shadows & Elevation */
+    --shadow-xs: 0 1px 2px rgba(21, 34, 50, 0.04);
+    --shadow-sm: 0 2px 6px rgba(21, 34, 50, 0.05), 0 1px 2px rgba(21, 34, 50, 0.03);
+    --shadow-md: 0 6px 18px -2px rgba(21, 34, 50, 0.08), 0 2px 6px -1px rgba(21, 34, 50, 0.04);
+    --shadow-lg: 0 16px 36px -4px rgba(21, 34, 50, 0.12), 0 6px 14px -2px rgba(21, 34, 50, 0.05);
+
+    /* Radii */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
     --radius-lg: 16px;
+    --radius-full: 9999px;
+
+    /* Typography Scale */
+    --font-scale: 1;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Source Serif 4', Georgia, serif;
+    --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Transitions */
+    --transition-fast: 160ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: light;
   }
 
-  html.dark-mode, body.dark-mode {
-    /* Soft Dark Mode (Toggleable, Eye-Friendly) */
-    --bg-paper: #0B0F19;
-    --bg-surface: #111827;
-    --bg-panel: #1F2937;
-    --border-color: #374151;
-    --border-hover: #4B5563;
-    
-    --text-main: #F3F4F6;
-    --text-muted: #9CA3AF;
-    --text-subtle: #6B7280;
-    
-    --rule: #374151;
-    
-    --accent-gold: #FCD34D;
-    --accent-gold-bg: #281E0B;
-    --accent-gold-border: #78350F;
-    
-    --accent-teal: #6EE7B7;
-    --accent-teal-bg: #062A20;
-    --accent-teal-border: #064E3B;
-    
-    --accent-maroon: #FDA4AF;
-    --accent-maroon-bg: #2D1217;
-    --accent-maroon-border: #7F1D1D;
+  :root[data-theme="dark"], html.dark-mode {
+    /* Surfaces & Paper Canvas (Deep Obsidian Slate) */
+    --bg-canvas: #090E17;
+    --bg-surface: #101723;
+    --bg-surface-raised: #16202E;
+    --bg-panel: #141D2A;
+    --bg-subtle: #0D141F;
+    --bg-glass: rgba(9, 14, 23, 0.94);
+    --bg-glass-card: rgba(16, 23, 35, 0.9);
 
-    --accent-blue: #A5B4FC;
-    --accent-blue-bg: #131B36;
-    --accent-blue-border: #312E81;
-    
-    --accent-plum: #D8B4FE;
-    --accent-plum-bg: #251433;
-    --accent-plum-border: #581C87;
-    
-    --accent-cyan: #7DD3FC;
-    --accent-cyan-bg: #0C2333;
-    --accent-cyan-border: #075985;
-    
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 12px 28px -4px rgba(0, 0, 0, 0.7);
+    /* Text & Inks */
+    --text-primary: #F1F5F9;
+    --text-secondary: #9DB0C6;
+    --text-muted: #6B8097;
+    --text-subtle: #4D6076;
+
+    /* Borders & Lines */
+    --border-subtle: #1E2C3E;
+    --border-strong: #2D415A;
+    --border-focus: #60A5FA;
+    --rule: #1B2737;
+
+    /* Brand & Accent Color */
+    --accent-gold: #F59E0B;
+    --accent-gold-hover: #FBBF24;
+    --accent-gold-bg: #271A07;
+    --accent-gold-border: #6B3F08;
+    --accent-gold-subtle: rgba(245, 158, 11, 0.12);
+
+    /* Pedagogical Token System */
+    --box-postulat-bg: #0C1A30;
+    --box-postulat-border: #1E3A8A;
+    --box-postulat-accent: #60A5FA;
+    --box-postulat-text: #93C5FD;
+
+    --box-definisi-bg: #06241D;
+    --box-definisi-border: #065F46;
+    --box-definisi-accent: #34D399;
+    --box-definisi-text: #A7F3D0;
+
+    --box-teorema-bg: #290E17;
+    --box-teorema-border: #881337;
+    --box-teorema-accent: #FB7185;
+    --box-teorema-text: #FECDD3;
+
+    --box-lema-bg: #082133;
+    --box-lema-border: #0369A1;
+    --box-lema-accent: #38BDF8;
+    --box-lema-text: #BAE6FD;
+
+    --box-akibat-bg: #200F33;
+    --box-akibat-border: #581C87;
+    --box-akibat-accent: #C084FC;
+    --box-akibat-text: #E9D5FF;
+
+    --box-contoh-bg: #281B07;
+    --box-contoh-border: #78350F;
+    --box-contoh-accent: #FBBF24;
+    --box-contoh-text: #FDE68A;
+
+    --box-kontekstual-bg: #141738;
+    --box-kontekstual-border: #3730A3;
+    --box-kontekstual-accent: #818CF8;
+    --box-kontekstual-text: #C7D2FE;
+
+    --box-catatan-bg: #082133;
+    --box-catatan-border: #075985;
+    --box-catatan-accent: #38BDF8;
+    --box-catatan-text: #BAE6FD;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.7);
+
+    color-scheme: dark;
   }
 
   /* BILINGUAL VISIBILITY RULES */
@@ -117,295 +231,453 @@
     display: none !important;
   }
 
-  * { box-sizing: border-box; }
-  html, body {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
-  }
-  body {
-    background-color: var(--bg-paper);
-    color: var(--text-main);
-    font-family: 'Lora', Georgia, 'Times New Roman', serif;
-    font-size: 16.5px;
-    line-height: 1.75;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: calc(1.04rem * var(--font-scale));
+    line-height: 1.8;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
-  .sans { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
 
-  /* TOP STICKY CONTROL BAR */
-  .top-control-bar {
+  /* TOP READING PROGRESS BAR */
+  #readingProgressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-gold), #0D9488, #2563EB);
+    z-index: 10001;
+    width: 0%;
+    transition: width 0.1s ease-out;
+  }
+
+  /* TOP STICKY APP BAR */
+  .top-app-bar {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-    transition: background-color 0.25s ease, border-color 0.25s ease;
+    z-index: 1000;
+    background: var(--bg-glass);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
   }
-  html.dark-mode .top-control-bar, body.dark-mode .top-control-bar {
-    background: rgba(17, 24, 39, 0.92);
-  }
+
   .top-bar-inner {
-    max-width: 1020px;
+    max-width: 1080px;
     margin: 0 auto;
-    padding: 10px 24px;
+    padding: 8px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 14px;
   }
-  .brand {
+
+  .brand-group {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-ui);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
-  .brand-icon {
-    color: var(--accent-gold);
+
+  .brand-logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, #1E293B, #0F172A);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F59E0B;
+    box-shadow: var(--shadow-xs);
     flex-shrink: 0;
   }
-  .brand-text {
-    font-weight: 700;
-    font-size: 14.5px;
-    color: var(--text-main);
-    letter-spacing: -0.01em;
+
+  :root[data-theme="dark"] .brand-logo-icon {
+    background: linear-gradient(135deg, #271A07, #1E293B);
+    border-color: rgba(245, 158, 11, 0.3);
   }
-  .brand-badge {
+
+  .brand-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+  }
+
+  .brand-title {
+    font-weight: 700;
+    font-size: 0.94rem;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .brand-pill {
+    font-size: 0.68rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
     background: var(--accent-gold-bg);
     color: var(--accent-gold);
     border: 1px solid var(--accent-gold-border);
-    font-size: 11px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 12px;
-    letter-spacing: 0.04em;
+    padding: 1px 6px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.03em;
   }
-  .controls {
+
+  .brand-subtitle {
+    font-size: 0.74rem;
+    color: var(--text-muted);
+  }
+
+  /* CENTER QUICK JUMP BUTTONS IN TOP BAR */
+  .center-meeting-quick {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px;
   }
-  .lang-switch-group {
+
+  .drawer-toggle-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 7px;
     background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 3px 8px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 5px 12px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
   }
-  .control-icon {
-    color: var(--text-muted);
-    margin-right: 2px;
+
+  .drawer-toggle-btn:hover {
+    background: var(--bg-surface);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-xs);
   }
-  .lang-btn {
+
+  .top-nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .top-nav-arrow:hover:not(:disabled) {
+    background: var(--bg-surface);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+  }
+
+  .top-nav-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  /* CONTROLS GROUP (RIGHT) */
+  .app-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 5px 10px;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    outline: none;
+  }
+
+  .tool-btn:hover {
+    background: var(--bg-surface);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+  }
+
+  .tool-btn:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+  }
+
+  /* Segmented Language Switcher */
+  .lang-segmented {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 2px;
+  }
+
+  .lang-segment-btn {
     background: transparent;
     border: none;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--text-muted);
     padding: 3px 8px;
-    border-radius: 12px;
+    border-radius: var(--radius-full);
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
   }
-  .lang-btn:hover {
-    color: var(--text-main);
+
+  .lang-segment-btn:hover {
+    color: var(--text-primary);
   }
-  .lang-btn.active {
+
+  .lang-segment-btn.active {
     background: var(--bg-surface);
     color: var(--accent-gold);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   }
-  .lang-divider {
-    font-size: 11px;
-    color: var(--border-hover);
-  }
-  .theme-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--text-main);
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .theme-toggle-btn:hover {
-    border-color: var(--border-hover);
-    background: var(--border-color);
-    transform: translateY(-1px);
-  }
-  .theme-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent-gold);
-  }
 
-  /* MASTHEAD */
+  /* MASTHEAD HERO */
   header.masthead {
-    background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #0F172A 100%);
+    background: radial-gradient(circle at 50% 0%, #1E293B 0%, #0F172A 70%, #090D16 100%);
     color: #F8FAFC;
-    padding: 42px 24px 34px;
+    padding: 38px 24px 30px;
     text-align: center;
     position: relative;
-    border-bottom: 2px solid #334155;
+    border-bottom: 2px solid #283548;
+    overflow: hidden;
   }
+
+  header.masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .masthead-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
   header.masthead .inst {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: 0.12em;
     color: #94A3B8;
     text-transform: uppercase;
     margin: 0 0 6px;
   }
+
   header.masthead .inst2 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    font-family: var(--font-ui);
+    font-size: 0.84rem;
     color: #CBD5E1;
-    margin: 0 0 20px;
-  }
-  header.masthead h1 {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 32px;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-    margin: 0 0 10px;
-    color: #FFFFFF;
-  }
-  header.masthead .meta {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13.5px;
-    color: #CBD5E1;
-    margin: 0 0 6px;
-  }
-  header.masthead .meta-legend {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 20px;
-    padding: 6px 16px;
-    margin-top: 14px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    color: #E2E8F0;
-  }
-  header.masthead .rule {
-    width: 60px;
-    height: 3px;
-    background: #F59E0B;
-    border-radius: 2px;
-    margin: 20px auto 0;
+    margin: 0 0 16px;
   }
 
-  /* STICKY MEETING SELECTOR NAVIGATION BAR */
+  header.masthead h1 {
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    color: #FFFFFF;
+    line-height: 1.25;
+  }
+
+  header.masthead .meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 14px 0 12px;
+  }
+
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-full);
+    padding: 3px 12px;
+    font-family: var(--font-ui);
+    font-size: 0.76rem;
+    color: #E2E8F0;
+  }
+
+  .meta-legend-card {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 8px 18px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: #CBD5E1;
+    margin-top: 8px;
+  }
+
+  header.masthead .gold-line {
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(90deg, #F59E0B, #D97706);
+    border-radius: 2px;
+    margin: 18px auto 0;
+  }
+
+  /* STICKY MEETING NAVIGATION STRIP */
   nav.meeting-nav {
     position: sticky;
-    top: 52px;
-    z-index: 90;
+    top: 49px;
+    z-index: 900;
     background: var(--bg-surface);
-    border-bottom: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    padding: 10px 16px;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    padding: 8px 16px;
+    transition: background-color var(--transition-normal), border-color var(--transition-normal);
   }
+
   .meeting-nav-inner {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
   }
+
   .nav-arrow-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     background: var(--bg-panel);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 7px 14px;
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--text-primary);
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all var(--transition-fast);
     flex-shrink: 0;
   }
+
   .nav-arrow-btn:hover:not(:disabled) {
     border-color: var(--accent-gold);
     background: var(--accent-gold-bg);
     color: var(--accent-gold);
     transform: translateY(-1px);
   }
+
   .nav-arrow-btn:disabled {
     opacity: 0.35;
     cursor: not-allowed;
-    border-color: var(--border-color);
+    border-color: var(--border-subtle);
     background: var(--bg-panel);
   }
+
   .select-wrapper {
     flex: 1;
-    max-width: 640px;
+    max-width: 580px;
     position: relative;
     display: flex;
     align-items: center;
     background: var(--bg-panel);
-    border: 1.5px solid var(--border-color);
-    border-radius: 14px;
-    padding: 2px 12px;
-    transition: all 0.2s ease;
+    border: 1.5px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 2px 10px;
+    transition: all var(--transition-fast);
   }
+
   .select-wrapper:hover, .select-wrapper:focus-within {
     border-color: var(--accent-gold);
     background: var(--bg-surface);
-    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+    box-shadow: 0 0 0 3px var(--accent-gold-subtle);
   }
-  .select-prefix {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin-right: 8px;
-    flex-shrink: 0;
-  }
+
   .meeting-badge {
     background: var(--accent-gold-bg);
     color: var(--accent-gold);
     border: 1px solid var(--accent-gold-border);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11.5px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
     letter-spacing: 0.04em;
+    flex-shrink: 0;
+    margin-right: 8px;
   }
+
   .meeting-badge.uts-badge {
-    background: var(--accent-maroon-bg);
-    color: var(--accent-maroon);
-    border-color: var(--accent-maroon-border);
+    background: #FEF2F2;
+    color: #991B1B;
+    border-color: #FECACA;
   }
+  :root[data-theme="dark"] .meeting-badge.uts-badge {
+    background: #2D1217;
+    color: #FDA4AF;
+    border-color: #7F1D1D;
+  }
+
   .meeting-select {
     width: 100%;
     border: none;
     background: transparent;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
     font-weight: 600;
-    color: var(--text-main);
-    padding: 8px 28px 8px 4px;
+    color: var(--text-primary);
+    padding: 7px 24px 7px 0;
     cursor: pointer;
     outline: none;
     appearance: none;
@@ -414,396 +686,1072 @@
     white-space: nowrap;
     overflow: hidden;
   }
+
   .meeting-select optgroup {
     font-weight: 700;
     color: var(--text-muted);
     background: var(--bg-surface);
   }
+
   .meeting-select option {
     font-weight: 500;
-    color: var(--text-main);
+    color: var(--text-primary);
     background: var(--bg-surface);
     padding: 8px 12px;
   }
+
   .select-chevron {
     position: absolute;
-    right: 12px;
+    right: 10px;
     pointer-events: none;
     color: var(--text-muted);
     display: flex;
     align-items: center;
-    justify-content: center;
+  }
+
+  /* IN-SESSION QUICK JUMP PILLS STRIP */
+  .session-quick-strip {
+    max-width: 960px;
+    margin: 8px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px 16px;
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    border-bottom: 1px dashed var(--border-subtle);
+    padding-bottom: 10px;
+  }
+
+  .jump-pills {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .jump-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    padding: 3px 10px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .jump-pill:hover {
+    background: var(--bg-surface);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+  }
+
+  .study-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
   }
 
   /* MAIN CONTENT AREA */
   main {
-    max-width: 900px;
-    margin: 36px auto;
+    max-width: 920px;
+    margin: 28px auto 50px;
     padding: 0 24px;
   }
+
   section.pertemuan {
     display: none;
-    animation: fadeIn 0.25s ease;
+    animation: fadeIn 0.28s var(--ease-out);
   }
+
   section.pertemuan.active {
     display: block;
   }
+
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* TYPOGRAPHY IN CONTENT */
+  /* HEADINGS IN CONTENT */
   h2.sec-title {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 26px;
+    font-family: var(--font-display);
+    font-size: 1.85rem;
     font-weight: 600;
-    color: var(--text-main);
-    margin: 0 0 4px;
-    line-height: 1.35;
-  }
-  p.sec-sub {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
-    color: var(--text-subtle);
-    margin: 0 0 24px;
-    font-weight: 500;
-  }
-  h3.sub-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16.5px;
-    font-weight: 700;
-    color: var(--text-main);
-    margin: 34px 0 12px;
-    padding-bottom: 6px;
-    border-bottom: 1.5px solid var(--border-color);
-    letter-spacing: -0.01em;
-  }
-  p {
-    margin: 0 0 14px;
-    color: var(--text-main);
+    color: var(--text-primary);
+    margin: 0 0 6px;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
   }
 
-  /* PEDAGOGICAL BOXES */
+  p.sec-sub {
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 0 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  h3.sub-title {
+    font-family: var(--font-ui);
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 36px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--border-subtle);
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin: 0 0 16px;
+    color: var(--text-primary);
+  }
+
+  /* PEDAGOGICAL BOXES (BENTO CARDS) */
   .tujuan {
     background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
     border-left: 4px solid var(--accent-gold);
-    border-top: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    margin: 0 0 26px;
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin: 0 0 28px;
+    box-shadow: var(--shadow-xs);
+    position: relative;
   }
+
   .tujuan .label {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
+    font-family: var(--font-ui);
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     color: var(--accent-gold);
     text-transform: uppercase;
     margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
+
   .tujuan p:last-child {
     margin: 0;
-    font-size: 15px;
-    color: var(--text-muted);
+    font-size: 1.02rem;
+    color: var(--text-secondary);
   }
 
   .box {
     background: var(--bg-surface);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-subtle);
     border-left-width: 4px;
-    border-radius: var(--radius-sm);
-    padding: 16px 20px;
-    margin: 20px 0;
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin: 22px 0;
+    box-shadow: var(--shadow-xs);
     position: relative;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   }
+
+  .box:hover {
+    box-shadow: var(--shadow-sm);
+  }
+
   .box-label {
-    display: inline-block;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 11px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-ui);
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
   }
+
+  /* Box Variations */
   .box.postulat {
-    border-left-color: var(--accent-blue);
-    background: var(--accent-blue-bg);
+    border-left-color: var(--box-postulat-accent);
+    background: var(--box-postulat-bg);
+    border-color: var(--box-postulat-border);
+    border-left-width: 4px;
   }
-  .box.postulat .box-label { color: var(--accent-blue); }
+  .box.postulat .box-label {
+    color: var(--box-postulat-accent);
+    background: rgba(37, 99, 235, 0.08);
+  }
 
   .box.definisi {
-    border-left-color: var(--accent-teal);
-    background: var(--accent-teal-bg);
+    border-left-color: var(--box-definisi-accent);
+    background: var(--box-definisi-bg);
+    border-color: var(--box-definisi-border);
+    border-left-width: 4px;
   }
-  .box.definisi .box-label { color: var(--accent-teal); }
+  .box.definisi .box-label {
+    color: var(--box-definisi-accent);
+    background: rgba(13, 148, 136, 0.08);
+  }
 
   .box.teorema {
-    border-left-color: var(--accent-maroon);
-    background: var(--accent-maroon-bg);
+    border-left-color: var(--box-teorema-accent);
+    background: var(--box-teorema-bg);
+    border-color: var(--box-teorema-border);
+    border-left-width: 4px;
   }
-  .box.teorema .box-label { color: var(--accent-maroon); }
+  .box.teorema .box-label {
+    color: var(--box-teorema-accent);
+    background: rgba(190, 18, 60, 0.08);
+  }
 
   .box.akibat {
-    border-left-color: var(--accent-plum);
-    background: var(--accent-plum-bg);
+    border-left-color: var(--box-akibat-accent);
+    background: var(--box-akibat-bg);
+    border-color: var(--box-akibat-border);
+    border-left-width: 4px;
   }
-  .box.akibat .box-label { color: var(--accent-plum); }
+  .box.akibat .box-label {
+    color: var(--box-akibat-accent);
+    background: rgba(124, 58, 237, 0.08);
+  }
 
   .box.contoh {
-    border-left-color: var(--accent-gold);
-    background: var(--accent-gold-bg);
+    border-left-color: var(--box-contoh-accent);
+    background: var(--box-contoh-bg);
+    border-color: var(--box-contoh-border);
+    border-left-width: 4px;
   }
-  .box.contoh .box-label { color: var(--accent-gold); }
+  .box.contoh .box-label {
+    color: var(--box-contoh-accent);
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .box.contoh.kontekstual {
+    border-left-color: var(--box-kontekstual-accent);
+    background: var(--box-kontekstual-bg);
+    border-color: var(--box-kontekstual-border);
+    border-left-width: 4px;
+  }
+  .box.contoh.kontekstual .box-label {
+    color: var(--box-kontekstual-accent);
+    background: rgba(79, 70, 229, 0.08);
+  }
 
   .box.catatan {
-    border-left-color: var(--accent-cyan);
-    background: var(--accent-cyan-bg);
+    border-left-color: var(--box-catatan-accent);
+    background: var(--box-catatan-bg);
+    border-color: var(--box-catatan-border);
+    border-left-width: 4px;
   }
-  .box.catatan .box-label { color: var(--accent-cyan); }
+  .box.catatan .box-label {
+    color: var(--box-catatan-accent);
+    background: rgba(3, 105, 161, 0.08);
+  }
 
   /* PROOF DETAILS ACCORDION */
   details.bukti {
     background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
     padding: 12px 18px;
-    margin: 12px 0 20px;
-    box-shadow: var(--shadow-sm);
+    margin: 10px 0 22px;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition-fast);
   }
+
+  details.bukti:hover {
+    border-color: var(--border-strong);
+  }
+
   details.bukti summary {
     cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13.5px;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
     font-weight: 700;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     user-select: none;
     outline: none;
-    transition: color 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color var(--transition-fast);
   }
+
   details.bukti summary:hover {
-    color: var(--text-main);
-  }
-  details.bukti[open] summary {
-    margin-bottom: 14px;
     color: var(--accent-gold);
   }
+
+  details.bukti summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.bukti summary::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform var(--transition-fast);
+    margin-left: 10px;
+  }
+
+  details.bukti[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  details.bukti[open] {
+    background: var(--bg-surface-raised);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-sm);
+  }
+
+  details.bukti[open] summary {
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--border-subtle);
+    color: var(--accent-gold);
+  }
+
   details.bukti > *:not(summary) {
-    font-size: 15.5px;
+    font-size: 1.01rem;
+    line-height: 1.75;
   }
 
   /* MATH SYMBOLS & VARS */
   .var {
-    font-family: 'Lora', Georgia, serif;
+    font-family: var(--font-body);
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--text-primary);
   }
+
   .qed {
     float: right;
-    font-size: 15px;
-    color: var(--text-subtle);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
   }
 
-  /* LISTS & EXERCISES */
+  /* LISTS, EXERCISES & REFLECTIONS */
   .latihan, .pertanyaan {
     background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 22px 26px;
-    margin: 28px 0;
-    box-shadow: var(--shadow-sm);
-  }
-  .latihan h3.sub-title, .pertanyaan h3.sub-title {
-    margin-top: 0;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 8px;
-  }
-  ol, ul {
-    padding-left: 22px;
-    margin: 12px 0;
-  }
-  li {
-    margin-bottom: 10px;
-    line-height: 1.65;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 32px 0;
+    box-shadow: var(--shadow-xs);
   }
 
-  /* TABLES */
+  .latihan h3.sub-title, .pertanyaan h3.sub-title {
+    margin-top: 0;
+    border-bottom: 2px solid var(--border-subtle);
+    padding-bottom: 10px;
+    color: var(--accent-gold);
+  }
+
+  ol, ul {
+    padding-left: 24px;
+    margin: 14px 0;
+  }
+
+  li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  /* ACADEMIC TABLES */
   table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 22px 0;
     background: var(--bg-surface);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-xs);
+    border: 1px solid var(--border-subtle);
   }
+
   caption {
     caption-side: bottom;
     text-align: left;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    color: var(--text-subtle);
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--text-muted);
     padding: 8px 12px;
   }
+
   th, td {
-    padding: 10px 14px;
+    padding: 11px 16px;
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 14.5px;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.92rem;
   }
+
   th {
     background: var(--bg-panel);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-ui);
     font-weight: 700;
-    color: var(--text-main);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
   }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background: var(--bg-subtle);
+  }
+
+  tr:hover td {
+    background: var(--bg-panel);
+  }
+
   td.num {
     text-align: center;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-weight: 700;
     color: var(--accent-gold);
   }
 
   /* UTS CARD */
   .uts-card {
     background: var(--bg-surface);
-    border: 2px dashed var(--accent-maroon-border);
-    border-radius: var(--radius-md);
-    padding: 40px 32px;
+    border: 2px dashed var(--accent-gold-border);
+    border-radius: var(--radius-lg);
+    padding: 44px 36px;
     text-align: center;
     margin: 40px auto;
-    max-width: 680px;
+    max-width: 720px;
     box-shadow: var(--shadow-md);
   }
+
   .uts-label {
     display: inline-block;
-    background: var(--accent-maroon-bg);
-    color: var(--accent-maroon);
+    background: #FEF2F2;
+    color: #991B1B;
     font-weight: 800;
-    font-size: 12px;
-    letter-spacing: .12em;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-    border: 1px solid var(--accent-maroon-border);
+    padding: 4px 16px;
+    border-radius: var(--radius-full);
+    margin-bottom: 18px;
+    border: 1px solid #FECACA;
+    font-family: var(--font-ui);
   }
+  :root[data-theme="dark"] .uts-label {
+    background: #2D1217;
+    color: #FDA4AF;
+    border-color: #7F1D1D;
+  }
+
   .uts-card h2 {
-    font-family: 'Lora', Georgia, serif;
-    font-size: 26px;
-    color: var(--text-main);
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    color: var(--text-primary);
     margin: 0 0 16px;
   }
+
   .uts-card p {
-    font-size: 16px;
-    color: var(--text-muted);
-    max-width: 540px;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 580px;
     margin: 0 auto;
+  }
+
+  /* SYLLABUS OFF-CANVAS DRAWER */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+  }
+
+  .drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .syllabus-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 440px;
+    max-width: 90vw;
+    background: var(--bg-surface);
+    border-left: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-lg);
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+  }
+
+  .drawer-overlay.active .syllabus-drawer {
+    transform: translateX(0);
+  }
+
+  .drawer-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-panel);
+  }
+
+  .drawer-title {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .drawer-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+
+  .drawer-close-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-surface);
+  }
+
+  .drawer-search-box {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .drawer-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    outline: none;
+    transition: all var(--transition-fast);
+  }
+
+  .drawer-search-input:focus {
+    border-color: var(--accent-gold);
+    background: var(--bg-surface);
+    box-shadow: 0 0 0 3px var(--accent-gold-subtle);
+  }
+
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .drawer-group-title {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .drawer-item-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .drawer-item-card:hover {
+    border-color: var(--accent-gold);
+    background: var(--accent-gold-bg);
+    transform: translateX(-2px);
+  }
+
+  .drawer-item-card.active {
+    border-color: var(--accent-gold);
+    background: var(--accent-gold-bg);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .drawer-card-badge {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-subtle);
+    color: var(--accent-gold);
+    padding: 2px 7px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .drawer-card-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .drawer-card-title {
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-primary);
+    line-height: 1.35;
+    margin-bottom: 2px;
+  }
+
+  .drawer-card-sub {
+    font-family: var(--font-ui);
+    font-size: 0.74rem;
+    color: var(--text-muted);
+  }
+
+  /* SHORTCUTS MODAL */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    width: 480px;
+    max-width: 95vw;
+    overflow: hidden;
+    animation: modalIn 0.2s var(--ease-out);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .modal-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg-panel);
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .shortcut-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-subtle);
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+  }
+
+  .shortcut-row:last-child {
+    border-bottom: none;
+  }
+
+  kbd {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-strong);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 2px 7px;
+    color: var(--text-primary);
   }
 
   /* FOOTER */
   footer.page-footer {
-    border-top: 1px solid var(--border-color);
-    padding: 36px 24px;
+    border-top: 1px solid var(--border-subtle);
+    padding: 40px 24px 30px;
     text-align: center;
     margin-top: 60px;
     background: var(--bg-surface);
-    color: var(--text-subtle);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 13px;
+    color: var(--text-muted);
+    font-family: var(--font-ui);
+    font-size: 0.84rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-gold);
+  }
+
+  /* FLOATING BACK TO TOP */
+  #backToTopBtn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-full);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-md);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-normal);
+  }
+
+  #backToTopBtn.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #backToTopBtn:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 1024px) {
+    .brand-subtitle { display: none; }
+    .session-quick-strip { justify-content: center; }
   }
 
   @media (max-width: 768px) {
-    header.masthead h1 { font-size: 24px; }
-    .top-bar-inner { padding: 8px 16px; }
-    main { margin: 24px auto; padding: 0 16px; }
-    .brand-text { display: none; }
-    .nav-arrow-text { display: none; }
-    .nav-arrow-btn { padding: 8px 10px; }
-    .meeting-select { font-size: 13px; }
+    header.masthead h1 { font-size: 1.65rem; }
+    .top-bar-inner { padding: 6px 12px; }
+    .brand-title { font-size: 0.86rem; }
+    .brand-pill { display: none; }
+    .center-meeting-quick .nav-arrow-text { display: none; }
+    .nav-arrow-btn { padding: 6px 10px; }
+    .nav-arrow-btn span.nav-arrow-text { display: none; }
+    .meeting-select { font-size: 0.82rem; }
+    .study-time-badge { display: none; }
+    main { margin: 20px auto 40px; padding: 0 16px; }
+    .syllabus-drawer { width: 100vw; max-width: 100vw; }
+    .tool-btn span.tool-label { display: none; }
+    .tool-btn { padding: 5px 8px; }
+  }
+
+  /* PRINT STYLES FOR CRISP EXPORT */
+  @media print {
+    #readingProgressBar,
+    .top-app-bar,
+    nav.meeting-nav,
+    .session-quick-strip,
+    .drawer-overlay,
+    .modal-overlay,
+    #backToTopBtn,
+    .app-controls {
+      display: none !important;
+    }
+
+    body {
+      background: #FFFFFF !important;
+      color: #000000 !important;
+      font-size: 11pt !important;
+      line-height: 1.6 !important;
+    }
+
+    header.masthead {
+      background: none !important;
+      color: #000000 !important;
+      border-bottom: 2pt solid #000000 !important;
+      padding: 10pt 0 !important;
+    }
+
+    header.masthead h1 {
+      color: #000000 !important;
+      font-size: 20pt !important;
+    }
+
+    header.masthead .inst,
+    header.masthead .inst2,
+    .meta-chip,
+    .meta-legend-card {
+      color: #333333 !important;
+      border-color: #CCCCCC !important;
+    }
+
+    section.pertemuan {
+      display: block !important;
+      page-break-before: always;
+    }
+
+    details.bukti {
+      display: block !important;
+      border: 1pt solid #CCCCCC !important;
+      page-break-inside: avoid;
+    }
+
+    details.bukti summary {
+      display: none !important;
+    }
+
+    .box {
+      border: 1pt solid #CCCCCC !important;
+      page-break-inside: avoid;
+      background: #FAFAFA !important;
+    }
+
+    .latihan, .pertanyaan {
+      border: 1pt solid #CCCCCC !important;
+      page-break-inside: avoid;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
 </head>
 <body class="lang-id">
 
-<!-- TOP STICKY CONTROLS -->
-<div class="top-control-bar">
+<!-- Reading Progress Bar -->
+<div id="readingProgressBar"></div>
+
+<!-- TOP STICKY APP BAR -->
+<header class="top-app-bar" role="banner">
   <div class="top-bar-inner">
-    <div class="brand">
-      <svg class="brand-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-        <path d="M6 6h10"/>
-        <path d="M6 10h10"/>
-      </svg>
-      <span class="brand-text">Teori Bilangan Elementer</span>
-      <span class="brand-badge">OBE 2026</span>
+    <!-- Brand Info -->
+    <div class="brand-group" onclick="goToMeeting(1)" title="Kembali ke Pertemuan 1">
+      <div class="brand-logo-icon" aria-hidden="true">
+        <!-- Monoline Math / Spiral Emblem SVG -->
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10"/>
+          <path d="M6 10h7"/>
+          <path d="m14 14 3 3 5-5"/>
+        </svg>
+      </div>
+      <div class="brand-meta">
+        <div class="brand-title">
+          <span>Teori Bilangan</span>
+          <span class="brand-pill">OBE 2026</span>
+        </div>
+        <div class="brand-subtitle">UNIROW Tuban · MAT204</div>
+      </div>
     </div>
 
-    <div class="controls">
-      <!-- Language Switcher: ID / EN -->
-      <div class="lang-switch-group" role="group" aria-label="Language Switcher">
-        <svg class="control-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <line x1="2" y1="12" x2="22" y2="12"/>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+    <!-- Center Navigation Actions -->
+    <div class="center-meeting-quick">
+      <button class="top-nav-arrow" id="topBtnPrev" onclick="navigateMeeting(-1)" aria-label="Pertemuan Sebelumnya" title="Pertemuan Sebelumnya (Tekan [)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
         </svg>
-        <button id="btnLangId" class="lang-btn active" onclick="changeLanguage('id')">ID</button>
-        <span class="lang-divider">|</span>
-        <button id="btnLangEn" class="lang-btn" onclick="changeLanguage('en')">EN</button>
+      </button>
+
+      <button class="drawer-toggle-btn" onclick="toggleSyllabusDrawer()" aria-label="Buka Silabus Perkuliahan" title="Buka Daftar Pertemuan (Tekan S)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <span id="topBarMeetingLabel">P01: Induksi</span>
+      </button>
+
+      <button class="top-nav-arrow" id="topBtnNext" onclick="navigateMeeting(1)" aria-label="Pertemuan Berikutnya" title="Pertemuan Berikutnya (Tekan ])">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Right Controls -->
+    <div class="app-controls">
+      <!-- Toggle All Proofs -->
+      <button class="tool-btn" id="toggleProofsBtn" onclick="toggleAllProofs()" aria-label="Buka / Tutup Semua Bukti" title="Buka/Tutup Bukti (Tekan E)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span class="tool-label">
+          <span class="lang-id">Bukti</span>
+          <span class="lang-en">Proofs</span>
+        </span>
+      </button>
+
+      <!-- Font Size Scaler -->
+      <button class="tool-btn" onclick="cycleFontSize()" aria-label="Ubah Ukuran Teks" title="Ubah Ukuran Font">
+        <span style="font-family:var(--font-mono); font-size:11px; font-weight:700;">A±</span>
+      </button>
+
+      <!-- Bilingual Switcher -->
+      <div class="lang-segmented" role="group" aria-label="Pilih Bahasa">
+        <button id="btnLangId" class="lang-segment-btn active" onclick="changeLanguage('id')">ID</button>
+        <button id="btnLangEn" class="lang-segment-btn" onclick="changeLanguage('en')">EN</button>
       </div>
 
-      <!-- Theme Switcher: Light (Default) / Dark -->
-      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle theme">
-        <span class="theme-icon" id="themeIcon">
-          <!-- Moon Icon (click to go Dark) -->
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Theme Switcher -->
+      <button class="tool-btn" id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Theme" title="Ganti Mode Terang/Gelap (Tekan T)">
+        <span id="themeIcon">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
           </svg>
         </span>
-        <span id="themeLabel">
-          <span class="lang-id">Mode Gelap</span>
-          <span class="lang-en">Dark Mode</span>
-        </span>
+      </button>
+
+      <!-- Keyboard Shortcuts Help -->
+      <button class="tool-btn" onclick="toggleShortcutsModal()" aria-label="Bantuan Tombol Cepat" title="Tombol Cepat Keyboard (?)">
+        <span style="font-family:var(--font-mono); font-size:11px; font-weight:700;">?</span>
+      </button>
+
+      <!-- Print Button -->
+      <button class="tool-btn" onclick="window.print()" aria-label="Cetak / Simpan PDF" title="Cetak / Simpan PDF">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
       </button>
     </div>
   </div>
-</div>
-
-<!-- MASTHEAD -->
-<header class="masthead">
-  <div class="inst">
-    <span class="lang-id">UNIVERSITAS PGRI RONGGOLAWE TUBAN &nbsp;·&nbsp; PROGRAM STUDI PENDIDIKAN MATEMATIKA</span>
-    <span class="lang-en">UNIVERSITAS PGRI RONGGOLAWE TUBAN &nbsp;·&nbsp; MATHEMATICS EDUCATION STUDY PROGRAM</span>
-  </div>
-  <div class="inst2">
-    <span class="lang-id">FAKULTAS SAINS DAN PENDIDIKAN &nbsp;·&nbsp; SEMESTER GENAP 2025/2026</span>
-    <span class="lang-en">FACULTY OF SCIENCE AND EDUCATION &nbsp;·&nbsp; EVEN SEMESTER 2025/2026</span>
-  </div>
-  <h1>
-    <span class="lang-id">Modul Teori Bilangan Elementer</span>
-    <span class="lang-en">Elementary Number Theory Module</span>
-  </h1>
-  <div class="meta">
-    <span class="lang-id">Kode MK: MAT204 &nbsp;·&nbsp; 3 SKS &nbsp;·&nbsp; Pertemuan 1–15 &nbsp;·&nbsp; Kurikulum OBE 2026</span>
-    <span class="lang-en">Course Code: MAT204 &nbsp;·&nbsp; 3 Credits &nbsp;·&nbsp; Sessions 1–15 &nbsp;·&nbsp; OBE Curriculum 2026</span>
-  </div>
-  <div class="meta-legend">
-    <span class="lang-id">Pendekatan Aksiomatik-Deduktif &nbsp;·&nbsp; Dilengkapi Bukti Lengkap, Contoh Berjenjang &amp; Latihan Mandiri</span>
-    <span class="lang-en">Axiomatic-Deductive Approach &nbsp;·&nbsp; Featuring Rigorous Proofs, Tiered Examples &amp; Self-Study Exercises</span>
-  </div>
-  <div class="rule"></div>
 </header>
 
-<!-- STICKY MEETING SELECTOR NAVIGATION BAR (DROPDOWN MODE) -->
+<!-- MASTHEAD BANNER -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="inst">
+      <span class="lang-id">UNIVERSITAS PGRI RONGGOLAWE TUBAN &nbsp;·&nbsp; PROGRAM STUDI PENDIDIKAN MATEMATIKA</span>
+      <span class="lang-en">UNIVERSITAS PGRI RONGGOLAWE TUBAN &nbsp;·&nbsp; MATHEMATICS EDUCATION STUDY PROGRAM</span>
+    </div>
+    <div class="inst2">
+      <span class="lang-id">FAKULTAS SAINS DAN PENDIDIKAN &nbsp;·&nbsp; SEMESTER GENAP 2025/2026</span>
+      <span class="lang-en">FACULTY OF SCIENCE AND EDUCATION &nbsp;·&nbsp; EVEN SEMESTER 2025/2026</span>
+    </div>
+    <h1>
+      <span class="lang-id">Modul Teori Bilangan Elementer</span>
+      <span class="lang-en">Elementary Number Theory Module</span>
+    </h1>
+
+    <div class="meta-chips">
+      <span class="meta-chip">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span class="lang-id">MAT204 &nbsp;·&nbsp; 3 SKS</span>
+        <span class="lang-en">MAT204 &nbsp;·&nbsp; 3 Credits</span>
+      </span>
+      <span class="meta-chip">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+        <span class="lang-id">Pertemuan 1–15 Lengkap</span>
+        <span class="lang-en">Full Sessions 1–15</span>
+      </span>
+      <span class="meta-chip">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="12 6 12 12 16 14"></polygon></svg>
+        <span>Kurikulum OBE 2026</span>
+      </span>
+      <span class="meta-chip">
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+        <span>Kenneth H. Rosen (2011)</span>
+      </span>
+    </div>
+
+    <div class="meta-legend-card">
+      <span class="lang-id">Pendekatan Aksiomatik-Deduktif &nbsp;·&nbsp; Dilengkapi Bukti Formal Lengkap, Contoh Berjenjang &amp; Latihan Mandiri</span>
+      <span class="lang-en">Axiomatic-Deductive Approach &nbsp;·&nbsp; Featuring Rigorous Proofs, Tiered Examples &amp; Self-Study Exercises</span>
+    </div>
+
+    <div class="gold-line"></div>
+  </div>
+</header>
+
+<!-- STICKY MEETING SELECTOR NAVIGATION BAR -->
 <nav class="meeting-nav" id="meetingNav">
   <div class="meeting-nav-inner">
     <!-- Prev button -->
-    <button class="nav-arrow-btn" id="btnPrevMeeting" onclick="navigateMeeting(-1)" aria-label="Previous Meeting" disabled>
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <button class="nav-arrow-btn" id="btnPrevMeeting" onclick="navigateMeeting(-1)" aria-label="Pertemuan Sebelumnya" disabled>
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
       <span class="nav-arrow-text">
@@ -814,17 +1762,15 @@
 
     <!-- Meeting Dropdown -->
     <div class="select-wrapper">
-      <div class="select-prefix">
-        <span id="currentMeetingNumBadge" class="meeting-badge">P01</span>
-      </div>
+      <span id="currentMeetingNumBadge" class="meeting-badge">P01</span>
       
       <select id="meetingSelect" class="meeting-select" onchange="onSelectMeeting(this.value)">
         <optgroup label="CPMK 1 (Minggu 1–7)" id="optGroupCpmk1">
-          <option value="p1" selected data-id="P01: Induksi Matematika & Prinsip Terurut Rapi" data-en="P01: Mathematical Induction & Well-Ordering">P01: Induksi Matematika & Prinsip Terurut Rapi</option>
-          <option value="p2" data-id="P02: Induksi Kuat & Pembuktian Berperingkat" data-en="P02: Strong Induction & Well-Formed Proofs">P02: Induksi Kuat & Pembuktian Berperingkat</option>
+          <option value="p1" selected data-id="P01: Kontrak Kuliah & Pengantar Teori Bilangan" data-en="P01: Course Contract & Intro to Number Theory">P01: Kontrak Kuliah & Pengantar Teori Bilangan</option>
+          <option value="p2" data-id="P02: Induksi Matematika (Lemah & Kuat)" data-en="P02: Mathematical Induction (Weak & Strong)">P02: Induksi Matematika (Lemah & Kuat)</option>
           <option value="p3" data-id="P03: Keterbagian & Algoritma Pembagian" data-en="P03: Divisibility & Division Algorithm">P03: Keterbagian & Algoritma Pembagian</option>
           <option value="p4" data-id="P04: Bilangan Prima & Teorema Eratosthenes" data-en="P04: Prime Numbers & Sieve of Eratosthenes">P04: Bilangan Prima & Teorema Eratosthenes</option>
-          <option value="p5" data-id="P05: Distribusi Prima & Konjektur Klasik" data-en="P05: Prime Distribution & Classical Conjectures">P05: Distribusi Prima & Konjektur Klasik</option>
+          <option value="p5" data-id="P05: Sebaran Prima & Konjektur Klasik" data-en="P05: Prime Distribution & Classical Conjectures">P05: Sebaran Prima & Konjektur Klasik</option>
           <option value="p6" data-id="P06: FPB & Identitas Bézout" data-en="P06: GCD & Bézout's Identity">P06: FPB & Identitas Bézout</option>
           <option value="p7" data-id="P07: Algoritma Euclid & Algoritma Diperluas" data-en="P07: Euclidean Algorithm & Extended Algorithm">P07: Algoritma Euclid & Algoritma Diperluas</option>
         </optgroup>
@@ -850,21 +1796,57 @@
     </div>
 
     <!-- Next button -->
-    <button class="nav-arrow-btn" id="btnNextMeeting" onclick="navigateMeeting(1)" aria-label="Next Meeting">
+    <button class="nav-arrow-btn" id="btnNextMeeting" onclick="navigateMeeting(1)" aria-label="Pertemuan Berikutnya">
       <span class="nav-arrow-text">
         <span class="lang-id">Berikutnya</span>
         <span class="lang-en">Next</span>
       </span>
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button>
   </div>
 </nav>
 
-<!-- MAIN CONTENT -->
+<!-- IN-SESSION QUICK JUMP PILLS STRIP -->
+<div class="session-quick-strip">
+  <div class="jump-pills">
+    <a class="jump-pill" onclick="scrollToElement('.tujuan')">
+      <span>🎯</span>
+      <span class="lang-id">Tujuan</span>
+      <span class="lang-en">Objectives</span>
+    </a>
+    <a class="jump-pill" onclick="scrollToElement('.box.postulat, .box.teorema, .box.definisi')">
+      <span>📐</span>
+      <span class="lang-id">Teorema &amp; Definisi</span>
+      <span class="lang-en">Theorems &amp; Definitions</span>
+    </a>
+    <a class="jump-pill" onclick="scrollToElement('.box.contoh')">
+      <span>💡</span>
+      <span class="lang-id">Contoh</span>
+      <span class="lang-en">Examples</span>
+    </a>
+    <a class="jump-pill" onclick="scrollToElement('.latihan')">
+      <span>📝</span>
+      <span class="lang-id">Latihan</span>
+      <span class="lang-en">Practice</span>
+    </a>
+    <a class="jump-pill" onclick="scrollToElement('.pertanyaan')">
+      <span>❓</span>
+      <span class="lang-id">Refleksi</span>
+      <span class="lang-en">Reflection</span>
+    </a>
+  </div>
+  <div class="study-time-badge">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+    <span class="lang-id">~15–20 Menit Belajar</span>
+    <span class="lang-en">~15–20 Min Read</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT WRAPPER -->
 <main>
-  <section id="p1" class="pertemuan active">
+<section id="p1" class="pertemuan active">
     <div class="lang-id">
       <h2 class="sec-title" id="secTitle_p1">Kontrak Kuliah &amp; Pengantar Teori Bilangan</h2>
   <p class="sec-sub" id="secSub_p1">Sub-CPMK 1.1 &nbsp;·&nbsp; Rosen (2011), Section 1.1</p>
@@ -4276,16 +5258,134 @@
   </section>
 </main>
 
+<!-- SYLLABUS OFF-CANVAS DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleSyllabusDrawer(false)">
+  <div class="syllabus-drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+          <path d="M6 6h10"/>
+          <path d="M6 10h10"/>
+        </svg>
+        <span class="lang-id">Silabus 15 Pertemuan</span>
+        <span class="lang-en">Course Syllabus (15 Sessions)</span>
+      </div>
+      <button class="drawer-close-btn" onclick="toggleSyllabusDrawer(false)" aria-label="Tutup Silabus">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-search-box">
+      <input type="text" id="drawerSearchInput" class="drawer-search-input" placeholder="Cari topik, teorema, Sub-CPMK..." oninput="filterDrawerMeetings(this.value)">
+    </div>
+
+    <div class="drawer-body" id="drawerMeetingList">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div class="modal-overlay" id="shortcutsModal" onclick="toggleShortcutsModal(false)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div style="font-family:var(--font-ui); font-weight:700; font-size:0.95rem; color:var(--text-primary);">
+        <span class="lang-id">Tombol Cepat Keyboard</span>
+        <span class="lang-en">Keyboard Shortcuts</span>
+      </div>
+      <button class="drawer-close-btn" onclick="toggleShortcutsModal(false)">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="shortcut-row">
+        <span>Pertemuan Sebelumnya</span>
+        <span><kbd>[</kbd> atau <kbd>PageUp</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Pertemuan Berikutnya</span>
+        <span><kbd>]</kbd> atau <kbd>PageDown</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Buka/Tutup Silabus Drawer</span>
+        <span><kbd>S</kbd> atau <kbd>M</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Buka/Tutup Semua Bukti</span>
+        <span><kbd>E</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Ganti Mode Terang / Gelap</span>
+        <span><kbd>T</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Ganti Bahasa (ID / EN)</span>
+        <span><kbd>L</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Bantuan Pintasan Ini</span>
+        <span><kbd>?</kbd></span>
+      </div>
+      <div class="shortcut-row">
+        <span>Tutup Jendela / Drawer</span>
+        <span><kbd>Esc</kbd></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING BACK TO TOP -->
+<button id="backToTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" aria-label="Kembali ke Atas" title="Kembali ke Atas">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
 <!-- FOOTER -->
 <footer class="page-footer">
-  <p>
-    <span class="lang-id">Modul Pembelajaran Teori Bilangan Elementer &copy; 2026 Program Studi Pendidikan Matematika, UNIROW Tuban.</span>
-    <span class="lang-en">Elementary Number Theory Learning Module &copy; 2026 Mathematics Education Study Program, UNIROW Tuban.</span>
+  <div class="footer-links">
+    <a href="#p1" onclick="goToMeeting(1); return false;"><span class="lang-id">Pertemuan 1</span><span class="lang-en">Session 1</span></a>
+    <a href="#p8" onclick="goToMeeting(8); return false;"><span class="lang-id">Evaluasi UTS</span><span class="lang-en">Midterm</span></a>
+    <a href="#p15" onclick="goToMeeting(15); return false;"><span class="lang-id">Rangkuman Akhir</span><span class="lang-en">Final Summary</span></a>
+    <a href="https://github.com/gustidash-cell/Number-Theory-UNIROW" target="_blank" rel="noopener">GitHub Repository</a>
+  </div>
+  <p style="margin: 0 0 6px;">
+    <span class="lang-id">Modul Pembelajaran Teori Bilangan Elementer (MAT204 &middot; 3 SKS) &copy; 2026</span>
+    <span class="lang-en">Elementary Number Theory Learning Module (MAT204 &middot; 3 Credits) &copy; 2026</span>
+  </p>
+  <p style="font-size:0.78rem; color:var(--text-subtle); margin:0;">
+    Program Studi Pendidikan Matematika &middot; Fakultas Sains dan Pendidikan &middot; Universitas PGRI Ronggolawe (UNIROW) Tuban
   </p>
 </footer>
 
 <script>
   var currentMeetingIdx = 1;
+  var allProofsExpanded = false;
+  var currentFontSizeIndex = 1;
+  var fontScales = [0.92, 1, 1.12];
+
+  // Meeting Metadata Registry
+  var meetingData = [
+    { id: 1, group: 'cpmk1', num: 'P01', titleId: 'Kontrak Kuliah & Pengantar Teori Bilangan', titleEn: 'Course Contract & Introduction to Number Theory', sub: 'Sub-CPMK 1.1 · Rosen (2011), Section 1.1' },
+    { id: 2, group: 'cpmk1', num: 'P02', titleId: 'Induksi Matematika (Lemah & Kuat)', titleEn: 'Mathematical Induction (Weak & Strong)', sub: 'Sub-CPMK 1.2 · Rosen (2011), Section 1.3' },
+    { id: 3, group: 'cpmk1', num: 'P03', titleId: 'Sifat-sifat Keterbagian & Algoritma Pembagian', titleEn: 'Properties of Divisibility & Division Algorithm', sub: 'Sub-CPMK 1.3 · Rosen (2011), Section 1.5' },
+    { id: 4, group: 'cpmk1', num: 'P04', titleId: 'Bilangan Prima & Ketakhinggaan Prima', titleEn: 'Prime Numbers & Infinitude of Primes', sub: 'Sub-CPMK 1.4 · Rosen (2011), Section 3.1' },
+    { id: 5, group: 'cpmk1', num: 'P05', titleId: 'Sebaran Bilangan Prima & Konjektur Klasik', titleEn: 'Distribution of Primes & Classical Conjectures', sub: 'Sub-CPMK 1.5 · Rosen (2011), Section 3.2' },
+    { id: 6, group: 'cpmk1', num: 'P06', titleId: 'FPB & Identitas Bézout', titleEn: 'Greatest Common Divisor & Bézout Identity', sub: 'Sub-CPMK 1.6 · Rosen (2011), Section 3.3' },
+    { id: 7, group: 'cpmk1', num: 'P07', titleId: 'Algoritma Euclid & Algoritma Diperluas', titleEn: 'Euclidean Algorithm & Extended Algorithm', sub: 'Sub-CPMK 1.7 · Rosen (2011), Section 3.4' },
+    { id: 8, group: 'uts', num: 'P08', titleId: 'Ujian Tengah Semester (UTS)', titleEn: 'Midterm Examination (UTS)', sub: 'Evaluasi Materi Minggu 1–7 (CPMK 1)' },
+    { id: 9, group: 'cpmk2', num: 'P09', titleId: 'Teorema Fundamental Aritmetika', titleEn: 'The Fundamental Theorem of Arithmetic', sub: 'Sub-CPMK 2.1 · Rosen (2011), Section 3.5' },
+    { id: 10, group: 'cpmk2', num: 'P10', titleId: 'Metode Faktorisasi Bilangan Bulat', titleEn: 'Integer Factorization Methods', sub: 'Sub-CPMK 2.2 · Rosen (2011), Section 3.6' },
+    { id: 11, group: 'cpmk2', num: 'P11', titleId: 'Pengantar Kongruensi & Aritmetika Modulo', titleEn: 'Introduction to Modular Arithmetic & Congruence', sub: 'Sub-CPMK 2.3 · Rosen (2011), Section 4.1' },
+    { id: 12, group: 'cpmk2', num: 'P12', titleId: 'Kongruensi Linear & Invers Modulo', titleEn: 'Linear Congruence & Modular Inverses', sub: 'Sub-CPMK 2.4 · Rosen (2011), Section 4.2' },
+    { id: 13, group: 'cpmk2', num: 'P13', titleId: 'Teorema Sisa Cina (CRT)', titleEn: 'Chinese Remainder Theorem (CRT)', sub: 'Sub-CPMK 2.5 · Rosen (2011), Section 4.3' },
+    { id: 14, group: 'cpmk2', num: 'P14', titleId: 'Uji Keterbagian Berbasis Modulo', titleEn: 'Divisibility Tests via Modular Arithmetic', sub: 'Sub-CPMK 2.6 · Rosen (2011), Section 5.1' },
+    { id: 15, group: 'cpmk2', num: 'P15', titleId: 'Rangkuman & Integrasi CPMK 2', titleEn: 'Summary & Integration of CLO 2', sub: 'Sub-CPMK 2.7 · Rosen (2011), Sections 3.5–4.3' }
+  ];
 
   function onSelectMeeting(secId) {
     var idx = parseInt(secId.replace('p', ''), 10);
@@ -4302,6 +5402,7 @@
   }
 
   function goToMeeting(idx) {
+    if (idx < 1 || idx > 15) return;
     currentMeetingIdx = idx;
     var secId = 'p' + idx;
     
@@ -4316,10 +5417,11 @@
     var sel = document.getElementById('meetingSelect');
     if (sel) sel.value = secId;
 
-    // Update meeting badge
+    // Update meeting badges & labels
     var badge = document.getElementById('currentMeetingNumBadge');
+    var curData = meetingData[idx - 1];
     if (badge) {
-      badge.innerText = 'P' + (idx < 10 ? '0' : '') + idx;
+      badge.innerText = curData.num;
       if (idx === 8) {
         badge.classList.add('uts-badge');
       } else {
@@ -4327,11 +5429,38 @@
       }
     }
 
+    var topLabel = document.getElementById('topBarMeetingLabel');
+    if (topLabel) {
+      var curLang = localStorage.getItem('tb_lang') || 'id';
+      topLabel.innerText = curData.num + ': ' + (curLang === 'en' ? curData.titleEn : curData.titleId).split('&')[0].trim();
+    }
+
     // Update prev/next button states
     var btnPrev = document.getElementById('btnPrevMeeting');
     var btnNext = document.getElementById('btnNextMeeting');
-    if (btnPrev) btnPrev.disabled = (idx <= 1);
-    if (btnNext) btnNext.disabled = (idx >= 15);
+    var topBtnPrev = document.getElementById('topBtnPrev');
+    var topBtnNext = document.getElementById('topBtnNext');
+    var isFirst = (idx <= 1);
+    var isLast = (idx >= 15);
+
+    if (btnPrev) btnPrev.disabled = isFirst;
+    if (btnNext) btnNext.disabled = isLast;
+    if (topBtnPrev) topBtnPrev.disabled = isFirst;
+    if (topBtnNext) topBtnNext.disabled = isLast;
+
+    // Update active state in drawer cards
+    document.querySelectorAll('.drawer-item-card').forEach(function(card) {
+      if (parseInt(card.getAttribute('data-meeting-idx'), 10) === idx) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Update URL hash without causing unwanted jump
+    if (history.replaceState) {
+      history.replaceState(null, null, '#' + secId);
+    }
 
     // Smooth scroll to top of main content
     var mainEl = document.querySelector('main');
@@ -4342,6 +5471,9 @@
 
     // Re-render KaTeX on newly visible formulas
     renderMath();
+
+    // Reset allProofsExpanded
+    allProofsExpanded = false;
   }
 
   function changeLanguage(lang) {
@@ -4355,7 +5487,7 @@
       var bEn = document.getElementById('btnLangEn');
       if (bId) bId.classList.remove('active');
       if (bEn) bEn.classList.add('active');
-      document.title = "Elementary Number Theory Module — Sessions 1–15";
+      document.title = "Elementary Number Theory Module — Sessions 1–15 | UNIROW";
     } else {
       document.body.classList.remove('lang-en');
       document.body.classList.add('lang-id');
@@ -4363,16 +5495,22 @@
       var bEn = document.getElementById('btnLangEn');
       if (bId) bId.classList.add('active');
       if (bEn) bEn.classList.remove('active');
-      document.title = "Modul Teori Bilangan — Pertemuan 1–15";
+      document.title = "Modul Teori Bilangan Elementer — Pertemuan 1–15 | UNIROW";
     }
     localStorage.setItem('tb_lang', curLang);
     
-    // Update Dropdown optgroup and options text
+    // Update Dropdown optgroups and options
     updateDropdownLabels(curLang);
 
-    // Update theme toggle label depending on current theme
-    var isDark = document.documentElement.classList.contains('dark-mode') || document.body.classList.contains('dark-mode');
-    updateThemeUI(isDark ? 'dark' : 'light');
+    // Update Drawer content
+    buildDrawerMeetingList(curLang);
+
+    // Update top bar meeting label
+    var curData = meetingData[currentMeetingIdx - 1];
+    var topLabel = document.getElementById('topBarMeetingLabel');
+    if (topLabel && curData) {
+      topLabel.innerText = curData.num + ': ' + (curLang === 'en' ? curData.titleEn : curData.titleId).split('&')[0].trim();
+    }
 
     // Trigger KaTeX render
     renderMath();
@@ -4382,7 +5520,6 @@
     var sel = document.getElementById('meetingSelect');
     if (!sel) return;
     
-    // Optgroups
     var og1 = document.getElementById('optGroupCpmk1');
     var ogUts = document.getElementById('optGroupUts');
     var og2 = document.getElementById('optGroupCpmk2');
@@ -4397,7 +5534,6 @@
       if (og2) og2.label = "CPMK 2 (Minggu 9–15)";
     }
 
-    // Options
     var options = sel.querySelectorAll('option');
     options.forEach(function(opt) {
       var text = opt.getAttribute(lang === 'en' ? 'data-en' : 'data-id');
@@ -4411,13 +5547,11 @@
     if (newTheme === 'dark') {
       document.documentElement.classList.add('dark-mode');
       document.body.classList.add('dark-mode');
-      document.documentElement.classList.remove('light-mode');
-      document.body.classList.remove('light-mode');
+      document.documentElement.setAttribute('data-theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark-mode');
       document.body.classList.remove('dark-mode');
-      document.documentElement.classList.add('light-mode');
-      document.body.classList.add('light-mode');
+      document.documentElement.setAttribute('data-theme', 'light');
     }
     localStorage.setItem('tb_theme', newTheme);
     updateThemeUI(newTheme);
@@ -4425,24 +5559,108 @@
 
   function updateThemeUI(theme) {
     var themeIcon = document.getElementById('themeIcon');
-    var themeLabel = document.getElementById('themeLabel');
-    var curLang = localStorage.getItem('tb_lang') || 'id';
-
+    if (!themeIcon) return;
     if (theme === 'dark') {
-      if (themeIcon) {
-        themeIcon.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
-      }
-      if (themeLabel) {
-        themeLabel.innerHTML = curLang === 'en' ? '<span class="lang-en">Light Mode</span>' : '<span class="lang-id">Mode Terang</span>';
-      }
+      themeIcon.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
     } else {
-      if (themeIcon) {
-        themeIcon.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
-      }
-      if (themeLabel) {
-        themeLabel.innerHTML = curLang === 'en' ? '<span class="lang-en">Dark Mode</span>' : '<span class="lang-id">Mode Gelap</span>';
-      }
+      themeIcon.innerHTML = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
     }
+  }
+
+  function toggleAllProofs() {
+    allProofsExpanded = !allProofsExpanded;
+    var activeSec = document.querySelector('section.pertemuan.active');
+    if (!activeSec) return;
+    var proofs = activeSec.querySelectorAll('details.bukti');
+    proofs.forEach(function(d) {
+      d.open = allProofsExpanded;
+    });
+    renderMath();
+  }
+
+  function cycleFontSize() {
+    currentFontSizeIndex = (currentFontSizeIndex + 1) % fontScales.length;
+    var scale = fontScales[currentFontSizeIndex];
+    document.documentElement.style.setProperty('--font-scale', scale);
+    localStorage.setItem('tb_font_scale', currentFontSizeIndex);
+  }
+
+  function toggleSyllabusDrawer(forceState) {
+    var drawer = document.getElementById('drawerOverlay');
+    if (!drawer) return;
+    if (typeof forceState === 'boolean') {
+      if (forceState) drawer.classList.add('active');
+      else drawer.classList.remove('active');
+    } else {
+      drawer.classList.toggle('active');
+    }
+    if (drawer.classList.contains('active')) {
+      var inp = document.getElementById('drawerSearchInput');
+      if (inp) inp.focus();
+    }
+  }
+
+  function toggleShortcutsModal(forceState) {
+    var modal = document.getElementById('shortcutsModal');
+    if (!modal) return;
+    if (typeof forceState === 'boolean') {
+      if (forceState) modal.classList.add('active');
+      else modal.classList.remove('active');
+    } else {
+      modal.classList.toggle('active');
+    }
+  }
+
+  function scrollToElement(selector) {
+    var activeSec = document.querySelector('section.pertemuan.active');
+    if (!activeSec) return;
+    var target = activeSec.querySelector(selector);
+    if (target) {
+      var topPos = target.getBoundingClientRect().top + window.pageYOffset - 110;
+      window.scrollTo({ top: Math.max(0, topPos), behavior: 'smooth' });
+    }
+  }
+
+  function buildDrawerMeetingList(lang) {
+    var listEl = document.getElementById('drawerMeetingList');
+    if (!listEl) return;
+    var html = '';
+
+    var groups = [
+      { id: 'cpmk1', title: lang === 'en' ? 'CLO 1: Deductive Foundations & Divisibility (Weeks 1–7)' : 'CPMK 1: Pondasi Deduktif & Keterbagian (Minggu 1–7)' },
+      { id: 'uts', title: lang === 'en' ? 'Midterm Evaluation' : 'Evaluasi Tengah Semester' },
+      { id: 'cpmk2', title: lang === 'en' ? 'CLO 2: Modular Arithmetic & Structure (Weeks 9–15)' : 'CPMK 2: Aritmetika Modulo & Struktur Multiplikatif (Minggu 9–15)' }
+    ];
+
+    groups.forEach(function(grp) {
+      html += '<div class="drawer-group-title">' + grp.title + '</div>';
+      var items = meetingData.filter(function(m) { return m.group === grp.id; });
+      items.forEach(function(item) {
+        var title = lang === 'en' ? item.titleEn : item.titleId;
+        var activeClass = item.id === currentMeetingIdx ? ' active' : '';
+        html += '<div class="drawer-item-card' + activeClass + '" data-meeting-idx="' + item.id + '" onclick="goToMeeting(' + item.id + '); toggleSyllabusDrawer(false);">' +
+          '<div class="drawer-card-badge">' + item.num + '</div>' +
+          '<div class="drawer-card-info">' +
+            '<div class="drawer-card-title">' + title + '</div>' +
+            '<div class="drawer-card-sub">' + item.sub + '</div>' +
+          '</div>' +
+        '</div>';
+      });
+    });
+
+    listEl.innerHTML = html;
+  }
+
+  function filterDrawerMeetings(query) {
+    var q = query.toLowerCase().trim();
+    document.querySelectorAll('.drawer-item-card').forEach(function(card) {
+      var text = card.innerText.toLowerCase();
+      if (!q || text.indexOf(q) !== -1) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
   }
 
   function renderMath() {
@@ -4457,8 +5675,52 @@
     }
   }
 
+  // Scroll Progress & Back-to-Top Listener
+  window.addEventListener('scroll', function() {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+    var bar = document.getElementById('readingProgressBar');
+    if (bar) bar.style.width = scrolled + '%';
+
+    var btnTop = document.getElementById('backToTopBtn');
+    if (btnTop) {
+      if (winScroll > 320) btnTop.classList.add('show');
+      else btnTop.classList.remove('show');
+    }
+  });
+
+  // Keyboard Navigation
+  window.addEventListener('keydown', function(e) {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+    if (e.key === '[' || e.key === 'PageUp') {
+      e.preventDefault();
+      navigateMeeting(-1);
+    } else if (e.key === ']' || e.key === 'PageDown') {
+      e.preventDefault();
+      navigateMeeting(1);
+    } else if (e.key === 't' || e.key === 'T') {
+      toggleTheme();
+    } else if (e.key === 'l' || e.key === 'L') {
+      var curLang = localStorage.getItem('tb_lang') || 'id';
+      changeLanguage(curLang === 'id' ? 'en' : 'id');
+    } else if (e.key === 'e' || e.key === 'E') {
+      toggleAllProofs();
+    } else if (e.key === 's' || e.key === 'S' || e.key === 'm' || e.key === 'M') {
+      e.preventDefault();
+      toggleSyllabusDrawer();
+    } else if (e.key === '?') {
+      toggleShortcutsModal();
+    } else if (e.key === 'Escape') {
+      toggleSyllabusDrawer(false);
+      toggleShortcutsModal(false);
+    }
+  });
+
+  // Initialization
   document.addEventListener('DOMContentLoaded', function() {
-    // 1. Initial theme setup (LIGHT is default)
+    // 1. Initial theme setup
     var savedTheme = localStorage.getItem('tb_theme');
     if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark-mode');
@@ -4467,20 +5729,34 @@
     } else {
       document.documentElement.classList.remove('dark-mode');
       document.body.classList.remove('dark-mode');
-      document.documentElement.classList.add('light-mode');
-      document.body.classList.add('light-mode');
       updateThemeUI('light');
     }
 
-    // 2. Initial language setup
+    // 2. Initial font scale
+    var savedScale = localStorage.getItem('tb_font_scale');
+    if (savedScale !== null) {
+      currentFontSizeIndex = parseInt(savedScale, 10);
+      document.documentElement.style.setProperty('--font-scale', fontScales[currentFontSizeIndex]);
+    }
+
+    // 3. Initial language setup
     var savedLang = localStorage.getItem('tb_lang') || 'id';
     changeLanguage(savedLang);
 
-    // 3. Initial meeting setup
-    goToMeeting(1);
+    // 4. Initial meeting from URL hash or default 1
+    var hash = window.location.hash;
+    var initialIdx = 1;
+    if (hash && hash.match(/^#p\d+$/)) {
+      var parsed = parseInt(hash.replace('#p', ''), 10);
+      if (parsed >= 1 && parsed <= 15) initialIdx = parsed;
+    }
+    goToMeeting(initialIdx);
 
-    // 4. KaTeX render
-    setTimeout(renderMath, 150);
+    // 5. Build Drawer meeting list
+    buildDrawerMeetingList(savedLang);
+
+    // 6. KaTeX render
+    setTimeout(renderMath, 160);
   });
 </script>
 </body>

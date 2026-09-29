@@ -17,20 +17,30 @@
 
 Media Pembelajaran Interaktif Modul Teori Bilangan Elementer (MAT204 · 3 SKS) berbasis HTML/CSS/JavaScript modern untuk Mahasiswa Program Studi Pendidikan Matematika, Fakultas Sains dan Pendidikan, Universitas PGRI Ronggolawe (UNIROW) Tuban.
 
-## ✨ Fitur Unggulan
+## ✨ Fitur Unggulan (UI/UX Pro Max & OpenDesign)
 
-- 🧭 **Sticky Dropdown Selector (Navigasi Ringkas)**:
-  - Menu *dropdown* terstruktur rapi untuk memilih 15 pertemuan (CPMK 1, UTS, dan CPMK 2) tanpa memakan tempat horizontal.
-  - Dilengkapi tombol navigasi cepat `← Sebelumnya` dan `Berikutnya →`.
+- 🧭 **Off-Canvas Syllabus Drawer & Quick Selector (Navigasi 15 Pertemuan)**:
+  - Menu *drawer* samping interaktif dilengkapi fitur pencarian langsung untuk 15 sesi perkuliahan (CPMK 1, UTS, dan CPMK 2).
+  - Quick dropdown selector dan tombol navigasi cepat `← Sebelumnya` (`[`) serta `Berikutnya →` (`]`).
+  - *In-Page Jump Chips* untuk lompat seketika ke: 🎯 Tujuan, 📐 Teorema/Definisi, 💡 Contoh, 📝 Latihan, dan ❓ Refleksi.
+- 📊 **Reading Progress Bar & Estimasi Waktu Belajar**:
+  - Indikator progres membaca di bagian teratas layar yang bergerak mulus mengikuti kedalaman gulir.
+  - Perkiraan durasi belajar per pertemuan (~15–20 menit).
+- 👁️ **Bulk Proofs Toggle (Buka/Tutup Semua Bukti)**:
+  - Tombol aksi satu-klik untuk membuka atau menutup seluruh bukti formal dan penyelesaian contoh soal di pertemuan aktif (shortcut: `E`).
 - 🌐 **Fitur Dwibahasa Lengkap (Full Bilingual Support ID 🇮🇩 & EN 🇬🇧)**:
   - Seluruh materi diterjemahkan 100% (Judul, Subjudul, Definisi, Teorema, Bukti Formal, Contoh Matematis & Kontekstual, Latihan Soal, hingga Pertanyaan Pemahaman).
-  - Perpindahan bahasa seketika (0 ms) tanpa reload dan 100% offline-ready.
-- 🌙 **Dark & Light Mode Toggle (Light Mode Default)**:
-  - Palet warna akademik lembut (*Restful Academic Pastel Palette*) yang nyaman di mata untuk membaca lama.
+  - Perpindahan bahasa seketika (0 ms) tanpa reload dan 100% offline-ready (shortcut: `L`).
+- 🌙 **Dark & Light Mode Toggle (Sistem Restful Academic Paper & Obsidian Slate)**:
+  - Palet warna akademik lembut yang ramah mata untuk sesi membaca intensif, memenuhi standar aksesibilitas WCAG AAA (shortcut: `T`).
+- 🔠 **Aksesibilitas & Tipografi Modern**:
+  - Penyetel ukuran huruf teks (`A-` / `A+`) dengan penyimpanan preferensi di `localStorage`.
+  - Pasangan tipografi kurasi tinggi: *Fraunces* (Display Serif), *Source Serif 4* (Body Reading), *Plus Jakarta Sans* (UI Controls), dan *JetBrains Mono* (Simbol/Kode).
+  - Navigasi keyboard terintegrasi penuh (tekan `?` untuk melihat daftar pintasan).
 - 📐 **Format Matematika KaTeX Presisi**:
   - Notasi $\LaTeX$ jernih dan tajam untuk simbol himpunan $\mathbb{Z}$, modulo, keterbagian, hingga simbol bukti $\blacksquare$ Q.E.D.
-- 📱 **Desain Responsif**:
-  - Tampilan rapi dan adaptif untuk Smartphone, Tablet, Laptop, dan Desktop.
+- 🖨️ **Optimasi Ekspor PDF & Cetak (@media print)**:
+  - Tata letak cetak bersih tanpa elemen navigasi dan otomatis membuka seluruh pembuktian saat disimpan sebagai dokumen PDF.
 
 ---
 
